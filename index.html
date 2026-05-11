@@ -2,14 +2,202 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Manideep GNS — Finance × Curiosity × Code</title>
-<meta name="description" content="Chartered Accountant. Head of Finance at UrbanPiper. Building Atlance." />
-<meta property="og:title" content="Manideep GNS" />
-<meta property="og:description" content="Finance × Curiosity × Code" />
+<meta name="description" content="Chartered Accountant who treats finance like engineering. Head of Finance at UrbanPiper across 4 countries. Building Atlance." />
+<meta property="og:title" content="Manideep GNS — Finance × Curiosity × Code" />
+<meta property="og:description" content="Chartered Accountant who treats finance like engineering." />
 <meta property="og:type" content="website" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<!-- Native system stack — no webfont. Renders as SF Pro on macOS/iOS, Segoe UI on Windows, Roboto on Android, Inter/Helvetica/system fallback elsewhere. -->
+
+<style>
+  :root {
+    --bg:           #0a0a0c;
+    --bg-card:      #131316;
+    --bg-elev:      #1a1a1d;
+    --bg-hover:     #1f1f23;
+    --line:         #1f1f23;
+    --line-strong:  #2a2a30;
+    --line-bright:  #3a3a42;
+    --fg:           #ededee;
+    --fg-dim:       #b3b4b6;
+    --fg-mute:      #87898c;
+    --fg-soft:      #555558;
+    --accent:       #5eead4;       /* teal */
+    --accent-2:     #c084fc;       /* violet — focal moments only */
+    --accent-3:     #22d3ee;       /* cyan — Atlance brand */
+    --green:        #4ade80;
+    --warn:         #f59e0b;
+    --w-narrow:     720px;
+    --w-wide:       1080px;
+    --sans:   -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono:   ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-feature-settings: 'tnum', 'kern', 'liga';
+    font-size: 16px;
+  }
+  ::selection { background: var(--accent); color: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Reading progress bar (top) ── */
+  .progress {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 1.5px; z-index: 100;
+    background: linear-gradient(90deg, var(--accent), var(--accent-3) 50%, var(--accent-2));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform .08s linear;
+    pointer-events: none;
+  }
+
+  /* ── Nav ── */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(10,10,12,0.7);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s;
+  }
+  .nav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    max-width: var(--w-wide); margin: 0 auto;
+    padding: 0 28px;
+  }
+  .brand {
+    font-family: var(--sans); font-weight: 500;
+    letter-spacing: -0.012em; font-size: 14.5px;
+    color: var(--fg);
+  }
+  .nav-links {
+    display: flex; gap: 28px;
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--fg-mute); letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .nav-links a { transition: color .15s; }
+  .nav-links a:hover { color: var(--fg); }
+  @media (max-width: 600px) { .nav-links { gap: 16px; font-size: 10.5px; } }
+
+  main { padding-top: 0; }
+
+  /* ── Section base ── */
+  .wrap-narrow { max-width: var(--w-narrow); margin: 0 auto; padding: 0 28px; }
+  .wrap-wide { max-width: var(--w-wide); margin: 0 auto; padding: 0 28px; }
+  section { padding: 96px 0; position: relative; }
+  @media (max-width: 600px) { section { padding: 64px 0; } }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before {
+    content: ''; width: 18px; height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  /* ── Reveal on scroll ── */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* ── Inline link ── */
+  .prose a, .lnk {
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-color: var(--line-bright);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color .15s, text-decoration-color .15s;
+  }
+  .prose a:hover, .lnk:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+  /* ──────────────────────────────────────────────────────
+      FOOTER
+  ────────────────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    color: var(--fg-mute); font-size: 12.5px;
+  }
+  .foot-row {
+    max-width: var(--w-wide); margin: 0 auto;
+    padding: 0 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+    font-family: var(--mono); letter-spacing: 0.04em;
+  }
+  .foot-row a { color: var(--fg-mute); transition: color .15s; }
+  .foot-row a:hover { color: var(--fg); }
+</style>
 </head>
 <body>
+
+<div class="progress" id="progress"></div>
+
+<header class="nav">
+  <div class="nav-row">
+    <a class="brand" href="#top">Manideep GNS</a>
+    <div class="nav-links">
+      <a href="#arc">Arc</a>
+      <a href="#atlance">Atlance</a>
+      <a href="#writing">Writing</a>
+      <a href="#reach">Reach</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+</main>
+
+<footer>
+  <div class="foot-row">
+    <div>© 2026 MANIDEEP GNS · BENGALURU, IST</div>
+    <div>FINANCE × CURIOSITY × CODE</div>
+  </div>
+</footer>
+
+<script>// ─── Reveal on scroll ───
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // ─── Reading progress + nav border ───
+  const progress = document.getElementById('progress');
+  const nav = document.querySelector('header.nav');
+  function onScroll() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    const ratio = max > 0 ? scrolled / max : 0;
+    progress.style.transform = `scaleX(${ratio})`;
+    nav.style.borderBottomColor = scrolled > 30 ? 'var(--line)' : 'transparent';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  </script>
+
 </body>
 </html>
