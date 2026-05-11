@@ -62,6 +62,21 @@
     pointer-events: none;
   }
 
+  /* ── Focus indicator (a11y) ── */
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .btn:focus-visible,
+  .module:focus-visible,
+  .pillar:focus-visible,
+  .write-card:focus-visible,
+  .runs-cell:focus-visible {
+    outline-offset: 4px;
+  }
+
   /* ── Nav ── */
   header.nav {
     position: sticky; top: 0; z-index: 50;
@@ -88,7 +103,7 @@
     color: var(--fg-mute); letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .nav-links a { transition: color .15s; }
+  .nav-links a { transition: color .15s; padding: 12px 0; }
   .nav-links a:hover { color: var(--fg); }
   @media (max-width: 600px) { .nav-links { gap: 16px; font-size: 10.5px; } }
 
@@ -179,6 +194,9 @@
     animation: pulse 2.4s ease-in-out infinite;
   }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @media (prefers-reduced-motion: reduce) {
+    .pill.live::before { animation: none; }
+  }
 
   /* Kinetic name */
   .hero-name {
@@ -531,9 +549,13 @@
   .atl-side .module {
     font-family: var(--mono); font-size: 11px;
     color: var(--fg-mute); letter-spacing: 0.06em;
-    padding: 7px 10px; border-radius: 5px;
+    padding: 12px 12px; border-radius: 5px;
     margin-bottom: 2px; cursor: pointer;
     transition: background .12s, color .12s;
+    /* button reset */
+    background: transparent; border: 0;
+    text-align: left; width: 100%;
+    display: block;
   }
   .atl-side .module:hover { color: var(--fg); background: rgba(255,255,255,0.04); }
   .atl-side .module.active {
@@ -723,7 +745,7 @@
   .reach-note {
     margin: 18px 0 0;
     font-family: var(--mono); font-size: 11.5px;
-    color: var(--fg-soft); letter-spacing: 0.02em;
+    color: var(--fg-mute); letter-spacing: 0.02em;
   }
   .btn {
     display: inline-flex; align-items: center; gap: 9px;
@@ -765,17 +787,17 @@
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav">
   <div class="nav-row">
     <a class="brand" href="#top">Manideep GNS</a>
-    <div class="nav-links">
+    <nav class="nav-links" aria-label="Primary">
       <a href="#arc">Arc</a>
       <a href="#atlance">Atlance</a>
       <a href="#writing">Writing</a>
       <a href="#reach">Reach</a>
-    </div>
+    </nav>
   </div>
 </header>
 
@@ -809,9 +831,9 @@
 
       <div class="hero-strip">
         <span><strong>Head of Finance</strong> · UrbanPiper</span>
-        <span class="sep"></span>
+        <span class="sep" aria-hidden="true"></span>
         <span>4 entities · team of 7</span>
-        <span class="sep"></span>
+        <span class="sep" aria-hidden="true"></span>
         <span>Building <strong>Atlance</strong> on the side</span>
       </div>
     </div>
@@ -825,7 +847,7 @@
 
         <div class="pillar reveal">
           <div class="num">PILLAR 01</div>
-          <h3>I treat finance like engineering.</h3>
+          <h2>I treat finance like engineering.</h2>
           <blockquote>
             "Querying Zoho is like querying a database replica that's two weeks behind master. The data exists somewhere — just not in any one system."
             <cite>— from "Why MIS Takes 15 Days" · an internal memo</cite>
@@ -835,7 +857,7 @@
 
         <div class="pillar reveal">
           <div class="num">PILLAR 02</div>
-          <h3>I close the loop.</h3>
+          <h2>I close the loop.</h2>
           <blockquote>
             Five quarterly DD packages. Filed on time, every cycle.
             <cite>— institutional investors · single point of contact</cite>
@@ -845,7 +867,7 @@
 
         <div class="pillar reveal">
           <div class="num">PILLAR 03</div>
-          <h3>I learn out loud.</h3>
+          <h2>I learn out loud.</h2>
           <blockquote>
             "The fix isn't working harder in December. It's front-loading the hard work to July–September so the only conversations are clarifications, not methodology debates."
             <cite>— bottom line of a 4,000-word postmortem I wrote after FY25</cite>
@@ -1008,12 +1030,12 @@
           <span class="atl-tag">PROD</span>
         </div>
         <div class="atl-body">
-          <div class="atl-side" id="atl-side">
-            <div class="module active" data-module="variance" data-path="/variance">Variance</div>
-            <div class="module" data-module="cashflow" data-path="/pulse">Cash Flow</div>
-            <div class="module" data-module="vaani" data-path="/vaani">Vaani</div>
-            <div class="module" data-module="flow" data-path="/flow">Flow</div>
-            <div class="module" data-module="ar" data-path="/ar">AR Collections</div>
+          <div class="atl-side" id="atl-side" role="tablist" aria-label="Atlance modules">
+            <button type="button" class="module active" data-module="variance" data-path="/variance" role="tab" aria-selected="true">Variance</button>
+            <button type="button" class="module" data-module="cashflow" data-path="/pulse" role="tab" aria-selected="false">Cash Flow</button>
+            <button type="button" class="module" data-module="vaani" data-path="/vaani" role="tab" aria-selected="false">Vaani</button>
+            <button type="button" class="module" data-module="flow" data-path="/flow" role="tab" aria-selected="false">Flow</button>
+            <button type="button" class="module" data-module="ar" data-path="/ar" role="tab" aria-selected="false">AR Collections</button>
           </div>
           <div class="atl-canvas">
             <div class="atl-title-row">
@@ -1093,13 +1115,13 @@
       <h2 class="reveal">Open to advisory + investor conversations. Especially: founders rebuilding finance after a leadership exit, or finance leaders who want their function to ship software.</h2>
       <p class="sub reveal">Always up for finance × ops × automation chats. Telugu-English mix is fine.</p>
       <div class="reach-row reveal">
-        <a class="btn primary" id="email-btn" href="mailto:manideepgns@gmail.com" data-email="manideepgns@gmail.com">
-          <span class="btn-label">manideepgns@gmail.com</span>
-          <span class="arr">→</span>
+        <a class="btn primary" id="email-btn" href="mailto:manideepgns@gmail.com" data-email="manideepgns@gmail.com" role="button">
+          <span class="btn-label" aria-live="polite">manideepgns@gmail.com</span>
+          <span class="arr" aria-hidden="true">→</span>
         </a>
-        <a class="btn" href="https://linkedin.com/in/nagasai-manideep-g-71141412b" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
-        <a class="btn" href="https://github.com/manideepgns-fin" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
-        <a class="btn" href="https://atlance.urbanpiper.ai" target="_blank" rel="noopener">Open Atlance <span class="arr">↗</span></a>
+        <a class="btn" href="https://linkedin.com/in/nagasai-manideep-g-71141412b" target="_blank" rel="noopener">LinkedIn <span class="arr" aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/manideepgns-fin" target="_blank" rel="noopener">GitHub <span class="arr" aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://atlance.urbanpiper.ai" target="_blank" rel="noopener">Open Atlance <span class="arr" aria-hidden="true">↗</span></a>
       </div>
       <p class="reach-note reveal">Click the email button to copy it — opens your mail client too if you have one set up.</p>
     </div>
@@ -1115,7 +1137,9 @@
   </div>
 </footer>
 
-<script>// ─── Kinetic name (letter-by-letter rise) ───
+<script>
+  const PRM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ─── Kinetic name (letter-by-letter rise) ───
   (function(){
     const el = document.getElementById('hero-name');
     if (!el) return;
@@ -1154,6 +1178,7 @@
 
   // ─── Timeline progress fill ───
   (function(){
+    if (PRM) return;
     const tl = document.getElementById('timeline');
     const fill = document.getElementById('timeline-fill');
     if (!tl || !fill) return;
@@ -1183,6 +1208,10 @@
   // ─── Stat counter ───
   (function(){
     const stats = document.querySelectorAll('.atl-stat .n[data-target]');
+    if (PRM) {
+      stats.forEach((el) => { el.textContent = parseInt(el.dataset.target, 10).toLocaleString(); });
+      return;
+    }
     const cio = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
@@ -1321,11 +1350,13 @@
       frame.addEventListener('mouseenter', () => paused = true);
       frame.addEventListener('mouseleave', () => paused = false);
     }
-    setInterval(() => {
-      if (paused) return;
-      idx = (idx + 1) % keys.length;
-      render(keys[idx]);
-    }, 4500);
+    if (!PRM) {
+      setInterval(() => {
+        if (paused) return;
+        idx = (idx + 1) % keys.length;
+        render(keys[idx]);
+      }, 4500);
+    }
   })();
 // ─── Email click → copy to clipboard + visual feedback ───
   (function(){
