@@ -392,6 +392,75 @@
   }
 
   /* ──────────────────────────────────────────────────────
+      WHAT I RUN
+  ────────────────────────────────────────────────────── */
+  .runs h2 {
+    font-size: clamp(28px, 3.5vw, 40px); font-weight: 500;
+    letter-spacing: -0.025em; line-height: 1.15;
+    margin: 0 0 12px;
+  }
+  .runs-lede {
+    color: var(--fg-dim); font-size: 16px; line-height: 1.7;
+    max-width: 60ch; margin: 0 0 40px;
+  }
+  .runs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 10px; overflow: hidden;
+  }
+  @media (max-width: 760px) { .runs-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .runs-grid { grid-template-columns: 1fr; } }
+  .runs-cell {
+    background: var(--bg-card);
+    padding: 22px 24px;
+    transition: background .15s;
+  }
+  .runs-cell:hover { background: var(--bg-elev); }
+  .runs-cell .head {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.10em;
+    margin-bottom: 8px; text-transform: uppercase;
+  }
+  .runs-cell .title {
+    font-size: 15px; font-weight: 500;
+    color: var(--fg); letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .runs-cell .detail {
+    font-size: 13px; color: var(--fg-dim);
+    line-height: 1.55;
+  }
+  .stakeholders {
+    margin-top: 32px;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.012);
+  }
+  .stake-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    padding: 8px 0;
+    align-items: baseline;
+  }
+  .stake-row + .stake-row { border-top: 1px solid var(--line); margin-top: 4px; }
+  .stake-label {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+  .stake-list {
+    font-family: var(--sans); font-size: 14px;
+    color: var(--fg); line-height: 1.55;
+    letter-spacing: -0.005em;
+  }
+  @media (max-width: 720px) {
+    .stake-row { grid-template-columns: 1fr; gap: 4px; padding: 10px 0; }
+  }
+
+  /* ──────────────────────────────────────────────────────
       FOOTER
   ────────────────────────────────────────────────────── */
   footer {
@@ -562,6 +631,75 @@
           <div class="tl-detail">Two weeks of WFH at home. Came back with a working full-stack finance OS. 1,093 commits later: still building.</div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT I RUN ─── -->
+  <section class="runs">
+    <div class="wrap-wide">
+      <div class="eyebrow reveal">Today, the day job</div>
+      <h2 class="reveal">Head of Finance, UrbanPiper (Series B+, four entities).<br/>Team of seven, reporting to the founders.</h2>
+      <p class="runs-lede reveal">FY27 plan, multi-entity consolidation, treasury, monthly close, audit, investor DD. Whatever the function needs.</p>
+
+      <div class="runs-grid">
+        <div class="runs-cell reveal">
+          <div class="head">Strategic</div>
+          <div class="title">FP&amp;A &amp; the FY27 plan</div>
+          <div class="detail">Multi-currency MIS, BU-wise EBITDA, runway analysis, investor calls.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Audit</div>
+          <div class="title">Big 4 statutory audit</div>
+          <div class="detail">BSR &amp; Co. (KPMG network). 93.94% revenue coverage, 99.86% asset coverage.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Tax</div>
+          <div class="title">Multi-jurisdiction</div>
+          <div class="detail">UK VAT, UAE VAT, US multi-state via Avalara. Transfer pricing across IN / UK / USA.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Litigation</div>
+          <div class="title">Karnataka HC writ defended</div>
+          <div class="detail">Income-tax additions challenged. Section 271(1)(c) penalty under appeal.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Capital</div>
+          <div class="title">$1M ODI &amp; valuation</div>
+          <div class="detail">US subsidiary capital deployment. ESOP valuation for 185 stakeholders. WACC 22.03% DCF.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Governance</div>
+          <div class="title">Board &amp; secretarial</div>
+          <div class="detail">9th AGM coordination. ROC (AOC-4, MGT-7). RBI FLA returns. Section 185 director compliance.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Treasury</div>
+          <div class="title">Banking, FX, payouts</div>
+          <div class="detail">HSBC UAE, IDFC auto-sweep, Wise Business. Stripe across 4 accounts. RBI international transfers.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Investor</div>
+          <div class="title">Quarterly DD across the cap table</div>
+          <div class="detail">Five institutional investors. PFIC/CFC compliance for US-domiciled funds. Quarterly impairment workings. Single point of contact for every cycle.</div>
+        </div>
+        <div class="runs-cell reveal">
+          <div class="head">Team</div>
+          <div class="title">Hiring &amp; development</div>
+          <div class="detail">Designed FP&amp;A interview process. Variable pay framework. Team of seven across regions.</div>
+        </div>
+      </div>
+
+      <!-- Stakeholders strip — the trust-transfer layer -->
+      <div class="stakeholders reveal">
+        <div class="stake-row">
+          <span class="stake-label">Investors I respond to</span>
+          <span class="stake-list">Five institutional firms · five quarterly cycles · single point of contact</span>
+        </div>
+        <div class="stake-row">
+          <span class="stake-label">Advisor network</span>
+          <span class="stake-list">BSR &amp; Co. (KPMG) · BRKS Associates · Avalara · Intuit Consultancy · Mithras · EquityList · HSBC UAE</span>
+        </div>
       </div>
     </div>
   </section>
