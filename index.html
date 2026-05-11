@@ -256,6 +256,142 @@
   @media (max-width: 600px) { .hero-strip { font-size: 11px; gap: 8px 12px; } }
 
   /* ──────────────────────────────────────────────────────
+      THREE PILLARS
+  ────────────────────────────────────────────────────── */
+  .pillars {
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.012), transparent);
+  }
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    margin-top: 36px;
+  }
+  @media (max-width: 760px) {
+    .pillars-grid { grid-template-columns: 1fr; gap: 22px; }
+  }
+  .pillar {
+    padding: 28px 26px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--bg-card);
+    transition: border-color .25s, transform .25s, box-shadow .25s;
+    position: relative;
+  }
+  .pillar:hover {
+    border-color: var(--line-bright);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.4);
+  }
+  .pillar .num {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-mute); letter-spacing: 0.10em;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pillar .num::before {
+    content: ''; width: 6px; height: 6px;
+    border-radius: 999px; background: var(--accent);
+  }
+  .pillar h3 {
+    font-size: 19px; font-weight: 500;
+    letter-spacing: -0.018em; line-height: 1.25;
+    margin: 0 0 18px; color: var(--fg);
+  }
+  .pillar blockquote {
+    margin: 0 0 14px;
+    padding-left: 14px;
+    border-left: 1px solid var(--accent);
+    font-size: 13.5px; font-style: italic;
+    color: var(--fg-dim); line-height: 1.55;
+  }
+  .pillar blockquote cite {
+    display: block; margin-top: 8px;
+    font-style: normal; font-family: var(--mono);
+    font-size: 10.5px; color: var(--fg-mute);
+    letter-spacing: 0.04em;
+  }
+  .pillar p {
+    margin: 0; font-size: 14.5px;
+    color: var(--fg-dim); line-height: 1.65;
+  }
+
+  /* ──────────────────────────────────────────────────────
+      ARC / TIMELINE
+  ────────────────────────────────────────────────────── */
+  .arc h2 {
+    font-size: clamp(28px, 3.5vw, 40px); font-weight: 500;
+    letter-spacing: -0.025em; line-height: 1.15;
+    margin: 0 0 12px; color: var(--fg);
+  }
+  .arc-intro {
+    color: var(--fg-dim); font-size: 16px; line-height: 1.7;
+    max-width: 60ch; margin: 0 0 56px;
+  }
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 7px; top: 8px; bottom: 8px;
+    width: 1px; background: var(--line-bright);
+  }
+  .timeline-fill {
+    position: absolute;
+    left: 7px; top: 8px;
+    width: 1px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-3));
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform .25s ease;
+  }
+  .tl-item {
+    position: relative; padding: 18px 0;
+  }
+  .tl-item::before {
+    content: ''; position: absolute;
+    left: -39px; top: 25px;
+    width: 14px; height: 14px;
+    border-radius: 999px;
+    background: var(--bg);
+    border: 1px solid var(--line-bright);
+    transition: border-color .3s, background .3s, box-shadow .3s;
+  }
+  .tl-item.in::before {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(94,234,212,0.12);
+  }
+  .tl-item.flag::before {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+    box-shadow: 0 0 0 4px rgba(192,132,252,0.16);
+  }
+  .tl-year {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-mute); letter-spacing: 0.10em;
+    margin-bottom: 6px;
+  }
+  .tl-title {
+    font-size: 16.5px; font-weight: 500;
+    color: var(--fg); letter-spacing: -0.012em;
+    margin-bottom: 4px;
+  }
+  .tl-detail {
+    color: var(--fg-dim); font-size: 14.5px;
+    line-height: 1.6;
+  }
+  .tl-flag {
+    display: inline-block;
+    margin-left: 10px;
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--accent-2); letter-spacing: 0.10em;
+    padding: 2px 7px; border-radius: 4px;
+    background: rgba(192,132,252,0.10);
+    text-transform: uppercase;
+    transform: translateY(-1px);
+  }
+
+  /* ──────────────────────────────────────────────────────
       FOOTER
   ────────────────────────────────────────────────────── */
   footer {
@@ -328,6 +464,108 @@
     </div>
   </section>
 
+  <!-- ─── THREE PILLARS ─── -->
+  <section class="pillars">
+    <div class="wrap-wide">
+      <div class="eyebrow reveal">How I work</div>
+      <div class="pillars-grid">
+
+        <div class="pillar reveal">
+          <div class="num">PILLAR 01</div>
+          <h3>I treat finance like engineering.</h3>
+          <blockquote>
+            "Querying Zoho is like querying a database replica that's two weeks behind master. The data exists somewhere — just not in any one system."
+            <cite>— from "Why MIS Takes 15 Days" · an internal memo</cite>
+          </blockquote>
+          <p>Most finance failures aren't accounting problems. They're system problems. Foreign keys missing. State machines absent. No webhooks. Excel as the database. I see them — and I write the diagnosis before I propose the fix.</p>
+        </div>
+
+        <div class="pillar reveal">
+          <div class="num">PILLAR 02</div>
+          <h3>I close the loop.</h3>
+          <blockquote>
+            Five quarterly DD packages. Filed on time, every cycle.
+            <cite>— institutional investors · single point of contact</cite>
+          </blockquote>
+          <p>Tax notice defended in Karnataka HC. First Big-4 audit in charge — four countries, closed in two months instead of six. $1M ODI to the US sub — cleared.</p>
+        </div>
+
+        <div class="pillar reveal">
+          <div class="num">PILLAR 03</div>
+          <h3>I learn out loud.</h3>
+          <blockquote>
+            "The fix isn't working harder in December. It's front-loading the hard work to July–September so the only conversations are clarifications, not methodology debates."
+            <cite>— bottom line of a 4,000-word postmortem I wrote after FY25</cite>
+          </blockquote>
+          <p>FY25 closed at the cost of nights nobody should work. The postmortem below is me admitting the December grind was the wrong fix — and what FY26 does instead. Postmortems after every cycle. Architecture diagrams. Diagnoses for the founder when something breaks. Documentation as discipline, not decoration.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ARC ─── -->
+  <section class="arc" id="arc">
+    <div class="wrap-narrow">
+      <div class="eyebrow reveal">The arc</div>
+      <h2 class="reveal">Ten years from age 16 to running a four-country function.</h2>
+      <p class="arc-intro reveal">Eight checkpoints. Seven years to qualify as a CA, another two-and-a-half before running the function.</p>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline-fill" id="timeline-fill"></div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">JUN 2016</div>
+          <div class="tl-title">CA Foundation (CPT) cleared, right out of XII</div>
+          <div class="tl-detail">Emeralds Junior College, BIEAP. The choice gets made.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">NOV 2017</div>
+          <div class="tl-title">CA Intermediate (IPCC) cleared</div>
+          <div class="tl-detail">Eighteen months after Foundation.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">FEB 2018 → APR 2021</div>
+          <div class="tl-title">Article Assistant · HNAK &amp; Associates</div>
+          <div class="tl-detail">Three-year articleship. Statutory audit, internal audit, tax audit, advisory. Forms 3CA / 3CB / 3CD / 3CEB. 24Q / 26Q.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">JUN 2021 → APR 2023</div>
+          <div class="tl-title">Professional Executive · Brahmi Lekha Consulting LLP</div>
+          <div class="tl-detail">Schedule III financials up to ₹200 Cr turnover. Leading 6–10 person teams. ROC, RBI FLA, GST refunds under LUT.</div>
+        </div>
+
+        <div class="tl-item reveal flag">
+          <div class="tl-year">NOV 2023</div>
+          <div class="tl-title">Qualified CA · ICAI <span class="tl-flag">Inflection</span></div>
+          <div class="tl-detail">Thirteen years from picking commerce. Seven years through the CA exams to membership.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">APR 2024</div>
+          <div class="tl-title">Joined UrbanPiper · Associate Manager, Finance &amp; Accounts</div>
+          <div class="tl-detail">Reporting to CEO. Inheriting a four-country finance function mid-leadership-transition.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">DEC 2025</div>
+          <div class="tl-title">First Big-4 audit closed under my charge</div>
+          <div class="tl-detail">FY25 statutory audit signed at 11:25 PM on December 23. Two months instead of six. Four countries. KPMG network.</div>
+        </div>
+
+        <div class="tl-item reveal flag">
+          <div class="tl-year">JAN 18, 2026</div>
+          <div class="tl-title">Started building Atlance · Created my GitHub account the same day <span class="tl-flag">Pivot</span></div>
+          <div class="tl-detail">Two weeks of WFH at home. Came back with a working full-stack finance OS. 1,093 commits later: still building.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   
 </main>
 
@@ -374,6 +612,34 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // ─── Timeline progress fill ───
+  (function(){
+    const tl = document.getElementById('timeline');
+    const fill = document.getElementById('timeline-fill');
+    if (!tl || !fill) return;
+    function updateFill() {
+      const r = tl.getBoundingClientRect();
+      const top = r.top;
+      const h = r.height;
+      const vp = window.innerHeight;
+      const start = vp * 0.7;
+      const end = vp * 0.3;
+      const ratio = Math.max(0, Math.min(1, (start - top) / (h + start - end)));
+      fill.style.transform = `scaleY(${ratio})`;
+      fill.style.height = (h - 16) + 'px';
+    }
+    window.addEventListener('scroll', updateFill, { passive: true });
+    window.addEventListener('resize', updateFill);
+    updateFill();
+
+    // Activate timeline items as they enter viewport
+    const tlItems = tl.querySelectorAll('.tl-item');
+    const tlIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.20, rootMargin: '0px 0px -10% 0px' });
+    tlItems.forEach((el) => tlIo.observe(el));
+  })();
 
   </script>
 
