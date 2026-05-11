@@ -631,6 +631,120 @@
   .atl-caption strong { color: var(--accent); font-weight: 500; }
 
   /* ──────────────────────────────────────────────────────
+      WRITING
+  ────────────────────────────────────────────────────── */
+  .writing h2 {
+    font-size: clamp(28px, 3.5vw, 40px); font-weight: 500;
+    letter-spacing: -0.025em;
+    margin: 0 0 12px;
+  }
+  .writing-lede {
+    color: var(--fg-dim); font-size: 16px; line-height: 1.7;
+    max-width: 60ch; margin: 0 0 40px;
+  }
+  .write-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  @media (max-width: 800px) { .write-grid { grid-template-columns: 1fr; } }
+  .write-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--bg-card);
+    padding: 24px 24px 20px;
+    transition: border-color .25s, transform .25s, background .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .write-card:hover {
+    border-color: var(--line-bright);
+    transform: translateY(-2px);
+    background: var(--bg-elev);
+  }
+  .write-card .date {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.10em;
+    margin-bottom: 10px; text-transform: uppercase;
+  }
+  .write-card h3 {
+    font-size: 16px; font-weight: 500;
+    color: var(--fg); letter-spacing: -0.012em;
+    line-height: 1.35;
+    margin: 0 0 14px;
+  }
+  .write-card .pull {
+    font-style: italic; color: var(--fg-dim);
+    font-size: 13.5px; line-height: 1.55;
+    margin: 0 0 14px;
+    padding-left: 14px;
+    border-left: 1px solid var(--line-bright);
+  }
+  .write-card .summary {
+    font-size: 13.5px; color: var(--fg-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ──────────────────────────────────────────────────────
+      NOW
+  ────────────────────────────────────────────────────── */
+  .now {
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.012), transparent);
+  }
+  .now h2 {
+    font-size: clamp(22px, 2.6vw, 28px); font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+  }
+  .now p {
+    font-size: 16.5px; color: var(--fg-dim);
+    line-height: 1.78; letter-spacing: -0.005em;
+    max-width: 60ch; margin: 0;
+  }
+  .now p a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--line-bright); text-underline-offset: 3px; transition: color .15s, text-decoration-color .15s; }
+  .now p a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+  /* ──────────────────────────────────────────────────────
+      REACH
+  ────────────────────────────────────────────────────── */
+  .reach { padding: 96px 0 64px; }
+  .reach h2 {
+    font-size: clamp(28px, 3.6vw, 40px); font-weight: 500;
+    letter-spacing: -0.025em; line-height: 1.18;
+    margin: 0 0 18px;
+    max-width: 22ch;
+  }
+  .reach .sub {
+    color: var(--fg-dim); font-size: 16.5px; line-height: 1.7;
+    max-width: 56ch; margin: 0 0 36px;
+  }
+  .reach-row {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .reach-note {
+    margin: 18px 0 0;
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--fg-soft); letter-spacing: 0.02em;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-card);
+    color: var(--fg);
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    letter-spacing: -0.005em;
+    transition: border-color .15s, background .15s, transform .15s;
+  }
+  .btn:hover { border-color: var(--accent); background: var(--bg-elev); transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn.primary:hover { background: #4dd9c2; border-color: #4dd9c2; }
+  .btn.copied { background: var(--green); border-color: var(--green); color: var(--bg); transform: translateY(-1px); }
+  .btn .btn-label { display: inline-block; }
+  .btn .arr { font-family: var(--mono); font-size: 12px; transition: transform .15s; }
+  .btn:hover .arr { transform: translateX(2px); }
+
+  /* ──────────────────────────────────────────────────────
       FOOTER
   ────────────────────────────────────────────────────── */
   footer {
@@ -927,7 +1041,71 @@
     </div>
   </section>
 
-  
+  <!-- ─── WRITING ─── -->
+  <section class="writing" id="writing">
+    <div class="wrap-wide">
+      <div class="eyebrow reveal">Documentation as discipline</div>
+      <h2 class="reveal">I write while I work.</h2>
+      <p class="writing-lede reveal">Three docs from the last three months. Each one earned itself — written without prompt, because the thinking only landed once it was on paper.</p>
+
+      <div class="write-grid">
+
+        <div class="write-card reveal">
+          <div class="date">JAN 23, 2026 · MEMO</div>
+          <h3>Why MIS takes 15 days <br/>(and how we're fixing it)</h3>
+          <blockquote class="pull">"It's like querying a database replica that's two weeks behind master. The data exists somewhere — just not in Zoho."</blockquote>
+          <p class="summary">Finance memo to the founder, written in tech terms: ten cases where expense data leaks across vendor systems, Pazy queues, Excel, and people's heads. Each one diagnosed as a state machine problem, schema mismatch, or missing webhook.</p>
+        </div>
+
+        <div class="write-card reveal">
+          <div class="date">MAR 10, 2026 · POSTMORTEM</div>
+          <h3>FY26 Audit Prep — Lessons from FY25</h3>
+          <blockquote class="pull">"The fix isn't working harder in December. It's front-loading the hard work to July through September."</blockquote>
+          <p class="summary">A four-thousand-word postmortem written after closing the FY25 statutory audit. Methodology debates, version-control failures, the Tushar escalation pattern, the audit-night 5-emails-after-9pm reality. With a plan for FY26 that removes them.</p>
+        </div>
+
+        <div class="write-card reveal">
+          <div class="date">MAR 27, 2026 · NARRATIVE</div>
+          <h3>The Finance Transformation, <br/>Mani × the Founder</h3>
+          <blockquote class="pull">The honest version of what the working relationship actually is.</blockquote>
+          <p class="summary">An AI read every Slack DM between me and the founder from June 2025 to March 2026. No cherry-picking, no editing. Inheritance. Standards getting set. The audit crucible. The two-week WFH that became Atlance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── NOW ─── -->
+  <section class="now">
+    <div class="wrap-narrow">
+      <div class="eyebrow reveal">This week</div>
+      <h2 class="reveal">Locking April MRR. Townhall prep. Killing Zenskar.</h2>
+      <p class="reveal">
+        Locking April MRR ahead of the Townhall. Finalising the homegrown billing flow that routes around Zenskar — Stripe for payments, Avalara for tax, Zoho for the ledger, and us in the middle. Prepping for the Retro meetup. The variance dashboard is running its first real cycle on April actuals. Reading <a href="https://refactoringui.com/" target="_blank" rel="noopener"><em>Refactoring UI</em></a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── REACH ─── -->
+  <section class="reach" id="reach">
+    <div class="wrap-narrow">
+      <div class="eyebrow reveal">Reach</div>
+      <h2 class="reveal">Open to advisory + investor conversations. Especially: founders rebuilding finance after a leadership exit, or finance leaders who want their function to ship software.</h2>
+      <p class="sub reveal">Always up for finance × ops × automation chats. Telugu-English mix is fine.</p>
+      <div class="reach-row reveal">
+        <a class="btn primary" id="email-btn" href="mailto:manideepgns@gmail.com" data-email="manideepgns@gmail.com">
+          <span class="btn-label">manideepgns@gmail.com</span>
+          <span class="arr">→</span>
+        </a>
+        <a class="btn" href="https://linkedin.com/in/nagasai-manideep-g-71141412b" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
+        <a class="btn" href="https://github.com/manideepgns-fin" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
+        <a class="btn" href="https://atlance.urbanpiper.ai" target="_blank" rel="noopener">Open Atlance <span class="arr">↗</span></a>
+      </div>
+      <p class="reach-note reveal">Click the email button to copy it — opens your mail client too if you have one set up.</p>
+    </div>
+  </section>
+
+
 </main>
 
 <footer>
@@ -1149,7 +1327,64 @@
       render(keys[idx]);
     }, 4500);
   })();
-</script>
+// ─── Email click → copy to clipboard + visual feedback ───
+  (function(){
+    const btn = document.getElementById('email-btn');
+    if (!btn) return;
+    const label = btn.querySelector('.btn-label');
+    const arr = btn.querySelector('.arr');
+    const email = btn.dataset.email;
+    let timeout = null;
+
+    function showCopied() {
+      const original = label.textContent;
+      const originalArr = arr.textContent;
+      label.textContent = 'Copied — ' + email;
+      arr.textContent = '✓';
+      btn.classList.add('copied');
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        label.textContent = original;
+        arr.textContent = originalArr;
+        btn.classList.remove('copied');
+      }, 2200);
+    }
+
+    function legacyCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      ta.style.pointerEvents = 'none';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    btn.addEventListener('click', (e) => {
+      // Stop the mailto: from firing (does nothing on machines without a
+      // default mail client and looks broken). We always copy instead.
+      e.preventDefault();
+
+      // Show visual confirmation immediately — feels responsive even if the
+      // clipboard write rejects. The email is still visible in the button.
+      showCopied();
+
+      // Try modern Clipboard API first; fall back to legacy execCommand.
+      // If both fail (e.g. Safari without user activation), the visible
+      // "Copied — email" lets the user select+copy from the button manually.
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).catch(() => legacyCopy(email));
+      } else {
+        legacyCopy(email);
+      }
+    });
+  })();
+
+  </script>
 
 </body>
 </html>
