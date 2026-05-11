@@ -461,6 +461,176 @@
   }
 
   /* ──────────────────────────────────────────────────────
+      ATLANCE
+  ────────────────────────────────────────────────────── */
+  .atlance {
+    background: linear-gradient(180deg, transparent, rgba(34,211,238,0.025), transparent);
+  }
+  .atl-head h2 {
+    font-size: clamp(30px, 4vw, 44px); font-weight: 500;
+    letter-spacing: -0.028em; line-height: 1.1;
+    margin: 0 0 16px; color: var(--fg);
+  }
+  .atl-head h2 em {
+    font-style: italic;
+    color: var(--accent-3);
+  }
+  .atl-lede {
+    color: var(--fg-dim); font-size: 16px; line-height: 1.7;
+    max-width: 60ch; margin: 0 0 44px;
+  }
+
+  .atl-frame {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--bg-card);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    margin-bottom: 36px;
+  }
+  .atl-chrome {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-elev);
+  }
+  .atl-dots { display: flex; gap: 6px; }
+  .atl-dots span { width: 10px; height: 10px; border-radius: 999px; background: var(--line-strong); }
+  .atl-url {
+    flex: 1; padding: 6px 12px;
+    border-radius: 6px; background: var(--bg);
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-dim);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .atl-url .lock { color: var(--green); font-size: 8px; }
+  .atl-url .path {
+    color: var(--fg);
+    transition: opacity .3s;
+  }
+  .atl-tag {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent-3); padding: 3px 7px; border-radius: 4px;
+    background: rgba(34,211,238,0.10); letter-spacing: 0.04em;
+  }
+  .atl-body {
+    height: 480px;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(34,211,238,0.06), transparent 50%),
+      radial-gradient(circle at 70% 60%, rgba(192,132,252,0.05), transparent 50%),
+      var(--bg);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1px;
+  }
+  .atl-side {
+    background: var(--bg-elev);
+    padding: 18px 16px;
+    border-right: 1px solid var(--line);
+  }
+  .atl-side .module {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-mute); letter-spacing: 0.06em;
+    padding: 7px 10px; border-radius: 5px;
+    margin-bottom: 2px; cursor: pointer;
+    transition: background .12s, color .12s;
+  }
+  .atl-side .module:hover { color: var(--fg); background: rgba(255,255,255,0.04); }
+  .atl-side .module.active {
+    background: rgba(34,211,238,0.10); color: var(--accent-3);
+  }
+  .atl-canvas {
+    padding: 24px 28px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .atl-title-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 16px;
+  }
+  .atl-title {
+    font-family: var(--sans); font-weight: 500;
+    font-size: 16px; letter-spacing: -0.012em;
+    color: var(--fg);
+  }
+  .atl-meta {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--fg-mute); letter-spacing: 0.04em;
+  }
+  .atl-mini {
+    flex: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .atl-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+  }
+  .atl-card .lbl {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--fg-mute); letter-spacing: 0.10em;
+    margin-bottom: 6px;
+  }
+  .atl-card .val {
+    font-family: var(--sans); font-weight: 500;
+    font-size: 22px; letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+  .atl-card.accent .val { color: var(--accent-3); }
+  .atl-card .delta {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--green); margin-top: 4px;
+  }
+  .atl-card svg { width: 100%; height: 48px; margin-top: 10px; }
+  .atl-card .spark { fill: none; stroke: var(--accent-3); stroke-width: 1.4; }
+  .atl-card .spark-area { fill: rgba(34,211,238,0.08); }
+  @media (max-width: 760px) {
+    .atl-body { grid-template-columns: 1fr; height: auto; }
+    .atl-side {
+      border-right: none; border-bottom: 1px solid var(--line);
+      display: flex; gap: 4px; overflow-x: auto;
+    }
+    .atl-side .module { flex: none; }
+  }
+
+  /* Stats strip — 4-up, primary stats, no derivatives */
+  .atl-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 10px; overflow: hidden;
+    margin-bottom: 22px;
+  }
+  @media (max-width: 760px) { .atl-stats { grid-template-columns: repeat(2, 1fr); } }
+  .atl-stat {
+    background: var(--bg-card);
+    padding: 24px 20px;
+  }
+  .atl-stat .n {
+    font-family: var(--sans); font-weight: 500;
+    font-size: clamp(30px, 3.4vw, 40px); letter-spacing: -0.032em;
+    color: var(--fg); line-height: 1;
+  }
+  .atl-stat .l {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--fg-mute); letter-spacing: 0.06em;
+    margin-top: 8px; text-transform: uppercase;
+  }
+  .atl-caption {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--fg-mute); letter-spacing: 0.02em;
+    line-height: 1.7;
+    border-left: 1px solid var(--accent);
+    padding-left: 14px;
+    max-width: 70ch;
+  }
+  .atl-caption strong { color: var(--accent); font-weight: 500; }
+
+  /* ──────────────────────────────────────────────────────
       FOOTER
   ────────────────────────────────────────────────────── */
   footer {
@@ -704,6 +874,59 @@
     </div>
   </section>
 
+  <!-- ─── ATLANCE ─── -->
+  <section class="atlance" id="atlance">
+    <div class="wrap-wide">
+      <div class="atl-head">
+        <div class="eyebrow reveal">The cherry on top</div>
+        <h2 class="reveal">And on the side — I built <em>the system we run on.</em></h2>
+        <p class="atl-lede reveal">Internal finance OS. 16 modules. 228 API endpoints. Replaced seven SaaS tools and a twenty-one-sheet workbook.</p>
+      </div>
+
+      <div class="atl-frame reveal">
+        <div class="atl-chrome">
+          <div class="atl-dots"><span></span><span></span><span></span></div>
+          <div class="atl-url">
+            <span class="lock">●</span>
+            <span>atlance.urbanpiper.ai</span>
+            <span class="path" id="atl-path">/variance</span>
+          </div>
+          <span class="atl-tag">PROD</span>
+        </div>
+        <div class="atl-body">
+          <div class="atl-side" id="atl-side">
+            <div class="module active" data-module="variance" data-path="/variance">Variance</div>
+            <div class="module" data-module="cashflow" data-path="/pulse">Cash Flow</div>
+            <div class="module" data-module="vaani" data-path="/vaani">Vaani</div>
+            <div class="module" data-module="flow" data-path="/flow">Flow</div>
+            <div class="module" data-module="ar" data-path="/ar">AR Collections</div>
+          </div>
+          <div class="atl-canvas">
+            <div class="atl-title-row">
+              <span class="atl-title" id="atl-title">Variance · Forecast vs Actual</span>
+              <span class="atl-meta" id="atl-meta">India · Apr 2026 · INR</span>
+            </div>
+            <div class="atl-mini" id="atl-mini">
+              <!-- swapped by JS based on active module -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats strip — primary numbers only -->
+      <div class="atl-stats reveal">
+        <div class="atl-stat"><div class="n" data-target="1093">0</div><div class="l">Commits</div></div>
+        <div class="atl-stat"><div class="n" data-target="112">0</div><div class="l">Days in build</div></div>
+        <div class="atl-stat"><div class="n" data-target="16">0</div><div class="l">Modules</div></div>
+        <div class="atl-stat"><div class="n" data-target="228">0</div><div class="l">API endpoints</div></div>
+      </div>
+
+      <div class="atl-caption reveal">
+        <strong>112 days, solo, while running finance for four countries.</strong> First commit Jan 18, 2026 — same day I created my GitHub account. 10.3% of all commits are documentation. <strong>30+ teammates use it inside the org.</strong> The founder files most of the tickets — I ship them. The founder's reaction the day it ran on April actuals was the kind I screenshot and don't share.
+      </div>
+    </div>
+  </section>
+
   
 </main>
 
@@ -779,7 +1002,154 @@
     tlItems.forEach((el) => tlIo.observe(el));
   })();
 
-  </script>
+  // ─── Stat counter ───
+  (function(){
+    const stats = document.querySelectorAll('.atl-stat .n[data-target]');
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.target, 10);
+        const duration = 1100;
+        const start = performance.now();
+        function tick(now) {
+          const elapsed = now - start;
+          const t = Math.min(1, elapsed / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const v = Math.round(target * eased);
+          el.textContent = v.toLocaleString();
+          if (t < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(tick);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    stats.forEach((el) => cio.observe(el));
+  })();
+
+  // ─── Atlance module preview cycling ───
+  (function(){
+    const path = document.getElementById('atl-path');
+    const title = document.getElementById('atl-title');
+    const meta = document.getElementById('atl-meta');
+    const mini = document.getElementById('atl-mini');
+    const modules = document.querySelectorAll('#atl-side .module');
+    if (!mini) return;
+
+    const PREVIEWS = {
+      variance: {
+        title: 'Variance · Forecast vs Actual',
+        meta: 'India · Apr 2026 · INR',
+        cards: [
+          { lbl: 'YTD EBITDA', val: '+₹8.31L', delta: '+561.7% vs plan', accent: true, spark: [62, 58, 65, 70, 72, 78, 84] },
+          { lbl: 'YTD Revenue', val: '₹8.67 Cr', delta: '+1.2% vs plan', accent: false, spark: [44, 48, 52, 56, 58, 60, 62] },
+          { lbl: 'Operating Margin', val: '+4.1%', delta: '+1.2pp vs plan', accent: false, spark: [42, 45, 48, 49, 47, 50, 52] },
+          { lbl: 'COGS as % rev', val: '57.2%', delta: '−0.4pp vs plan', accent: false, spark: [60, 59, 58, 58, 57, 57, 57] },
+        ],
+      },
+      cashflow: {
+        title: 'Pulse · Cash Flow',
+        meta: '4 countries · Apr 2026 · ₹',
+        cards: [
+          { lbl: 'Runway', val: '14 mo', delta: 'breakeven Sep-26', accent: true, spark: [60, 58, 56, 54, 52, 50, 48] },
+          { lbl: 'Cash in bank', val: '₹7.87 Cr', delta: '−₹38L vs Apr', accent: false, spark: [88, 82, 78, 74, 70, 66, 62] },
+          { lbl: 'Net position', val: '₹12.69 Cr', delta: '+₹52L incl AR', accent: false, spark: [72, 74, 76, 78, 80, 82, 84] },
+          { lbl: '30d burn', val: '₹56L', delta: 'plan-anchored', accent: false, spark: [58, 56, 56, 55, 56, 56, 56] },
+        ],
+      },
+      vaani: {
+        title: 'Vaani · AI Canvas',
+        meta: 'Workflow · Claude Sonnet 4.5',
+        cards: [
+          { lbl: 'Active nodes', val: '6', delta: 'pull → filter → draft → send', accent: true, spark: [40, 50, 55, 60, 62, 65, 68] },
+          { lbl: 'LLM calls today', val: '47', delta: '11 drafts queued', accent: false, spark: [22, 28, 35, 40, 42, 45, 47] },
+          { lbl: 'Output formats', val: '12', delta: 'workflow / mind-map / funnel', accent: false, spark: [12, 12, 12, 12, 12, 12, 12] },
+          { lbl: 'Schedules', val: '3', delta: 'tue 9am · fri 11am · daily', accent: false, spark: [1, 1, 2, 2, 3, 3, 3] },
+        ],
+      },
+      flow: {
+        title: 'Flow · Scheduler',
+        meta: '60s tick · 84 pipelines',
+        cards: [
+          { lbl: 'Running', val: '7', delta: 'live, scheduler healthy', accent: true, spark: [4, 5, 6, 7, 6, 7, 7] },
+          { lbl: 'Errors · 24h', val: '2', delta: 'auto-retry 7m', accent: false, spark: [0, 1, 1, 2, 2, 2, 2] },
+          { lbl: 'Runs · 24h', val: '1,847', delta: 'queue depth: 3', accent: false, spark: [1500, 1620, 1700, 1740, 1780, 1810, 1847] },
+          { lbl: 'Zoho quota', val: '4,210', delta: '/ 9,000 today', accent: false, spark: [800, 1500, 2200, 2900, 3400, 3800, 4210] },
+        ],
+      },
+      ar: {
+        title: 'AR Collections',
+        meta: '14 customers · 4 regions',
+        cards: [
+          { lbl: 'Outstanding', val: '₹1.78 Cr', delta: 'across 14 customers', accent: true, spark: [200, 210, 215, 220, 218, 215, 178] },
+          { lbl: '% Overdue', val: '50.5%', delta: '↑ 2.1pp vs last week', accent: false, spark: [44, 46, 47, 48, 49, 50, 50] },
+          { lbl: 'DSO · 30d', val: '52d', delta: '↓ 3d vs Apr', accent: false, spark: [58, 57, 56, 55, 54, 53, 52] },
+          { lbl: 'Promises today', val: '4', delta: '₹38L expected', accent: false, spark: [2, 2, 3, 3, 4, 4, 4] },
+        ],
+      },
+    };
+
+    function buildSpark(values) {
+      const W = 200, H = 30, P = 2;
+      const min = Math.min(...values), max = Math.max(...values);
+      const xStep = (W - P*2) / (values.length - 1);
+      const y = (v) => P + (H - P*2) * (1 - (v - min) / (max - min || 1));
+      const path = values.map((v, i) => (i === 0 ? 'M' : 'L') + (P + i*xStep) + ',' + y(v)).join(' ');
+      const area = path + ` L${W-P},${H-P} L${P},${H-P} Z`;
+      return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><path class="spark-area" d="${area}"/><path class="spark" d="${path}"/></svg>`;
+    }
+
+    function render(key) {
+      const data = PREVIEWS[key];
+      if (!data) return;
+      title.textContent = data.title;
+      meta.textContent = data.meta;
+      mini.innerHTML = data.cards.map(c => `
+        <div class="atl-card ${c.accent ? 'accent' : ''}">
+          <div>
+            <div class="lbl">${c.lbl}</div>
+            <div class="val">${c.val}</div>
+          </div>
+          <div>
+            ${buildSpark(c.spark)}
+            <div class="delta">${c.delta}</div>
+          </div>
+        </div>
+      `).join('');
+      const moduleEl = document.querySelector(`#atl-side .module[data-module="${key}"]`);
+      if (moduleEl) {
+        path.textContent = moduleEl.dataset.path;
+        modules.forEach(m => {
+          const isActive = m === moduleEl;
+          m.classList.toggle('active', isActive);
+          m.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+      }
+    }
+
+    // initial render
+    render('variance');
+
+    // user click
+    modules.forEach(m => m.addEventListener('click', () => render(m.dataset.module)));
+
+    // auto-cycle every 4s when not hovered
+    const keys = Object.keys(PREVIEWS);
+    let idx = 0;
+    let paused = false;
+    const frame = document.querySelector('.atl-frame');
+    if (frame) {
+      frame.addEventListener('mouseenter', () => paused = true);
+      frame.addEventListener('mouseleave', () => paused = false);
+    }
+    setInterval(() => {
+      if (paused) return;
+      idx = (idx + 1) % keys.length;
+      render(keys[idx]);
+    }, 4500);
+  })();
+</script>
 
 </body>
 </html>
