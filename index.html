@@ -1280,17 +1280,23 @@
     function applyLiveStats(data) {
       const s = data?.atlance;
       if (!s) return;
-      const days = Math.floor((Date.now() - new Date(s.first_commit_date).getTime()) / 86400000);
+      // Sanity gate: atlance has 1000+ commits — if we see < 10, the build
+      // ran on a shallow clone and the git-derived fields are bogus. Trust
+      // modules/endpoints (filesystem-derived), drop the rest.
+      const gitOk = (s.total_commits ?? 0) >= 10;
+      const days = gitOk && s.first_commit_date
+        ? Math.floor((Date.now() - new Date(s.first_commit_date).getTime()) / 86400000)
+        : null;
       const values = {
-        commits: s.total_commits,
+        commits: gitOk ? s.total_commits : null,
         days,
         modules: s.modules,
         endpoints: s.endpoints,
-        doc_pct: (s.doc_commits_pct ?? 0) + '%',
+        doc_pct: gitOk && s.doc_commits_pct != null ? s.doc_commits_pct + '%' : null,
       };
       document.querySelectorAll('[data-stat]').forEach((el) => {
         const val = values[el.dataset.stat];
-        if (val == null) return;
+        if (val == null || (typeof val === 'number' && !isFinite(val))) return;
         if (el.classList.contains('n')) {
           el.dataset.target = val;
           if (animated.has(el)) el.textContent = Number(val).toLocaleString();
