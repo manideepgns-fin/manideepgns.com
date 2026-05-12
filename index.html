@@ -653,6 +653,44 @@
   .atl-caption strong { color: var(--accent); font-weight: 500; }
 
   /* ──────────────────────────────────────────────────────
+      UNDER THE HOOD (architecture map)
+  ────────────────────────────────────────────────────── */
+  .underhood {
+    background: linear-gradient(180deg, transparent, rgba(192,132,252,0.022), transparent);
+  }
+  .archmap-wrap {
+    position: relative;
+    width: 100%;
+    height: 720px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .archmap-iframe {
+    position: absolute;
+    top: 0; left: 0;
+    display: block;
+    width: 133.33%;            /* 1/scale */
+    height: 960px;             /* 720/scale */
+    transform: scale(0.75);
+    transform-origin: top left;
+    border: 0;
+    background: var(--bg);
+  }
+  @media (max-width: 760px) {
+    .archmap-wrap { height: 540px; }
+    .archmap-iframe { height: 720px; }   /* 540/scale */
+  }
+  a.atl-tag {
+    text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  a.atl-tag:hover {
+    background: rgba(34,211,238,0.18);
+    color: var(--fg);
+  }
+  a.atl-tag .arr { font-family: var(--mono); margin-left: 4px; }
+
+  /* ──────────────────────────────────────────────────────
       WRITING
   ────────────────────────────────────────────────────── */
   .writing h2 {
@@ -1016,7 +1054,7 @@
       <div class="atl-head">
         <div class="eyebrow reveal">The cherry on top</div>
         <h2 class="reveal">And on the side — I built <em>the system we run on.</em></h2>
-        <p class="atl-lede reveal"><a class="lnk" href="https://atlance.urbanpiper.ai" target="_blank" rel="noopener">Atlance <span aria-hidden="true">↗</span></a> — internal finance OS. 16 modules. 228 API endpoints. Replaced seven SaaS tools and a twenty-one-sheet workbook.</p>
+        <p class="atl-lede reveal"><a class="lnk" href="https://atlance.urbanpiper.ai" target="_blank" rel="noopener">Atlance <span aria-hidden="true">↗</span></a> — internal finance OS. <span data-stat="modules">21</span> modules. <span data-stat="endpoints">283</span> API endpoints. Replaced seven SaaS tools and a twenty-one-sheet workbook.</p>
       </div>
 
       <div class="atl-frame reveal">
@@ -1049,16 +1087,46 @@
         </div>
       </div>
 
-      <!-- Stats strip — primary numbers only -->
+      <!-- Stats strip — primary numbers only (live via /stats.json) -->
       <div class="atl-stats reveal">
-        <div class="atl-stat"><div class="n" data-target="1093">0</div><div class="l">Commits</div></div>
-        <div class="atl-stat"><div class="n" data-target="112">0</div><div class="l">Days in build</div></div>
-        <div class="atl-stat"><div class="n" data-target="16">0</div><div class="l">Modules</div></div>
-        <div class="atl-stat"><div class="n" data-target="228">0</div><div class="l">API endpoints</div></div>
+        <div class="atl-stat"><div class="n" data-stat="commits" data-target="1097">0</div><div class="l">Commits</div></div>
+        <div class="atl-stat"><div class="n" data-stat="days" data-target="114">0</div><div class="l">Days in build</div></div>
+        <div class="atl-stat"><div class="n" data-stat="modules" data-target="21">0</div><div class="l">Modules</div></div>
+        <div class="atl-stat"><div class="n" data-stat="endpoints" data-target="283">0</div><div class="l">API endpoints</div></div>
       </div>
 
       <div class="atl-caption reveal">
-        <strong>The function moves shape — from support/ops to intelligence.</strong> 112 days, solo, while running finance for four countries. First commit Jan 18, 2026 — same day I created my GitHub account. 10.3% of all commits are documentation. <strong>30+ teammates use it inside the org.</strong> The founder files most of the tickets — I ship them. The founder's reaction the day it ran on April actuals was the kind I screenshot and don't share.
+        <strong>The function moves shape — from support/ops to intelligence.</strong> <span data-stat="days">114</span> days, solo, while running finance for four countries. First commit Jan 18, 2026 — same day I created my GitHub account. <span data-stat="doc_pct">12.2%</span> of all commits are documentation. <strong>30+ teammates use it inside the org.</strong> The founder files most of the tickets — I ship them. The founder's reaction the day it ran on April actuals was the kind I screenshot and don't share.
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── UNDER THE HOOD (architecture map) ─── -->
+  <section class="underhood" id="architecture">
+    <div class="wrap-wide">
+      <div class="atl-head">
+        <div class="eyebrow reveal">Under the hood</div>
+        <h2 class="reveal">And the system underneath — <em>diagrammed by a script.</em></h2>
+        <p class="atl-lede reveal"><a class="lnk" href="https://atlance.urbanpiper.ai/architecture/" target="_blank" rel="noopener">Architecture map <span aria-hidden="true">↗</span></a> — auto-generated from the code itself. A build script scans imports, configs, and workflows; the diagram and the system can't drift.</p>
+      </div>
+
+      <div class="atl-frame reveal">
+        <div class="atl-chrome">
+          <div class="atl-dots"><span></span><span></span><span></span></div>
+          <div class="atl-url">
+            <span class="lock">●</span>
+            <span>atlance.urbanpiper.ai</span>
+            <span class="path">/architecture</span>
+          </div>
+          <a class="atl-tag" href="https://atlance.urbanpiper.ai/architecture/" target="_blank" rel="noopener" aria-label="Open the live architecture map in a new tab">LIVE<span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="archmap-wrap">
+          <iframe class="archmap-iframe" src="https://atlance.urbanpiper.ai/architecture/" title="Atlance architecture map — 41 nodes across 6 layers with live connection data" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="atl-caption reveal">
+        <strong>Hand-drawn diagrams rot.</strong> This one is generated from the code — when the system changes, so does the map.
       </div>
     </div>
   </section>
@@ -1205,34 +1273,71 @@
     tlItems.forEach((el) => tlIo.observe(el));
   })();
 
-  // ─── Stat counter ───
+  // ─── Stat counter + live stats from /stats.json ───
   (function(){
+    const animated = new Set();
+
+    function applyLiveStats(data) {
+      const s = data?.atlance;
+      if (!s) return;
+      const days = Math.floor((Date.now() - new Date(s.first_commit_date).getTime()) / 86400000);
+      const values = {
+        commits: s.total_commits,
+        days,
+        modules: s.modules,
+        endpoints: s.endpoints,
+        doc_pct: (s.doc_commits_pct ?? 0) + '%',
+      };
+      document.querySelectorAll('[data-stat]').forEach((el) => {
+        const val = values[el.dataset.stat];
+        if (val == null) return;
+        if (el.classList.contains('n')) {
+          el.dataset.target = val;
+          if (animated.has(el)) el.textContent = Number(val).toLocaleString();
+        } else {
+          el.textContent = typeof val === 'number' ? val.toLocaleString() : val;
+        }
+      });
+    }
+
+    // Counters run immediately so they animate on scroll into view.
     const stats = document.querySelectorAll('.atl-stat .n[data-target]');
     if (PRM) {
-      stats.forEach((el) => { el.textContent = parseInt(el.dataset.target, 10).toLocaleString(); });
-      return;
-    }
-    const cio = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const target = parseInt(el.dataset.target, 10);
-        const duration = 1100;
-        const start = performance.now();
-        function tick(now) {
-          const elapsed = now - start;
-          const t = Math.min(1, elapsed / duration);
-          const eased = 1 - Math.pow(1 - t, 3);
-          const v = Math.round(target * eased);
-          el.textContent = v.toLocaleString();
-          if (t < 1) requestAnimationFrame(tick);
-          else el.textContent = target.toLocaleString();
-        }
-        requestAnimationFrame(tick);
-        cio.unobserve(el);
+      stats.forEach((el) => {
+        el.textContent = parseInt(el.dataset.target, 10).toLocaleString();
+        animated.add(el);
       });
-    }, { threshold: 0.4 });
-    stats.forEach((el) => cio.observe(el));
+    } else {
+      const cio = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          const target = parseInt(el.dataset.target, 10);
+          const duration = 1100;
+          const start = performance.now();
+          function tick(now) {
+            const elapsed = now - start;
+            const t = Math.min(1, elapsed / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            const v = Math.round(target * eased);
+            el.textContent = v.toLocaleString();
+            if (t < 1) requestAnimationFrame(tick);
+            else { el.textContent = target.toLocaleString(); animated.add(el); }
+          }
+          requestAnimationFrame(tick);
+          cio.unobserve(el);
+        });
+      }, { threshold: 0.4 });
+      stats.forEach((el) => cio.observe(el));
+    }
+
+    // Fetch live numbers. Updates data-target before IO fires (typical case),
+    // or overwrites text after if the counter already finished. Falls back to
+    // hardcoded values if fetch fails.
+    fetch('https://atlance.urbanpiper.ai/stats.json', { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then(applyLiveStats)
+      .catch(() => {});
   })();
 
   // ─── Atlance module preview cycling ───
