@@ -6,5 +6,11 @@
 # Local tooling state
 .claude/
 
+# Build-time source templates (icons + OG renders).
+# The rendered PNG outputs in og/ and the root favicons ARE committed —
+# they're referenced by <meta og:image> and <link rel="icon"> tags.
+# This dir holds the HTML sources used to regenerate them on demand.
+working/
+
 # OS junk
 .DS_Store
