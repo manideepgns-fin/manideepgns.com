@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Writing — Manideep GNS</title>
+<meta name="description" content="Memos, postmortems, and narratives from running finance for a four-country function — diagnosed in tech terms." />
+<meta property="og:title" content="Writing — Manideep GNS" />
+<meta property="og:description" content="Memos, postmortems, and narratives from running finance like engineering." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://manideepgns.com/writing/" />
+<meta property="og:image" content="https://manideepgns.com/og/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://manideepgns.com/og/og-image.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0a0c" />
+
+<style>
+  :root {
+    --bg:           #0a0a0c;
+    --bg-card:      #131316;
+    --bg-elev:      #1a1a1d;
+    --line:         #1f1f23;
+    --line-strong:  #2a2a30;
+    --line-bright:  #3a3a42;
+    --fg:           #ededee;
+    --fg-dim:       #b3b4b6;
+    --fg-mute:      #87898c;
+    --fg-soft:      #555558;
+    --accent:       #5eead4;
+    --accent-2:     #c084fc;
+    --accent-3:     #22d3ee;
+    --w-narrow:     720px;
+    --sans:   -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono:   ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-feature-settings: 'tnum', 'kern', 'liga';
+    font-size: 16px;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus { outline: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+
+  /* Nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(10,10,12,0.7);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    max-width: var(--w-narrow); margin: 0 auto;
+    padding: 0 28px;
+  }
+  .nav-back {
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--fg-mute); letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: color .15s;
+  }
+  .nav-back:hover { color: var(--fg); }
+  .nav-back .arr { transition: transform .15s; }
+  .nav-back:hover .arr { transform: translateX(-2px); }
+  .nav-meta {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-mute); letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  main { padding-top: 0; }
+  .wrap { max-width: var(--w-narrow); margin: 0 auto; padding: 0 28px; }
+
+  /* Header */
+  .index-head { padding: 64px 0 40px; }
+  @media (max-width: 600px) { .index-head { padding: 48px 0 32px; } }
+  .index-head .eyebrow {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .index-head .eyebrow::before {
+    content: ''; width: 18px; height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .index-head h1 {
+    font-size: clamp(30px, 4.4vw, 44px);
+    font-weight: 500; letter-spacing: -0.028em;
+    line-height: 1.15;
+    margin: 0 0 18px;
+    color: var(--fg);
+  }
+  .index-head .lede {
+    font-size: 16.5px;
+    color: var(--fg-dim);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* Posts list */
+  .posts { padding: 0 0 96px; }
+  @media (max-width: 600px) { .posts { padding: 0 0 64px; } }
+  .post {
+    display: block;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    transition: background .15s;
+    position: relative;
+  }
+  .post:last-child { border-bottom: 1px solid var(--line); }
+  .post:hover { background: rgba(255,255,255,0.012); }
+  .post .meta {
+    display: flex; gap: 14px; align-items: center;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .post .meta .sep {
+    width: 1px; height: 11px; background: var(--line-strong);
+    display: inline-block;
+  }
+  .post h2 {
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 500; letter-spacing: -0.018em;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    color: var(--fg);
+  }
+  .post:hover h2 { color: var(--accent); }
+  .post .summary {
+    font-size: 15px;
+    color: var(--fg-dim);
+    line-height: 1.65;
+    margin: 0 0 14px;
+    max-width: 60ch;
+  }
+  .post .read {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: color .15s;
+  }
+  .post:hover .read { color: var(--accent); }
+  .post .read .arr { transition: transform .15s; font-family: var(--mono); }
+  .post:hover .read .arr { transform: translateX(2px); }
+
+  /* Coming soon */
+  .post.wip { opacity: 0.55; pointer-events: none; }
+  .post.wip h2::after {
+    content: 'WIP';
+    display: inline-block;
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--accent-2); letter-spacing: 0.10em;
+    padding: 2px 7px; border-radius: 4px;
+    background: rgba(192,132,252,0.10);
+    text-transform: uppercase;
+    transform: translateY(-3px);
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  /* Footer */
+  footer.site-foot {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    color: var(--fg-mute); font-size: 12.5px;
+  }
+  .foot-row {
+    max-width: var(--w-narrow); margin: 0 auto;
+    padding: 0 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+    font-family: var(--mono); letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-row">
+    <a class="nav-back" href="/">
+      <span class="arr" aria-hidden="true">←</span>
+      <span>Manideep GNS</span>
+    </a>
+    <span class="nav-meta">Writing</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <header class="index-head">
+    <div class="eyebrow">Writing</div>
+    <h1>Memos, postmortems, narratives.</h1>
+    <p class="lede">Documentation as discipline, not decoration. Written while running finance for a four-country function — and increasingly, while building the system underneath it.</p>
+  </header>
+
+  <section class="posts">
+
+    <a class="post" href="/writing/why-mis-takes-15-days.html">
+      <div class="meta">
+        <span>Jan 23, 2026</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Memo</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>7 min</span>
+      </div>
+      <h2>Why MIS Takes 15 Days (and how we're fixing it)</h2>
+      <p class="summary">Finance memo to the founder, written in tech terms: ten cases where expense data leaks across vendor systems, Pazy queues, Excel, and people's heads. Each one diagnosed as a state machine problem, schema mismatch, or missing webhook.</p>
+      <span class="read">Read<span class="arr" aria-hidden="true">→</span></span>
+    </a>
+
+    <div class="post wip">
+      <div class="meta">
+        <span>Mar 10, 2026</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Postmortem</span>
+      </div>
+      <h2>FY26 Audit Prep — Lessons from FY25</h2>
+      <p class="summary">A four-thousand-word postmortem written after closing the FY25 statutory audit. Methodology debates, version-control failures, the audit-night 5-emails-after-9pm reality. With a plan for FY26 that removes them.</p>
+    </div>
+
+    <div class="post wip">
+      <div class="meta">
+        <span>Mar 27, 2026</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Narrative</span>
+      </div>
+      <h2>The Finance Transformation, Mani × the Founder</h2>
+      <p class="summary">An AI read every Slack DM between me and the founder from June 2025 to March 2026. No cherry-picking, no editing. Inheritance. Standards getting set. The audit crucible. The two-week WFH that became Atlance.</p>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-row">
+    <div>© 2026 MANIDEEP GNS · BENGALURU, IST</div>
+    <div>FINANCE × CURIOSITY × CODE</div>
+  </div>
+</footer>
+
+</body>
+</html>

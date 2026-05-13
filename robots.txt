@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manideepgns.com/sitemap.xml
