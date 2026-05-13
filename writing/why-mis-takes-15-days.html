@@ -124,6 +124,32 @@
     border-left: 1px solid var(--line-bright);
     max-width: 60ch;
   }
+  .essay-head .frame-update {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent-2);
+    line-height: 1.6;
+    margin: 12px 0 0;
+    padding-left: 14px;
+    border-left: 1px solid var(--accent-2);
+    max-width: 60ch;
+  }
+  .essay-head .frame-update em { font-style: normal; }
+
+  /* ── Status (May 2026) postscript ── */
+  .essay-body .status-head {
+    color: var(--accent-2);
+    margin-top: 12px;
+  }
+  .essay-body .status-frame {
+    font-style: italic;
+    color: var(--fg-mute);
+    font-size: 14.5px;
+    margin: 0 0 22px;
+    padding-left: 14px;
+    border-left: 1px solid var(--accent-2);
+    max-width: 60ch;
+  }
 
   /* ── Essay body typography ── */
   .essay-body {
@@ -329,6 +355,7 @@
       <div class="eyebrow">Jan 23, 2026 · Memo</div>
       <h1>Why MIS Takes 15 Days (And How We're Fixing It)</h1>
       <p class="frame">An internal memo from January 23, 2026 — what I sent when my boss asked why month-end MIS takes 15 days. Reproduced as sent, with vendor names genericized and the response thread trimmed.</p>
+      <p class="frame-update"><em>Updated May 2026: the plan below is from January. Current status at the end →</em></p>
     </header>
 
     <div class="essay-body">
@@ -611,6 +638,33 @@ Ends           coming in       Pazy approvals  numbers        Ready
       </ol>
 
       <p><em>Questions? Happy to walk through any of the 10 cases in detail.</em></p>
+
+      <hr />
+
+      <h2 class="status-head">Status — May 2026</h2>
+      <p class="status-frame"><em>The memo above is from January. Four months on, here's the honest state of what shipped and what didn't.</em></p>
+
+      <p>This plan didn't ship as a unified "Expense Lifecycle Tracker." We went up a level instead.</p>
+
+      <p>By March 2026, the goal had moved: <strong>variance — forecast vs actual, across 4 regions, in INR-equivalent, sub-200ms.</strong> Variance sits downstream of MIS (you can't compare actual to plan without reliable actuals), so building Variance became the forcing function — and several of the 10 cases got solved as a side effect.</p>
+
+      <h3>What shipped that addresses cases from this memo:</h3>
+
+      <ul>
+        <li><strong>Variance dashboard</strong> (v0.12.x) — Sheets → Supabase ETL, COGS / OpEx split parser, all 4 regions on a single canvas. The data-completeness checks for variance to even render forced cases 3 (cutoff), 5 (advance), and 9 (credit notes) to be resolved upstream.</li>
+        <li><strong>Prepaid Tracker</strong> — case 4 (amortization) automated.</li>
+        <li><strong>SVB Card Expenses</strong> — case 6 (unbilled / undiscovered service) for card spend specifically.</li>
+        <li><strong>Dispute Tracker</strong> — case 9 (credit note linkage).</li>
+      </ul>
+
+      <h3>What's still on the to-do list:</h3>
+
+      <ul>
+        <li>Cases 1, 2 (vendor SLA, Pazy queue alerts) — partially addressed via Variance's anomaly surface, but no unified "alert on day 5" yet.</li>
+        <li>A single "Expense Lifecycle Tracker" module as written — the 10 cases got distributed across Variance + the trackers above, instead of one unified system.</li>
+      </ul>
+
+      <p><strong>The headline:</strong> MIS close timeline improved, but that became table stakes the moment we asked the harder question — <em>not</em> "how fast can we produce the actual?" but <em>"how fast can we explain it against the plan?"</em></p>
 
     </div>
 
