@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>OG · Why MIS Takes 15 Days</title>
+<style>
+  :root {
+    --bg:        #0a0a0c;
+    --line:      #1f1f23;
+    --line-strong: #2a2a30;
+    --fg:        #ededee;
+    --fg-dim:    #b3b4b6;
+    --fg-mute:   #87898c;
+    --accent:    #5eead4;
+    --accent-2:  #c084fc;
+    --accent-3:  #22d3ee;
+    --sans:  -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono:  ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 630px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    position: relative;
+    font-feature-settings: 'tnum', 'kern', 'liga';
+  }
+  body::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 88% 18%, rgba(192,132,252,0.06), transparent 38%),
+      radial-gradient(circle at 12% 82%, rgba(34,211,238,0.05), transparent 42%);
+    pointer-events: none;
+  }
+
+  .canvas {
+    position: relative; z-index: 1;
+    width: 100%; height: 100%;
+    padding: 64px 80px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* ── Top: eyebrow ── */
+  .eyebrow {
+    font-family: var(--mono); font-size: 14px;
+    color: var(--fg-mute); letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .eyebrow::before {
+    content: ''; width: 22px; height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  /* ── Center: title + pull quote ── */
+  .center { display: flex; flex-direction: column; gap: 28px; }
+
+  .title {
+    font-size: 72px;
+    font-weight: 500; letter-spacing: -0.032em;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--fg);
+    max-width: 1000px;
+  }
+
+  .pull {
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--fg-dim);
+    margin: 0;
+    padding-left: 22px;
+    border-left: 2px solid var(--accent);
+    max-width: 880px;
+  }
+
+  /* ── Bottom: byline ── */
+  .byline {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 14px;
+    color: var(--fg-mute); letter-spacing: 0.04em;
+  }
+  .byline strong { color: var(--fg); font-weight: 500; }
+  .byline .meta { display: inline-flex; align-items: center; gap: 16px; }
+  .byline .sep { width: 1px; height: 12px; background: var(--line-strong); display: inline-block; }
+  .byline .site {
+    font-family: var(--mono); font-size: 13px;
+    color: var(--fg-mute); letter-spacing: 0.08em;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .byline .site::before {
+    content: ''; width: 18px; height: 1px; background: var(--accent);
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+
+    <span class="eyebrow">Memo · Jan 23, 2026</span>
+
+    <div class="center">
+      <h1 class="title">Why MIS Takes 15 Days</h1>
+      <p class="pull">"It's like querying a database replica that's two weeks behind master. The data exists somewhere — just not in Zoho."</p>
+    </div>
+
+    <div class="byline">
+      <span class="meta">
+        <span><strong>Manideep GNS</strong></span>
+        <span class="sep"></span>
+        <span>An internal memo, ten failure modes, diagnosed in tech terms</span>
+      </span>
+      <span class="site">manideepgns.com</span>
+    </div>
+
+  </div>
+</body>
+</html>
