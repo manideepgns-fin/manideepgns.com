@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Icon · render</title>
+<title>Icon · render (m.)</title>
 <style>
   :root {
     --bg:     #0a0a0c;
@@ -15,33 +15,25 @@
   body {
     width: 100vw; height: 100vh;
     background: var(--bg);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    color: var(--fg);
+    display: flex; align-items: center; justify-content: center;
     font-family: var(--sans);
     overflow: hidden;
   }
-  .M {
-    font-size: 75vmin;
+  .wm {
+    font-size: 52vmin;
     font-weight: 500;
-    letter-spacing: -0.06em;
-    line-height: 0.85;
+    letter-spacing: -0.04em;
+    line-height: 1;
     color: var(--fg);
-    margin: 0;
-    /* Slight optical lift so the underline below sits in the right relation */
-    transform: translateY(-2%);
+    display: flex; align-items: baseline;
   }
-  .underline {
-    width: 32vmin;
-    height: 5vmin;
-    border-radius: 999px;
-    background: var(--accent);
-    margin-top: 4vmin;
+  .wm .dot {
+    color: var(--accent);
+    margin-left: -1vmin;
   }
 </style>
 </head>
 <body>
-  <div class="M">M</div>
-  <div class="underline"></div>
+  <div class="wm">m<span class="dot">.</span></div>
 </body>
 </html>
