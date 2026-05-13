@@ -731,11 +731,22 @@
     position: relative;
     overflow: hidden;
   }
-  .write-card:hover {
+  a.write-card:hover {
     border-color: var(--line-bright);
     transform: translateY(-2px);
     background: var(--bg-elev);
   }
+  .write-card .read {
+    margin-top: 14px;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: color .15s;
+  }
+  a.write-card:hover .read { color: var(--accent); }
+  a.write-card:hover .read .arr { transform: translateX(2px); }
+  .write-card .read .arr { font-family: var(--mono); transition: transform .15s; }
   .write-card .date {
     font-family: var(--mono); font-size: 10.5px;
     color: var(--fg-mute); letter-spacing: 0.10em;
@@ -1156,12 +1167,13 @@
 
       <div class="write-grid">
 
-        <div class="write-card reveal">
+        <a class="write-card reveal" href="/writing/why-mis-takes-15-days.html">
           <div class="date">JAN 23, 2026 · MEMO</div>
           <h3>Why MIS takes 15 days <br/>(and how we're fixing it)</h3>
           <blockquote class="pull">"It's like querying a database replica that's two weeks behind master. The data exists somewhere — just not in Zoho."</blockquote>
           <p class="summary">Finance memo to the founder, written in tech terms: ten cases where expense data leaks across vendor systems, Pazy queues, Excel, and people's heads. Each one diagnosed as a state machine problem, schema mismatch, or missing webhook.</p>
-        </div>
+          <span class="read">Read<span class="arr" aria-hidden="true">→</span></span>
+        </a>
 
         <div class="write-card reveal">
           <div class="date">MAR 10, 2026 · POSTMORTEM</div>
