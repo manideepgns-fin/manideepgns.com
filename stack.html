@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Stack — Manideep GNS</title>
+<meta name="description" content="The tools I run on — finance ops, banking, compliance, and what Atlance is built with." />
+<meta property="og:title" content="Stack — Manideep GNS" />
+<meta property="og:description" content="The tools I run on — finance ops, banking, compliance, and what Atlance is built with." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://manideepgns.com/stack.html" />
+<meta property="og:image" content="https://manideepgns.com/og/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://manideepgns.com/og/og-image.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0a0c" />
+<link rel="canonical" href="https://manideepgns.com/stack.html" />
+
+<style>
+  :root {
+    --bg:           #0a0a0c;
+    --bg-card:      #131316;
+    --bg-elev:      #1a1a1d;
+    --line:         #1f1f23;
+    --line-strong:  #2a2a30;
+    --line-bright:  #3a3a42;
+    --fg:           #ededee;
+    --fg-dim:       #b3b4b6;
+    --fg-mute:      #87898c;
+    --fg-soft:      #555558;
+    --accent:       #5eead4;
+    --accent-2:     #c084fc;
+    --accent-3:     #22d3ee;
+    --w-narrow:     720px;
+    --sans:   -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono:   ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-feature-settings: 'tnum', 'kern', 'liga';
+    font-size: 16px;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus { outline: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  /* Nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(10,10,12,0.7);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    max-width: var(--w-narrow); margin: 0 auto;
+    padding: 0 28px;
+  }
+  .nav-back {
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--fg-mute); letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: color .15s;
+  }
+  .nav-back:hover { color: var(--fg); }
+  .nav-back .arr { transition: transform .15s; }
+  .nav-back:hover .arr { transform: translateX(-2px); }
+  .nav-meta {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-mute); letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .wrap { max-width: var(--w-narrow); margin: 0 auto; padding: 0 28px; }
+
+  /* Header */
+  .head { padding: 64px 0 40px; }
+  @media (max-width: 600px) { .head { padding: 48px 0 32px; } }
+  .head .eyebrow {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-mute); letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .head .eyebrow::before {
+    content: ''; width: 18px; height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .head h1 {
+    font-size: clamp(30px, 4.4vw, 44px);
+    font-weight: 500; letter-spacing: -0.028em;
+    line-height: 1.15;
+    margin: 0 0 18px;
+    color: var(--fg);
+  }
+  .head .lede {
+    font-size: 16.5px;
+    color: var(--fg-dim);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* Categories */
+  .category { padding: 36px 0; border-top: 1px solid var(--line); }
+  .category:first-of-type { border-top: 0; }
+  .category h2 {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-mute); letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0 0 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .category h2::before {
+    content: ''; width: 18px; height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .category .note {
+    font-size: 14px;
+    color: var(--fg-mute);
+    line-height: 1.6;
+    margin: 0 0 22px;
+    max-width: 60ch;
+    font-style: italic;
+  }
+
+  /* Items */
+  .items { display: grid; gap: 14px; }
+  .item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 18px;
+    align-items: baseline;
+    padding: 8px 0;
+  }
+  .item + .item { border-top: 1px dashed var(--line); padding-top: 14px; }
+  .item .name {
+    font-family: var(--sans); font-weight: 500;
+    font-size: 14.5px;
+    color: var(--fg);
+    letter-spacing: -0.005em;
+  }
+  .item .why {
+    font-size: 14.5px;
+    color: var(--fg-dim);
+    line-height: 1.55;
+  }
+  .item .why em {
+    font-style: italic;
+    color: var(--fg-mute);
+  }
+  @media (max-width: 600px) {
+    .item { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* Closing */
+  .closing {
+    padding: 40px 0 96px;
+    border-top: 1px solid var(--line);
+    margin-top: 32px;
+  }
+  .closing p {
+    font-size: 14.5px;
+    color: var(--fg-mute);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 60ch;
+    font-style: italic;
+  }
+  .closing a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-color: var(--line-bright);
+    text-underline-offset: 3px;
+    transition: color .15s, text-decoration-color .15s;
+  }
+  .closing a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+  footer.site-foot {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    color: var(--fg-mute); font-size: 12.5px;
+  }
+  .foot-row {
+    max-width: var(--w-narrow); margin: 0 auto;
+    padding: 0 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+    font-family: var(--mono); letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-row">
+    <a class="nav-back" href="/">
+      <span class="arr" aria-hidden="true">←</span>
+      <span>Manideep GNS</span>
+    </a>
+    <span class="nav-meta">Stack</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <header class="head">
+    <div class="eyebrow">Stack</div>
+    <h1>The tools I run on.</h1>
+    <p class="lede">Tooling choices are decisions, not defaults. Here's what we use to run finance across four countries — and what Atlance is built with.</p>
+  </header>
+
+  <section class="category">
+    <h2>Finance Ops</h2>
+    <p class="note">The SaaS that runs day-to-day. Replaced seven of these with Atlance modules already; the rest are kept because they're either source-of-truth (Zoho), or solved problems we don't want to solve ourselves (tax, payments).</p>
+    <div class="items">
+      <div class="item">
+        <span class="name">Zoho Books</span>
+        <span class="why">Source-of-truth ledger across all four entities. 60–70% of expense reality lives here — the other 30% is why <a class="lnk" href="/writing/why-mis-takes-15-days.html" style="color:var(--fg);text-decoration:underline;text-decoration-color:var(--line-bright);text-underline-offset:3px">Atlance exists</a>.</span>
+      </div>
+      <div class="item">
+        <span class="name">Pazy</span>
+        <span class="why">AP automation. Multi-level approval workflows, corporate cards, vendor onboarding. The queue we read from for expense lifecycle tracking.</span>
+      </div>
+      <div class="item">
+        <span class="name">Stripe</span>
+        <span class="why">Payments across 4 accounts (IN / UK / USA / AED). Atlance pulls invoice + dispute data directly via the Stripe API.</span>
+      </div>
+      <div class="item">
+        <span class="name">Avalara</span>
+        <span class="why">Multi-jurisdiction tax engine — UK VAT, UAE VAT, US multi-state. The "build vs buy" decision that stayed firmly on buy.</span>
+      </div>
+      <div class="item">
+        <span class="name">Salesforce</span>
+        <span class="why">CRM. Atlance's CRM Analytics module reads from here for pipeline + customer cohorts.</span>
+      </div>
+      <div class="item">
+        <span class="name">Ramp</span>
+        <span class="why">US corporate cards + spend. SVB Card Expenses module pulls from Ramp's API.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="category">
+    <h2>Banking & Treasury</h2>
+    <div class="items">
+      <div class="item">
+        <span class="name">HSBC UAE</span>
+        <span class="why">Primary MENA banking. Direct API access where possible; manual reconciliation where not.</span>
+      </div>
+      <div class="item">
+        <span class="name">IDFC FIRST Bank</span>
+        <span class="why">India primary, with auto-sweep into FDs. Real-time bank import in Atlance.</span>
+      </div>
+      <div class="item">
+        <span class="name">Wise Business</span>
+        <span class="why">Cross-border FX + transfers. Cleaner rails than HSBC for sub-$100K moves.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="category">
+    <h2>Audit, Tax & Compliance</h2>
+    <div class="items">
+      <div class="item">
+        <span class="name">BSR &amp; Co. LLP</span>
+        <span class="why">KPMG network. Statutory audit across 4 countries. FY25 closed at 11:25 PM on Dec 23 — 2 months, not the 6 we planned for.</span>
+      </div>
+      <div class="item">
+        <span class="name">BRKS Associates</span>
+        <span class="why">Tax + ROC compliance for India.</span>
+      </div>
+      <div class="item">
+        <span class="name">Mithras</span>
+        <span class="why">Transfer pricing across IN / UK / USA.</span>
+      </div>
+      <div class="item">
+        <span class="name">Intuit Consultancy</span>
+        <span class="why">US tax compliance for the US subsidiary.</span>
+      </div>
+      <div class="item">
+        <span class="name">EquityList</span>
+        <span class="why">Cap table + ESOP for 185 stakeholders. WACC 22.03% DCF valuation flows through here.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="category">
+    <h2>Atlance — built with</h2>
+    <p class="note">Stack chosen for low cost, fast iteration, and free-tier generosity. <a class="lnk" href="https://atlance.urbanpiper.ai/architecture/" target="_blank" rel="noopener" style="color:var(--fg);text-decoration:underline;text-decoration-color:var(--line-bright);text-underline-offset:3px">See the live architecture map ↗</a></p>
+    <div class="items">
+      <div class="item">
+        <span class="name">React 19 + Vite</span>
+        <span class="why">Per-module SPA. Each module is its own Vite workspace — independent builds, independent deploys, shared design tokens.</span>
+      </div>
+      <div class="item">
+        <span class="name">Tailwind 4</span>
+        <span class="why">CSS-first config. Single token file (<code style="font-family:var(--mono);font-size:13px;color:var(--accent-3)">tokens.css</code>) shared across every module.</span>
+      </div>
+      <div class="item">
+        <span class="name">Recharts</span>
+        <span class="why">SVG charts. Sub-200ms render after the Sheets→Supabase ETL.</span>
+      </div>
+      <div class="item">
+        <span class="name">Supabase</span>
+        <span class="why">Postgres + Auth (PKCE) + Edge Functions. Free tier covers everything we need today.</span>
+      </div>
+      <div class="item">
+        <span class="name">FastAPI</span>
+        <span class="why">Python backend. Hosted on Railway. ~280 endpoints across the modules.</span>
+      </div>
+      <div class="item">
+        <span class="name">Cloudflare Pages</span>
+        <span class="why">Frontend hosting. Auto-deploys from <code style="font-family:var(--mono);font-size:13px;color:var(--accent-3)">main</code>. Generous bandwidth + edge cache.</span>
+      </div>
+      <div class="item">
+        <span class="name">GitHub Actions</span>
+        <span class="why">CI: selective Vite builds, doc verification, schema lints.</span>
+      </div>
+      <div class="item">
+        <span class="name">Sentry</span>
+        <span class="why">Error tracking + Seer for AI-assisted root-cause analysis on the API.</span>
+      </div>
+      <div class="item">
+        <span class="name">Claude Code</span>
+        <span class="why">Pair-programming partner. The CA who learned to code did it with this in the loop.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="category">
+    <h2>How I write & think</h2>
+    <div class="items">
+      <div class="item">
+        <span class="name">Notion</span>
+        <span class="why">Memos, postmortems, narratives. Where every doc starts before it ships anywhere.</span>
+      </div>
+      <div class="item">
+        <span class="name">Slack</span>
+        <span class="why">Async with the founder + team. The narrative essay was built from this corpus.</span>
+      </div>
+      <div class="item">
+        <span class="name">Cal.com</span>
+        <span class="why">Open-source scheduling. <a href="/#reach" style="color:var(--fg);text-decoration:underline;text-decoration-color:var(--line-bright);text-underline-offset:3px">Book an intro</a> goes through here.</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <p>This list moves. New tools get added when they earn it. Old ones get retired when an Atlance module replaces them — already happened with seven of them. <a href="/">Back to the portfolio →</a></p>
+  </div>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-row">
+    <div>© 2026 MANIDEEP GNS · BENGALURU, IST</div>
+    <div>FINANCE × CURIOSITY × CODE</div>
+  </div>
+</footer>
+
+</body>
+</html>

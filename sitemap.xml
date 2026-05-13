@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://manideepgns.com/stack.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://manideepgns.com/writing/why-mis-takes-15-days.html</loc>
     <lastmod>2026-05-13</lastmod>
     <priority>0.7</priority>
