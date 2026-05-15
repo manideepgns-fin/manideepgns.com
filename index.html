@@ -741,6 +741,34 @@
       transform: none;
     }
   }
+
+  /* ─── AOP architecture iframe (light-themed, docs SPA) ─────────────────── */
+  .aopview-wrap {
+    position: relative;
+    width: 100%;
+    height: 900px;
+    overflow: hidden;
+    background: #f6f6f4;  /* matches docs --docs-bg so no flash on load */
+  }
+  .aopview-iframe {
+    position: absolute;
+    top: 0; left: 0;
+    display: block;
+    width: 117.65%;            /* 1/0.85 */
+    height: 1059px;            /* 900/0.85 */
+    transform: scale(0.85);
+    transform-origin: top left;
+    border: 0;
+    background: #f6f6f4;
+  }
+  @media (max-width: 760px) {
+    .aopview-wrap { height: 600px; }
+    .aopview-iframe {
+      width: 100%;
+      height: 600px;
+      transform: none;
+    }
+  }
   a.atl-tag {
     text-decoration: none;
     transition: background .15s, color .15s;
@@ -1200,6 +1228,36 @@
 
       <div class="atl-caption reveal">
         <strong>Hand-drawn diagrams rot.</strong> This one is generated from the code — when the system changes, so does the map.
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DOCS THAT CAN'T DRIFT (AOP architecture demo) ─── -->
+  <section class="underhood" id="aop">
+    <div class="wrap-wide">
+      <div class="atl-head">
+        <div class="eyebrow reveal">Documentation that can't drift</div>
+        <h2 class="reveal">And the FY27 operating plan above it — <em>read live from the cells.</em></h2>
+        <p class="atl-lede reveal"><a class="lnk" href="https://atlance.urbanpiper.ai/aop/" target="_blank" rel="noopener">AOP Architecture <span aria-hidden="true">↗</span></a> — parses every formula in 7 Google Sheets at request time. Auto-classifies 70 tabs by graph position, traces 134 cross-sheet IMPORTRANGEs, surfaces stale-tab alerts. Found 3 unreferenced tabs while it was being built.</p>
+      </div>
+
+      <div class="atl-frame reveal">
+        <div class="atl-chrome">
+          <div class="atl-dots"><span></span><span></span><span></span></div>
+          <div class="atl-url">
+            <span class="lock">●</span>
+            <span>atlance.urbanpiper.ai</span>
+            <span class="path">/aop</span>
+          </div>
+          <a class="atl-tag" href="https://atlance.urbanpiper.ai/aop/" target="_blank" rel="noopener" aria-label="Open the live AOP architecture page in a new tab">LIVE<span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="aopview-wrap">
+          <iframe class="aopview-iframe" src="https://atlance.urbanpiper.ai/aop/" title="Atlance AOP Architecture — a docs system that reads its own structure from Google Sheets formulas" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="atl-caption reveal">
+        <strong>Most operating manuals are stale within a quarter.</strong> This one can't be — the page IS a live view of the source. Edit a sheet, the doc updates inside 60 seconds. The four rupee figures + per-region totals are mosaic'd here; everything else (architecture, lineage, audit findings) is real.
       </div>
     </div>
   </section>
