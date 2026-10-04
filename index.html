@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manideep GNS | I design the systems a business runs on</title>
-<meta name="description" content="Chartered Accountant and Head of Finance at UrbanPiper. I design the systems a business runs on, and designed Atlance, the platform behind a four-country finance function.">
-<meta property="og:title" content="Manideep GNS | I design the systems a business runs on">
-<meta property="og:description" content="Chartered Accountant in Bengaluru. I run finance across four countries, and designed the platform behind it.">
+<title>Manideep GNS | Chartered Accountant who builds software</title>
+<meta name="description" content="Head of Finance at UrbanPiper and a Chartered Accountant in Bengaluru. I run finance across four countries, and built the software it runs on by directing Claude Code.">
+<meta property="og:title" content="Manideep GNS | Chartered Accountant who builds software">
+<meta property="og:description" content="Head of Finance at UrbanPiper and a Chartered Accountant. I built the software our finance runs on by directing Claude Code in plain English.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manideepgns.com/">
 <meta property="og:image" content="https://manideepgns.com/og/og-me.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Manideep GNS | I design the systems a business runs on">
-<meta name="twitter:description" content="Chartered Accountant in Bengaluru. I run finance across four countries, and designed the platform behind it.">
+<meta name="twitter:title" content="Manideep GNS | Chartered Accountant who builds software">
+<meta name="twitter:description" content="Head of Finance at UrbanPiper and a Chartered Accountant. I built the software our finance runs on by directing Claude Code in plain English.">
 <meta name="twitter:image" content="https://manideepgns.com/og/og-me.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -38,98 +38,72 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
   "alumniOf": { "@type": "Organization", "name": "The Institute of Chartered Accountants of India (ICAI)" },
   "hasCredential": "Chartered Accountant (CA), ICAI Nov 2023",
-  "description": "Chartered Accountant in Bengaluru. I run finance across four countries, and designed the platform behind it.",
+  "description": "Head of Finance at UrbanPiper and a Chartered Accountant. I built the software our finance runs on by directing Claude Code in plain English.",
   "sameAs": ["https://github.com/manideepgns-fin", "https://linkedin.com/in/nagasai-manideep-g-71141412b", "https://cal.com/manideepgns/intro-chat"]
 }
 </script>
 <style>
-  /* ── the hero: the constellations of what I've built and done ── */
-  .hero { position: relative; z-index: 2; height: 100dvh; min-height: 560px; overflow: hidden }
-  .hero svg { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: 60% 40%; will-change: transform, opacity }
-  .words { position: absolute; left: 36px; bottom: 44px; max-width: 1000px; will-change: opacity }
-  .words .who { color: var(--faint); font-size: 14px; letter-spacing: .02em; margin-bottom: 14px }
-  .words h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(42px, min(6.2vw, 10.5vh), 104px); line-height: 1.02; letter-spacing: -.02em; padding-bottom: 4px; text-wrap: balance }
-  .words h1 em { display: block; font-style: italic; white-space: nowrap }
-  .words .sub { margin-top: 16px; color: var(--dim); font-size: 17px; max-width: 64ch; text-wrap: pretty }
-
-  .con { cursor: pointer; outline: none }
-  .con .hit { fill: transparent; pointer-events: all }
-  .con line { stroke: var(--ink); stroke-width: .8; opacity: .24; transition: opacity .5s }
-  .con circle.s { fill: var(--ink); opacity: .8; animation: twinkle var(--tw, 4s) ease-in-out var(--td, 0s) infinite }
-  .con .halo { fill: url(#halo); opacity: .2; transition: opacity .5s }
-  .con .nm { fill: var(--ink); font-family: var(--serif); font-style: italic; opacity: .8; transition: opacity .5s }
-  .con .sb, .con .fc { fill: var(--dim); font-family: var(--sans); font-weight: 300; opacity: 0; transition: opacity .5s }
-  .con .fc { fill: var(--ink); font-family: var(--serif); font-style: italic; font-weight: 400 }
-  .con:hover line, .con:focus-visible line, .con.glow line { opacity: .6 }
-  .con:hover .halo, .con:focus-visible .halo, .con.glow .halo { opacity: .7 }
-  .con:hover .nm, .con:focus-visible .nm, .con.glow .nm { opacity: 1 }
-  .con:hover .sb, .con:focus-visible .sb, .con.glow .sb { opacity: 1 }
-  .con:hover .fc, .con:focus-visible .fc, .con.glow .fc { opacity: .8 }
-  .con:focus-visible .nm { text-decoration: underline; text-underline-offset: 4px }
-  /* Atlance is the brightest */
-  .con.bright line { opacity: .7; stroke-width: 1.1 }
-  .con.bright .halo { opacity: .55 }
-  .con.bright circle.s { opacity: 1; animation: none; filter: drop-shadow(0 0 5px rgba(255,246,230,.9)) }
-  .con.bright .nm { font-style: normal; font-weight: 500; opacity: .95 }
-  @media (prefers-reduced-motion: reduce) { .con circle.s { animation: none } }
+  /* ── first screen: who I am, in plain words ── */
+  .hero { position: relative; z-index: 2; min-height: 100dvh; overflow: hidden; display: grid; align-items: center }
   #dust { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .9 }
-  @keyframes twinkle { 50% { opacity: .35 } }
+  .intro { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 72px; align-items: center; width: 100%; max-width: 1240px; margin: 0 auto; padding: 120px 36px 80px; will-change: opacity, transform }
+  .intro .who { color: var(--dim); font-size: 15px; letter-spacing: .02em }
+  .intro h1 { margin-top: 18px; font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8.4vw, 128px); line-height: .98; letter-spacing: -.025em }
+  .intro h1 em { font-style: italic }
+  .intro .lede { margin-top: 28px; font-size: clamp(18px, 1.55vw, 21px); line-height: 1.55; color: rgba(242,239,232,.82); max-width: 40ch; text-wrap: pretty }
+  .intro .lede b { font-weight: 400; color: var(--ink) }
+  .intro .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px }
+  .portrait { width: clamp(240px, 26vw, 360px); aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; background: #111 }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block;
+    filter: grayscale(1) contrast(1.08) brightness(.9); transition: filter 1.2s ease }
+  .portrait:hover img { filter: none }
 
   main { position: relative; z-index: 2 }
-  .work h2, .arc h2, .record h2 { font-family: var(--serif); font-size: clamp(44px, 5.2vw, 76px); font-weight: 400; letter-spacing: -.02em; line-height: 1.05 }
-  .work h2 em, .arc h2 em, .record h2 em { font-style: italic }
 
-  /* ── Atlance, the case study ── */
-  .work { padding: 140px 36px 120px; max-width: 1240px; margin: 0 auto }
-  .work-top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 64px; align-items: start }
-  .work .fig { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 110px; margin-top: 8px }
-  .work .lede { margin-top: 14px; color: var(--dim); font-size: 18px; max-width: 44ch }
-  .beats { list-style: none; margin-top: 44px; display: grid; gap: 28px }
-  .beats li { border-top: 1px solid var(--rule); padding-top: 16px }
-  .beats b { display: block; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 27px; line-height: 1.1 }
-  .beats li > span { display: block; margin-top: 6px; color: var(--dim); max-width: 46ch }
-  .beats a { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 400; border-bottom: 1px solid rgba(242,239,232,.28); transition: border-color .3s }
-  .beats a:hover { border-color: var(--ink) }
+  /* ── one idea per section: a label, a plain heading, the proof ── */
+  .sec { max-width: 1240px; margin: 0 auto; padding: 120px 36px; scroll-margin-top: 40px }
+  .sec.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center }
+  .sec.split.flip .art { order: -1 }
+  .label { display: flex; align-items: center; gap: 10px; color: var(--dim); font-size: 14px; letter-spacing: .03em }
+  .label::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 10px 2px rgba(255,246,230,.45) }
+  .sec h2 { margin-top: 16px; font-family: var(--serif); font-size: clamp(40px, 4.6vw, 68px); font-weight: 400; letter-spacing: -.02em; line-height: 1.06; text-wrap: balance }
+  .sec h2 em { font-style: italic }
+  .sec .body { margin-top: 18px; font-size: 18px; color: var(--dim); max-width: 46ch; text-wrap: pretty }
+  .sec .body b { font-weight: 400; color: var(--ink) }
+  .sec .link { display: inline-block; margin-top: 22px; font-size: 15px; font-weight: 400; border-bottom: 1px solid rgba(242,239,232,.3); transition: border-color .3s }
+  .sec .link:hover { border-color: var(--ink) }
+  .sec .link + .link { margin-left: 24px }
+  .sec .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px }
+  .proof { list-style: none; margin-top: 30px; display: grid; gap: 0 }
+  .proof li { padding: 14px 0; border-top: 1px solid var(--rule); color: var(--dim); max-width: 50ch }
+  .proof li b { font-weight: 400; color: var(--ink) }
+  .jobs { margin-top: 30px }
+  .jobs div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid var(--rule) }
+  .jobs dt { font-family: var(--serif); font-style: italic; font-size: 24px; line-height: 1.2 }
+  .jobs dd { color: var(--dim); align-self: center }
 
-  .fig svg { width: 100%; height: auto; overflow: visible; display: block }
-  .fig .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: 0; transition: opacity 1.2s ease .4s }
-  .in .fig .flow { opacity: .1 }
-  .fig .packet { fill: #ffe9c9; filter: drop-shadow(0 0 3px rgba(255,233,201,.9)) }
-  .fig .src { fill: var(--ink); opacity: .8 }
-  .fig .srcname { fill: var(--dim); font-family: var(--sans); font-weight: 300 }
-  .fig .edge { stroke: var(--ink); stroke-width: 1.1; opacity: .7; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1) var(--d, 0s) }
-  .in .fig .edge { stroke-dashoffset: 0 }
-  .fig .corner { fill: var(--ink); filter: drop-shadow(0 0 5px rgba(255,246,230,.9)) }
-  .fig .halo { fill: url(#halo); opacity: .55 }
-  .fig .atl { fill: var(--ink); font-family: var(--serif); font-weight: 500 }
-  .fig .fc { fill: var(--ink); font-family: var(--serif); font-style: italic; opacity: .85 }
-  .fig .base { fill: var(--dim); font-family: var(--sans); letter-spacing: .06em }
+  /* the drawings: small constellations that carry a caption, never a riddle */
+  .art { margin: 0 }
+  .art svg, .art canvas { width: 100%; max-width: 520px; height: auto; display: block; margin: 0 auto; overflow: visible }
+  .art figcaption { margin-top: 18px; text-align: center; color: var(--faint); font-size: 14px }
+  .art .ln { stroke: var(--line); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1) var(--d, 0s) }
+  .in .art .ln { stroke-dashoffset: 0 }
+  .art .st { fill: var(--ink); opacity: 0; transition: opacity .8s ease var(--d, 0s) }
+  .in .art .st { opacity: .9 }
+  .art .st.lit { filter: drop-shadow(0 0 5px rgba(255,246,230,.9)) }
+  .art .ha { fill: url(#halo); opacity: 0; transition: opacity 1.2s ease var(--d, 0s) }
+  .in .art .ha { opacity: .6 }
+  .art .tx { fill: var(--dim); font-family: var(--sans); font-weight: 300; opacity: 0; transition: opacity 1s ease .8s }
+  .in .art .tx { opacity: 1 }
+  .art .tx.big { fill: var(--ink); font-family: var(--serif); font-weight: 500 }
+  .art .tx.it { fill: var(--ink); font-family: var(--serif); font-style: italic }
+  .art .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: 0; transition: opacity 1.2s ease .4s }
+  .in .art .flow { opacity: .12 }
+  .art .packet { fill: #ffe9c9; filter: drop-shadow(0 0 3px rgba(255,233,201,.9)) }
+  #changes { aspect-ratio: 520 / 300 }
 
-  .faces { margin-top: 104px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 48px;
-    background: linear-gradient(var(--rule), var(--rule)) top left / 0% 1px no-repeat; transition: background-size 1.8s cubic-bezier(.45,0,.2,1) }
-  .faces.in { background-size: 100% 1px }
-  .face-col { position: relative; padding-top: 30px; scroll-margin-top: 120px }
-  .face-col::before { content: ''; position: absolute; left: 0; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--ink);
-    box-shadow: 0 0 14px 3px rgba(255,246,230,.35); opacity: 0; transition: opacity .8s ease var(--d, 0s) }
-  .faces.in .face-col::before { opacity: 1 }
-  .face-col h3 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 40px; line-height: 1.05 }
-  .face-col .tag { margin-top: 8px; color: var(--dim); max-width: 30ch }
-  .pieces { list-style: none; margin: 20px 0 0 -11px; display: flex; flex-wrap: wrap; gap: 2px }
-  .pieces button { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px 7px 10px; font: inherit; font-size: 14px; color: var(--dim);
-    background: none; border: 1px solid transparent; border-radius: 999px; cursor: pointer; transition: color .3s, border-color .3s }
-  .pieces button::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: currentColor }
-  .pieces button:hover { color: var(--ink) }
-  .pieces button[aria-pressed="true"] { color: var(--ink); border-color: var(--rule) }
-  .pieces button[aria-pressed="true"]::before { box-shadow: 0 0 8px 2px rgba(255,246,230,.6) }
-  .face-col .what { margin-top: 14px; min-height: 3.2em; color: rgba(242,239,232,.86); max-width: 34ch }
-  .face-col .what.swap { animation: swapin .5s cubic-bezier(.16,1,.3,1) }
-  @keyframes swapin { from { opacity: 0; transform: translateY(6px) } }
-  .work .more { margin-top: 56px }
-
-  /* ── the arc: ten years as a rising line of stars ── */
-  .arc, .record { position: relative; padding: 120px 36px; max-width: 1240px; margin: 0 auto }
-  .arc > p, .record > p { margin-top: 12px; color: var(--dim); font-size: 18px; max-width: 46ch }
-  .path { position: relative; height: 520px; margin-top: 40px }
+  /* ── the path: ten years as a rising line of stars ── */
+  .arc .path { position: relative; height: 480px; margin-top: 32px }
   .path svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible }
   .path svg path { fill: none; stroke: var(--line); stroke-width: 1.2; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.6s cubic-bezier(.45,0,.2,1) }
   .arc.in .path svg path { stroke-dashoffset: 0 }
@@ -143,57 +117,34 @@
   .path li b { display: block; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 22px; text-align: center }
   .path li span { display: block; color: var(--dim); font-size: 13.5px; line-height: 1.45; text-align: center; margin-top: 2px }
 
-  /* ── the finance record ── */
-  .ledger { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 48px }
-  .ledger div { border-top: 1px solid var(--rule); padding-top: 18px }
-  .ledger b { display: block; font-family: var(--serif); font-size: 27px; font-weight: 500; line-height: 1.15; font-variant-numeric: lining-nums }
-  .ledger span { display: block; color: var(--dim); margin-top: 8px; font-size: 15.5px }
-
-  /* ── off hours: small, near the end ── */
-  .off { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; align-items: center; max-width: 1240px; margin: 0 auto; padding: 64px 36px 24px; scroll-margin-top: 80px }
-  .off h2 { font-family: var(--serif); font-style: italic; font-size: clamp(36px, 3.6vw, 52px); font-weight: 400; letter-spacing: -.015em; line-height: 1.05 }
-  .off p { margin-top: 10px; color: var(--dim); max-width: 48ch }
-  .off .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px }
-  .off .art svg { width: 100%; height: auto; overflow: visible; display: block }
-  .big line { stroke: var(--line); stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s cubic-bezier(.16,1,.3,1) var(--d, 0s) }
-  .big circle.s { fill: var(--ink); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.2); transition: opacity .6s var(--d, 0s), transform .9s cubic-bezier(.16,1,.3,1) var(--d, 0s) }
-  .big .halo { fill: url(#halo2); opacity: 0; transition: opacity 1.2s var(--d, 0s) }
-  .in .big line { stroke-dashoffset: 0 }
-  .in .big circle.s { opacity: 1; transform: none }
-  .in .big .halo { opacity: 1 }
-
   /* ── the end ── */
   .end { min-height: 80dvh; display: grid; place-items: center; text-align: center; padding: 96px 36px 120px }
-  .end h2 { font-family: var(--serif); font-size: clamp(48px, 6vw, 92px); font-weight: 400; letter-spacing: -.02em; line-height: 1.05 }
+  .end .label { justify-content: center }
+  .end h2 { margin-top: 16px; font-family: var(--serif); font-size: clamp(56px, 7vw, 104px); font-weight: 400; letter-spacing: -.02em; line-height: 1.02 }
   .end h2 em { font-style: italic }
-  .end p { margin: 18px auto 0; color: var(--dim); font-size: 18px; max-width: 44ch }
-  .end .pill.solid { margin-top: 34px; padding: 14px 28px; font-size: 15px }
-  .end .links { display: flex; flex-wrap: wrap; gap: 14px 26px; justify-content: center; margin-top: 28px; color: var(--dim); font-size: 14px; font-weight: 400 }
+  .end p { margin: 18px auto 0; color: var(--dim); font-size: 18px; max-width: 46ch; text-wrap: pretty }
+  .end .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 32px }
+  .end .links { display: flex; flex-wrap: wrap; gap: 14px 26px; justify-content: center; margin-top: 26px; color: var(--dim); font-size: 14px; font-weight: 400 }
   .end .links a:hover { color: var(--ink) }
 
   @media (prefers-reduced-motion: reduce) {
-    .path svg path, .path li, .big line, .big circle.s, .big .halo, .faces, .face-col::before, .fig .flow, .fig .edge { transition: none }
-    .face-col .what.swap { animation: none }
+    .art .ln, .art .st, .art .ha, .art .tx, .art .flow, .path svg path, .path li, .portrait img { transition: none }
   }
   @media (max-width: 820px) {
-    .words { left: 20px; right: 20px; bottom: 32px }
-    .words .sub { font-size: 16px }
-    .work { padding: 104px 20px 88px }
-    .work-top { grid-template-columns: minmax(0, 1fr) }
-    .work .fig { grid-column: auto; grid-row: auto; position: static; margin-top: 36px }
-    .beats { margin-top: 36px }
-    .faces { grid-template-columns: minmax(0, 1fr); margin-top: 72px; background: none }
-    .face-col { padding-top: 26px; margin-top: 44px; border-top: 1px solid var(--rule) }
-    .face-col:first-child { margin-top: 0 }
-    .arc, .record { padding: 88px 20px }
-    .path { height: auto } .path svg { display: none }
+    .intro { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 104px 20px 56px }
+    .portrait { order: -1; width: 128px; margin-bottom: 26px }
+    .intro h1 { margin-top: 12px }
+    .intro .lede { margin-top: 20px }
+    .sec { padding: 88px 20px }
+    .sec.split { grid-template-columns: minmax(0, 1fr); gap: 40px }
+    .sec.split.flip .art { order: 0 }
+    .art svg, .art canvas { max-width: 420px }
+    .jobs div { grid-template-columns: minmax(0, 1fr); gap: 4px }
+    .arc .path { height: auto } .path svg { display: none }
     .path ol { border-left: 1px solid var(--rule); margin-left: 6px }
     .path li, .path li.up, .path li.down { position: relative; left: auto !important; top: auto !important; width: auto; transform: none; padding: 0 0 26px 24px }
     .path li::before, .path li.up::before, .path li.down::before { left: -4px; top: 9px; bottom: auto; margin-left: 0 }
     .path li b, .path li span { text-align: left }
-    .ledger { grid-template-columns: minmax(0, 1fr); gap: 28px }
-    .off { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 56px 20px 8px }
-    .off .art { max-width: 160px }
   }
 </style>
 </head>
@@ -201,81 +152,82 @@
 <canvas class="stars" aria-hidden="true"></canvas>
 <header class="top solid">
   <a class="me" href="./">Manideep GNS</a>
-  <nav aria-label="Main"><a href="#work">Work</a><a class="wide" href="#arc">Arc</a><a href="writing/">Writing</a><a class="wide" href="stack.html">Stack</a><a href="#hi">Say hi</a></nav>
+  <nav aria-label="Main"><a href="#work">Work</a><a class="wide" href="stack.html">How I build</a><a href="writing/">Writing</a><a href="#hi">Say hi</a></nav>
 </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><radialGradient id="halo"><stop offset="0" stop-color="#fff6e6" stop-opacity=".55"/><stop offset="1" stop-color="#fff6e6" stop-opacity="0"/></radialGradient></defs>
+</svg>
 
 <section class="hero" aria-label="Introduction">
   <canvas id="dust" aria-hidden="true"></canvas>
-  <svg id="sky" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-label="What I've built and done, drawn as constellations">
-    <defs>
-      <radialGradient id="halo"><stop offset="0" stop-color="#fff6e6" stop-opacity=".55"/><stop offset="1" stop-color="#fff6e6" stop-opacity="0"/></radialGradient>
-      <radialGradient id="halo2"><stop offset="0" stop-color="#fff6e6" stop-opacity=".35"/><stop offset="1" stop-color="#fff6e6" stop-opacity="0"/></radialGradient>
-    </defs>
-  </svg>
-  <div class="words">
-    <p class="who">Manideep GNS · Chartered Accountant · Bengaluru</p>
-    <h1>I design the systems <em>a business runs on.</em></h1>
-    <p class="sub">I run finance across four countries, and designed the platform behind it.</p>
+  <div class="intro">
+    <div>
+      <p class="who">Head of Finance · Chartered Accountant · Bengaluru</p>
+      <h1>Hi, I'm <em>Manideep.</em></h1>
+      <p class="lede">I run finance across India, the UK, the Middle East and the US at UrbanPiper. I also built <b>the software that finance runs on</b>, by directing Claude Code in plain English.</p>
+      <div class="pills">
+        <a class="pill solid" href="mailto:manideepgns@gmail.com">Email me</a>
+        <a class="pill" href="https://linkedin.com/in/nagasai-manideep-g-71141412b">LinkedIn ↗</a>
+        <a class="pill" href="https://cal.com/manideepgns/intro-chat">Book 20 minutes ↗</a>
+      </div>
+    </div>
+    <div class="portrait"><img src="manideep.jpg" width="400" height="400" alt="Manideep GNS"></div>
   </div>
 </section>
 
 <main>
-  <section class="work" id="work">
-    <div class="work-top">
-      <div class="head">
-        <h2>Atlance, <em>built on what exists.</em></h2>
-        <p class="lede">The platform UrbanPiper's finance runs on. It retired seven tools and a twenty-one-sheet workbook, and more than thirty teammates use it.</p>
-      </div>
-      <figure class="fig" aria-label="Zoho, Salesforce, Stripe, Ramp, Google Sheets, Gmail and Metabase stream into one warehouse, with Operate, Analyse and Report on top"><svg id="flow" aria-hidden="true"></svg></figure>
-      <ol class="beats">
-        <li><b>Fifteen days</b><span>Month-end numbers took fifteen days, because the data lived in ten places. I wrote the diagnosis before the fix.</span><a href="writing/why-mis-takes-15-days.html">Read the memo →</a></li>
-        <li><b>One warehouse</b><span>Zoho, Salesforce and Stripe stay. Every source streams into one warehouse, and one API, the agents and one design system sit on top.</span></li>
-        <li><b>In plain English</b><span>Designed solo and directed in plain English, while running the function. <span class="n" data-stat="modules">30</span> modules and about <span class="n" data-stat="commits">4,100</span> changes since January 18, 2026, the day I opened a GitHub account.</span></li>
-      </ol>
+  <section class="sec split" id="job">
+    <div>
+      <p class="label">The day job</p>
+      <h2>Finance across <em>four countries.</em></h2>
+      <p class="body">At UrbanPiper since 2024, Head of Finance today. Capital, tax, investor diligence, the plan and the monthly close, for four companies in four countries.</p>
+      <ul class="proof">
+        <li><b>A four-country Big-4 audit in two months.</b> The first under my charge. The usual is six.</li>
+        <li><b>Chartered Accountant,</b> qualified in 2023, after audit and financial reporting work since 2018.</li>
+      </ul>
     </div>
-
-    <div class="faces">
-      <div class="face-col" id="operate">
-        <h3>Operate</h3>
-        <p class="tag">The work that moves money, running by itself.</p>
-        <ul class="pieces">
-          <li><button type="button" data-what="Contracts in, invoices out. The same rules in India, the UK, MENA and the US.">Billing</button></li>
-          <li><button type="button" data-what="Every open invoice, who owes what, and the next step to get paid.">Collections</button></li>
-          <li><button type="button" data-what="An agent that reads every billing email, checks the books and drafts the reply.">Billing Desk</button></li>
-          <li><button type="button" data-what="Order forms raised, signed and certified in one place. Mudra means seal.">Signing</button></li>
-          <li><button type="button" data-what="Deals that need a yes from finance, queued with everything needed to decide.">Approvals</button></li>
-        </ul>
-        <p class="what" aria-live="polite"></p>
-      </div>
-      <div class="face-col" id="analyse" style="--d:.3s">
-        <h3>Analyse</h3>
-        <p class="tag">Where the business stands, every morning, read live from the source.</p>
-        <ul class="pieces">
-          <li><button type="button" data-what="Runway across four countries, with scenarios you can play with.">Cash flow</button></li>
-          <li><button type="button" data-what="Plan against actuals, drilled down to the line and the bill behind it.">Variance</button></li>
-          <li><button type="button" data-what="Headcount and people cost against budget, period by period.">People</button></li>
-          <li><button type="button" data-what="Cloud and tool spend month over month, per order and per store.">Infra cost</button></li>
-        </ul>
-        <p class="what" aria-live="polite"></p>
-      </div>
-      <div class="face-col" id="report" style="--d:.6s">
-        <h3>Report</h3>
-        <p class="tag">Reporting that writes itself, and answers when asked.</p>
-        <ul class="pieces">
-          <li><button type="button" data-what="Monthly finance memos, drafted straight from the numbers.">Memos</button></li>
-          <li><button type="button" data-what="Customers open their own invoices, statements and credit notes.">Statements</button></li>
-          <li><button type="button" data-what="The whole platform, drawn from its own code, so it never drifts.">System map</button></li>
-          <li><button type="button" data-what="Ask a question in Slack, get the answer from the warehouse.">Assistant</button></li>
-        </ul>
-        <p class="what" aria-live="polite"></p>
-      </div>
-    </div>
-    <a class="pill more" href="https://atlance.urbanpiper.ai/architecture/">See the live system map ↗</a>
+    <figure class="art" data-art="countries"><svg aria-hidden="true"></svg><figcaption>Four countries, one finance function.</figcaption></figure>
   </section>
 
-  <section class="arc" id="arc">
+  <section class="sec split flip" id="problem">
+    <div>
+      <p class="label">The problem</p>
+      <h2>Month-end numbers took <em>fifteen days.</em></h2>
+      <p class="body">The reporting wasn't the problem. The data lived in ten places: vendor systems, approval queues, spreadsheets and people's heads. I wrote down why before fixing anything.</p>
+      <a class="link" href="writing/why-mis-takes-15-days.html">Read the memo →</a>
+    </div>
+    <figure class="art" data-art="scatter"><svg aria-hidden="true"></svg><figcaption>Ten places expense data got stuck. Only one could be queried.</figcaption></figure>
+  </section>
+
+  <section class="sec split" id="work">
+    <div>
+      <p class="label">What I built</p>
+      <h2>Atlance, <em>the software UrbanPiper's finance runs on.</em></h2>
+      <p class="body">It doesn't replace Zoho, Salesforce or Stripe. Every source syncs into one database, and the screens, AI agents and reports sit on top. It retired <b>seven tools and a twenty-one-sheet workbook</b>, and <b>more than thirty teammates</b> use it.</p>
+      <dl class="jobs">
+        <div><dt>Operate</dt><dd>Billing, collections and approvals, run the same way in four countries.</dd></div>
+        <div><dt>Analyse</dt><dd>Cash, plan against actuals, people and cloud cost, read live every morning.</dd></div>
+        <div><dt>Report</dt><dd>Monthly memos drafted from the numbers, and answers in Slack.</dd></div>
+      </dl>
+      <a class="link" href="https://atlance.urbanpiper.ai/architecture/">See the live system map ↗</a>
+    </div>
+    <figure class="art" data-art="flow"><svg aria-hidden="true"></svg><figcaption>Seven sources, one database, three jobs on top.</figcaption></figure>
+  </section>
+
+  <section class="sec split flip" id="how">
+    <div>
+      <p class="label">How I build</p>
+      <h2>I describe it. Claude Code builds it. <em>I review every change.</em></h2>
+      <p class="body">Solo, while running the finance function. <b><span data-stat="modules">30</span> modules and <span data-stat="commits">about 4,100</span> changes</b> since January 18, 2026, the day I opened a GitHub account.</p>
+      <a class="link" href="stack.html">The tools I use →</a>
+    </div>
+    <figure class="art"><canvas id="changes" aria-hidden="true"></canvas><figcaption><span data-stat="dots">4,079</span> dots, one for every change to Atlance.</figcaption></figure>
+  </section>
+
+  <section class="sec arc" id="arc">
+    <p class="label">The path</p>
     <h2>Ten years, <em>one direction.</em></h2>
-    <p>From commerce at 16, through audit and finance, to designing the systems a business runs on.</p>
+    <p class="body">From commerce at 16, through audit and finance, to designing the systems a business runs on.</p>
     <div class="path">
       <svg viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path id="arcline" pathLength="1" d=""/></svg>
       <ol id="arcpoints">
@@ -283,40 +235,36 @@
         <li><b>2018</b><span>Audit: how money really moves through a business</span></li>
         <li><b>2021</b><span>Led teams building financial statements end to end</span></li>
         <li><b>2024</b><span>Joined UrbanPiper, finance across four countries</span></li>
-        <li><b>2026</b><span>Started designing Atlance, in plain English</span></li>
+        <li><b>2026</b><span>Built Atlance, by directing Claude Code</span></li>
         <li class="now"><b>Today</b><span>Designing systems for the whole business</span></li>
       </ol>
     </div>
   </section>
 
-  <section class="record" id="finance">
-    <h2>And yes, <em>a Chartered Accountant.</em></h2>
-    <div class="ledger">
-      <div><b>Chartered Accountant</b><span>ICAI, 2023. Head of Finance at UrbanPiper today.</span></div>
-      <div><b>A four-country audit in two months</b><span>The first Big-4 audit under my charge. The usual is six.</span></div>
-      <div><b>The whole function</b><span>Capital, tax, investor diligence, the plan and the close, across four entities.</span></div>
-    </div>
-  </section>
-
-  <section class="off" id="off-hours">
-    <div class="art" data-con="cat"></div>
+  <section class="sec split" id="off-hours">
     <div>
-      <h2>Off hours</h2>
-      <p>Cataholic, a chunky orange cat that lives on your Mac. And Wrapped, my first year of building told as a story.</p>
-      <div class="pills"><a class="pill" href="https://github.com/manideepgns-fin/cataholic">Cataholic on GitHub ↗</a><a class="pill" href="wrapped/">Wrapped →</a></div>
+      <p class="label">Off hours</p>
+      <h2>A cat that <em>lives on your Mac.</em></h2>
+      <p class="body">Cataholic is a chunky orange cat for your Mac, and a menu-bar companion for Atlance. Wrapped is my first year of building, told as a story.</p>
+      <div class="pills"><a class="pill" href="https://github.com/manideepgns-fin/cataholic">Cataholic on GitHub ↗</a><a class="pill" href="wrapped/">Read Wrapped →</a></div>
     </div>
+    <figure class="art" data-art="cat"><svg aria-hidden="true"></svg><figcaption>Cataholic, drawn in stars.</figcaption></figure>
   </section>
 
   <section class="end" id="hi">
     <div>
-      <h2>More stars coming. <em>Say hi.</em></h2>
-      <p>Open to roles designing systems, and to advising teams who want their business to run on software.</p>
-      <a class="pill solid" href="mailto:manideepgns@gmail.com">manideepgns@gmail.com</a>
+      <p class="label">Say hi</p>
+      <h2>Let's <em>talk.</em></h2>
+      <p>Open to roles where finance and systems meet, and to advising finance leaders who want their function to run on software.</p>
+      <div class="pills">
+        <a class="pill solid" href="mailto:manideepgns@gmail.com">manideepgns@gmail.com</a>
+        <a class="pill" href="https://linkedin.com/in/nagasai-manideep-g-71141412b">LinkedIn ↗</a>
+        <a class="pill" href="https://cal.com/manideepgns/intro-chat">Book 20 minutes ↗</a>
+      </div>
       <div class="links">
-        <a href="https://linkedin.com/in/nagasai-manideep-g-71141412b">LinkedIn</a>
         <a href="https://github.com/manideepgns-fin">GitHub</a>
-        <a href="https://cal.com/manideepgns/intro-chat">Book 20 minutes</a>
         <a href="writing/">Writing</a>
+        <a href="stack.html">How I build</a>
         <a href="wrapped/">My year, Wrapped</a>
       </div>
     </div>
@@ -326,186 +274,121 @@
 
 <script src="assets/sky.js" defer></script>
 <script>
-const NS = 'http://www.w3.org/2000/svg', sky = document.getElementById('sky'), words = document.querySelector('.words')
-const mk = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n }
+const NS = 'http://www.w3.org/2000/svg', mk = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n }
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
-const CAT = { pts: [[-51,0],[-37,-38],[-17,-12],[17,-12],[37,-38],[51,0],[33,38],[-33,38]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0]] }
+const rng = s => () => (s = s * 16807 % 2147483647) / 2147483647
 
-/* The hero sky: one constellation per thing I've built or done. Shapes are in local units around (0,0);
-   each layout places and scales them (wide screens vs phones), clear of the words in the lower left. */
-const CONS = [
-  { name: 'Atlance', sub: 'the platform I designed', href: '#work', bright: true,
-    pts: [[0,-115],[-100,58],[100,58]], edges: [[0,1],[1,2],[2,0]], faces: ['Operate', 'Analyse', 'Report'],
-    wide: [700, 250, 1], phone: [320, 285, .9] },
-  { name: 'Ten years', sub: 'from commerce at 16 to today', href: '#arc',
-    pts: [[-110,40],[-66,30],[-22,8],[22,-6],[66,-30],[110,-44]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5]],
-    wide: [190, 160, 1], phone: [150, 95, .8] },
-  { name: 'Four countries', sub: 'the finance function I run', href: '#finance',
-    pts: [[0,-40],[0,44],[-32,4],[30,-4]], edges: [[0,1],[2,3]],
-    wide: [450, 120, 1], phone: [470, 95, 1] },
-  { name: 'Writing', sub: 'why MIS takes 15 days', href: 'writing/',
-    pts: [[-40,30],[-12,8],[16,-14],[42,-38],[30,-4]], edges: [[0,1],[1,2],[2,3],[3,4]],
-    wide: [895, 140, 1], phone: [95, 345, 1] },
-  { name: 'Cataholic', sub: 'a cat that lives on your Mac', href: '#off-hours',
-    pts: CAT.pts, edges: CAT.edges, wide: [890, 410, .8], phone: [515, 405, .75] },
-  { name: 'Wrapped', sub: 'my first year of building', href: '#off-hours',
-    pts: [[0,0],[16,-10],[28,6],[12,24],[-14,18],[-24,-6],[-6,-28],[26,-30]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]],
-    wide: [680, 480, 1], phone: [300, 455, .9] },
-]
-const LAYOUT = {
-  wide:  { box: '0 0 1000 600', nm: 17, sb: 11, atl: 28, fc: 18, subs: true },
-  phone: { box: '0 -40 600 840', nm: 22, sb: 0, atl: 34, fc: 22, subs: false },
-}
-const layoutNow = () => innerWidth / innerHeight < .9 ? 'phone' : 'wide'
-
-function drawSky() {
-  sky.querySelectorAll('.con').forEach(n => n.remove())
-  const key = layoutNow(), L = LAYOUT[key]
-  sky.setAttribute('viewBox', L.box)
-  let seed = 5; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647
-  CONS.forEach(c => {
-    const [X, Y, s] = c[key], P = c.pts.map(([x, y]) => [X + x * s, Y + y * s])
-    const ys = P.map(p => p[1]), xs = P.map(p => p[0]), bottom = Math.max(...ys)
-    const g = mk('a', { href: c.href, class: 'con' + (c.bright ? ' bright' : ''), 'aria-label': `${c.name}: ${c.sub}` }, sky)
-    mk('circle', { class: 'hit', cx: X, cy: Y, r: Math.max(Math.max(...xs) - X, X - Math.min(...xs), bottom - Y, Y - Math.min(...ys)) + 24 }, g)
-    c.edges.forEach(([i, j], n) => {
-      const e = mk('line', { x1: P[i][0], y1: P[i][1], x2: P[j][0], y2: P[j][1], pathLength: 1, 'stroke-dasharray': 1, 'stroke-dashoffset': 0 }, g)
-      // drawn on load; the resting value is fully drawn, so lines show even where animation doesn't run
-      if (!reduce) { const wait = .3 + n * .25 + rnd() * .4, total = wait + 1.4
-        mk('animate', { attributeName: 'stroke-dashoffset', values: '1;1;0', keyTimes: `0;${(wait / total).toFixed(3)};1`, dur: `${total}s`, fill: 'freeze' }, e) }
-    })
-    P.forEach(([x, y]) => {
-      mk('circle', { class: 'halo', cx: x, cy: y, r: c.bright ? 26 : 10 }, g)
-      mk('circle', { class: 's', cx: x, cy: y, r: c.bright ? 3.6 : 1.4 + rnd() * .9, style: `--tw:${(2.5 + rnd() * 3).toFixed(2)}s;--td:${(rnd() * 3).toFixed(2)}s` }, g)
-    })
-    if (c.bright) {
-      mk('text', { class: 'nm', x: X, y: Y + 10, 'text-anchor': 'middle', 'font-size': L.atl }, g).textContent = c.name
-      c.faces.forEach((f, i) => { const [x, y] = P[i]
-        mk('text', { class: 'fc', x: i === 0 ? x : i === 1 ? x - 14 : x + 14, y: i === 0 ? y - 20 : y + 6, 'text-anchor': i === 0 ? 'middle' : i === 1 ? 'end' : 'start', 'font-size': L.fc }, g).textContent = f })
-      if (L.subs) mk('text', { class: 'sb', x: X, y: bottom + 30, 'text-anchor': 'middle', 'font-size': L.sb }, g).textContent = c.sub
-    } else {
-      mk('text', { class: 'nm', x: X, y: bottom + L.nm + 8, 'text-anchor': 'middle', 'font-size': L.nm }, g).textContent = c.name
-      if (L.subs) mk('text', { class: 'sb', x: X, y: bottom + L.nm + 10 + L.sb + 6, 'text-anchor': 'middle', 'font-size': L.sb }, g).textContent = c.sub
-    }
-  })
-  drawDust(key === 'phone')
-}
+// the Milky Way band behind the first screen
 const dust = document.getElementById('dust')
-function drawDust(phone) {
-  const r = dust.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2)
+function drawDust() {
+  const r = dust.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2), phone = r.width / r.height < .9
   dust.width = r.width * dpr; dust.height = r.height * dpr
   const g = dust.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0)
-  const w = r.width, h = r.height
-  // the band runs from lower left to upper right
-  const x0 = 0, y0 = h * (phone ? .9 : .95), x1 = w, y1 = h * (phone ? .05 : .02), len = Math.hypot(x1 - x0, y1 - y0)
-  const ux = (x1 - x0) / len, uy = (y1 - y0) / len, nx = -uy, ny = ux
-  let seed = 3; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647
-  const gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5
+  const w = r.width, h = r.height, x0 = 0, y0 = h * (phone ? .9 : .95), x1 = w, y1 = h * (phone ? .05 : .02), len = Math.hypot(x1 - x0, y1 - y0)
+  const ux = (x1 - x0) / len, uy = (y1 - y0) / len, nx = -uy, ny = ux, rnd = rng(3), gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5
   for (let i = 0; i < 2600; i++) {
     const t = rnd() * len, off = gauss() * (phone ? 90 : 120)
-    const x = x0 + ux * t + nx * off, y = y0 + uy * t + ny * off
     g.globalAlpha = (.12 + rnd() * .45) * (1 - Math.min(1, Math.abs(off) / 160))
     g.fillStyle = rnd() < .2 ? '#ffe7c7' : '#dfe6ff'
-    g.fillRect(x, y, rnd() < .9 ? .8 : 1.4, rnd() < .9 ? .8 : 1.4)
+    g.fillRect(x0 + ux * t + nx * off, y0 + uy * t + ny * off, rnd() < .9 ? .8 : 1.4, rnd() < .9 ? .8 : 1.4)
   }
-  // a breath of glow along the band
   g.globalAlpha = 1
   for (let i = 0; i < 7; i++) {
-    const t = len * (.1 + i * .13), cxp = x0 + ux * t + nx * gauss() * 30, cyp = y0 + uy * t + ny * gauss() * 30
-    const grd = g.createRadialGradient(cxp, cyp, 0, cxp, cyp, 170)
+    const t = len * (.1 + i * .13), cx = x0 + ux * t + nx * gauss() * 30, cy = y0 + uy * t + ny * gauss() * 30
+    const grd = g.createRadialGradient(cx, cy, 0, cx, cy, 170)
     grd.addColorStop(0, 'rgba(210,214,240,.05)'); grd.addColorStop(1, 'rgba(210,214,240,0)')
-    g.fillStyle = grd; g.fillRect(cxp - 170, cyp - 170, 340, 340)
+    g.fillStyle = grd; g.fillRect(cx - 170, cy - 170, 340, 340)
   }
 }
 
-/* The case-study figure: the systems a business already has, streaming into Atlance */
-const flow = document.getElementById('flow')
-const SOURCES = ['Zoho Books', 'Salesforce', 'Stripe', 'Ramp', 'Google Sheets', 'Gmail', 'Metabase']
-const FLOW = {
-  wide:  { box: '0 0 700 430', tri: [[545, 95], [440, 277], [650, 277]], src: i => [130 + (i % 2) * 26, 50 + i * 54], fs: 14, atl: 30, fc: 22 },
-  phone: { box: '0 0 600 640', tri: [[300, 250], [170, 475], [430, 475]], src: i => [60 + i * 80, 70 + (i % 2) * 34], fs: 22, atl: 40, fc: 30 },
+/* Each section's drawing: stars and lines in local units, every name printed, nothing behind a hover */
+const star = (svg, x, y, i, lit) => { mk('circle', { class: 'ha', cx: x, cy: y, r: lit ? 26 : 14, style: `--d:${(.1 + i * .08).toFixed(2)}s` }, svg); mk('circle', { class: 'st' + (lit ? ' lit' : ''), cx: x, cy: y, r: lit ? 4 : 2.6, style: `--d:${(.1 + i * .08).toFixed(2)}s` }, svg) }
+const line = (svg, [x1, y1], [x2, y2], i) => mk('line', { class: 'ln', x1, y1, x2, y2, pathLength: 1, style: `--d:${(.2 + i * .15).toFixed(2)}s` }, svg)
+const text = (svg, x, y, s, size, cls = '', anchor = 'middle') => { mk('text', { class: 'tx ' + cls, x, y, 'text-anchor': anchor, 'font-size': size }, svg).textContent = s }
+const ART = {
+  countries(svg) {
+    svg.setAttribute('viewBox', '0 0 520 300')
+    const P = [['The US', 70, 150], ['The UK', 210, 82], ['The Middle East', 330, 178], ['India', 450, 128]]
+    P.slice(1).forEach((p, i) => line(svg, [P[i][1], P[i][2]], [p[1], p[2]], i))
+    P.forEach(([n, x, y], i) => { star(svg, x, y, i); text(svg, x, y + 30, n, 15, 'it') })
+  },
+  scatter(svg) {
+    svg.setAttribute('viewBox', '0 0 520 300')
+    const rnd = rng(21), pts = [[260, 150]]
+    while (pts.length < 10) { const x = 40 + rnd() * 440, y = 30 + rnd() * 240; if (pts.every(([a, b]) => Math.hypot(a - x, b - y) > 70)) pts.push([x, y]) }
+    pts.forEach(([x, y], i) => star(svg, x, y, i, i === 0))
+    text(svg, 260, 190, 'the books', 15, 'it')
+  },
+  flow(svg) {
+    const wide = svg.parentNode.clientWidth >= 380, rnd = rng(11)
+    svg.setAttribute('viewBox', wide ? '0 0 560 400' : '0 0 420 460')
+    const T = wide ? [[420, 95], [330, 252], [510, 252]] : [[210, 205], [110, 380], [310, 380]]
+    const cx = (T[0][0] + T[1][0] + T[2][0]) / 3, cy = (T[0][1] + T[1][1] + T[2][1]) / 3
+    const SRC = ['Zoho Books', 'Salesforce', 'Stripe', 'Ramp', 'Google Sheets', 'Gmail', 'Metabase']
+    SRC.forEach((name, i) => {
+      const [x, y] = wide ? [110 + (i % 2) * 22, 50 + i * 50] : [30 + i * 60, 40 + (i % 2) * 30]
+      const d = wide ? `M ${x} ${y} C ${x + 120} ${y}, ${cx - 110} ${cy}, ${cx - 20} ${cy}` : `M ${x} ${y} C ${x} ${y + 70}, ${cx} ${cy - 100}, ${cx} ${cy - 16}`
+      mk('path', { class: 'flow', d }, svg)
+      if (!reduce) for (let k = 0; k < 2; k++) {
+        const dot = mk('circle', { class: 'packet', r: 1.8 }, svg)
+        mk('animateMotion', { dur: `${(3.4 + rnd() * 2.2).toFixed(2)}s`, begin: `${(k * 1.9 + rnd() * 2).toFixed(2)}s`, repeatCount: 'indefinite', path: d }, dot)
+      }
+      mk('circle', { class: 'st', cx: x, cy: y, r: 2.2 }, svg)
+      if (wide) text(svg, x - 10, y + 4.5, name, 13, '', 'end')
+    })
+    if (!wide) text(svg, 210, 18, 'Zoho, Salesforce, Stripe and more', 14)
+    ;[[T[0], T[1]], [T[1], T[2]], [T[2], T[0]]].forEach(([p, q], i) => line(svg, p, q, i))
+    T.forEach(([x, y], i) => { star(svg, x, y, i, true)
+      text(svg, i === 0 ? x : i === 1 ? x - 14 : x + 14, i === 0 ? y - 20 : y + 6, ['Operate', 'Analyse', 'Report'][i], 19, 'it', i === 0 ? 'middle' : i === 1 ? 'end' : 'start') })
+    text(svg, cx, cy + 9, 'Atlance', 26, 'big')
+    text(svg, cx, T[1][1] + 28, 'one database underneath', 13)
+  },
+  cat(svg) {
+    svg.setAttribute('viewBox', '-90 -70 180 140')
+    const P = [[-51,0],[-37,-38],[-17,-12],[17,-12],[37,-38],[51,0],[33,38],[-33,38]]
+    P.forEach((p, i) => line(svg, p, P[(i + 1) % P.length], i))
+    P.forEach(([x, y], i) => { mk('circle', { class: 'ha', cx: x, cy: y, r: 9, style: `--d:${(i * .08).toFixed(2)}s` }, svg); mk('circle', { class: 'st', cx: x, cy: y, r: i ? 1.6 : 2.2, style: `--d:${(i * .08).toFixed(2)}s` }, svg) })
+  },
 }
-const flowLayout = () => flow.parentNode.clientWidth < 520 ? 'phone' : 'wide'
-function drawFlow() {
-  flow.replaceChildren()
-  const key = flowLayout(), F = FLOW[key], wide = key === 'wide'
-  flow.setAttribute('viewBox', F.box)
-  let seed = 11; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647
-  const [A, B, C] = F.tri, cx = (A[0] + B[0] + C[0]) / 3, cy = (A[1] + B[1] + C[1]) / 3
-  SOURCES.forEach((name, i) => {
-    const [x, y] = F.src(i)
-    const d = wide ? `M ${x} ${y} C ${x + 160} ${y}, ${cx - 150} ${cy}, ${cx - 24} ${cy}` : `M ${x} ${y} C ${x} ${y + 90}, ${cx} ${cy - 120}, ${cx} ${cy - 18}`
-    mk('path', { class: 'flow', d }, flow)
-    if (!reduce) for (let k = 0; k < 2; k++) {
-      const dot = mk('circle', { class: 'packet', r: wide ? 1.6 : 2.4 }, flow)
-      mk('animateMotion', { dur: `${(3.4 + rnd() * 2.2).toFixed(2)}s`, begin: `${(k * 1.9 + rnd() * 2).toFixed(2)}s`, repeatCount: 'indefinite', path: d }, dot)
-    }
-    mk('circle', { class: 'src', cx: x, cy: y, r: wide ? 2.2 : 3.4 }, flow)
-    if (wide) mk('text', { class: 'srcname', x: x - 10, y: y + 4.5, 'text-anchor': 'end', 'font-size': F.fs }, flow).textContent = name
-  })
-  if (!wide) mk('text', { class: 'srcname', x: 300, y: 30, 'text-anchor': 'middle', 'font-size': F.fs }, flow).textContent = 'Zoho, Salesforce, Stripe and more'
-  ;[[A, B], [B, C], [C, A]].forEach(([p, q], n) => mk('line', { class: 'edge', x1: p[0], y1: p[1], x2: q[0], y2: q[1], pathLength: 1, style: `--d:${(.2 + n * .3).toFixed(1)}s` }, flow))
-  F.tri.forEach(([x, y], i) => {
-    mk('circle', { class: 'halo', cx: x, cy: y, r: wide ? 24 : 34 }, flow)
-    mk('circle', { class: 'corner', cx: x, cy: y, r: wide ? 3.4 : 5 }, flow)
-    mk('text', { class: 'fc', x: i === 0 ? x : i === 1 ? x - 14 : x + 14, y: i === 0 ? y - 20 : y + 7, 'text-anchor': i === 0 ? 'middle' : i === 1 ? 'end' : 'start', 'font-size': F.fc }, flow).textContent = ['Operate', 'Analyse', 'Report'][i]
-  })
-  mk('text', { class: 'atl', x: cx, y: cy + 10, 'text-anchor': 'middle', 'font-size': F.atl }, flow).textContent = 'Atlance'
-  mk('text', { class: 'base', x: cx, y: B[1] + F.fs + 14, 'text-anchor': 'middle', 'font-size': F.fs - 1 }, flow).textContent = 'one warehouse underneath'
+const drawArt = () => document.querySelectorAll('[data-art]').forEach(f => { const svg = f.querySelector('svg'); svg.replaceChildren(); ART[f.dataset.art](svg) })
+
+// one dot for every change to Atlance
+const changes = document.getElementById('changes')
+let commits = 4079, dotsDrawn = false
+function drawChanges(animate) {
+  const r = changes.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2)
+  if (!r.width) return
+  changes.width = r.width * dpr; changes.height = r.height * dpr
+  const g = changes.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0)
+  const rnd = rng(9), gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5, pts = []
+  for (let i = 0; i < commits; i++) pts.push([rnd() * r.width, r.height / 2 + gauss() * r.height * .42, .25 + rnd() * .65, rnd() < .16])
+  let i = 0
+  const step = () => {
+    const end = animate ? Math.min(pts.length, i + Math.ceil(pts.length / 70)) : pts.length
+    for (; i < end; i++) { const [x, y, a, warm] = pts[i]; g.globalAlpha = a; g.fillStyle = warm ? '#ffe7c7' : '#f2efe8'; g.fillRect(x, y, 1.3, 1.3) }
+    if (i < pts.length) requestAnimationFrame(step)
+  }
+  step(); dotsDrawn = true
 }
 
-drawSky(); drawFlow()
-// redraw only when a layout itself changes; the dust follows every resize
-let lastSky = layoutNow(), lastFlow = flowLayout(), rt
+drawDust(); drawArt()
+let lastW = innerWidth, rt
 addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => {
-  if (layoutNow() !== lastSky) { lastSky = layoutNow(); drawSky() } else drawDust(lastSky === 'phone')
-  if (flowLayout() !== lastFlow) { lastFlow = flowLayout(); drawFlow() }
+  drawDust()
+  if (innerWidth !== lastW) { lastW = innerWidth; drawArt(); if (dotsDrawn) drawChanges(false) }
 }, 150) })
-
-// guide the eye: one constellation glows at a time, saying what it is, until someone hovers
-let gi = 0, guide = !reduce
-const settle = () => sky.querySelectorAll('.con.glow').forEach(n => n.classList.remove('glow'))
-sky.addEventListener('pointerenter', () => { guide = false; settle() })
-sky.addEventListener('pointerleave', () => { guide = !reduce })
-sky.addEventListener('focusin', () => { guide = false; settle() })
-sky.addEventListener('focusout', () => { guide = !reduce })
-setInterval(() => {
-  if (!guide || scrollY > innerHeight * .4) return
-  const cons = sky.querySelectorAll('.con'); settle(); cons[gi++ % cons.length].classList.add('glow')
-}, 2600)
-
-// each face of Atlance: pick a piece to read what it does
-document.querySelectorAll('.face-col').forEach(col => {
-  const what = col.querySelector('.what'), buttons = [...col.querySelectorAll('.pieces button')]
-  const pick = b => {
-    buttons.forEach(o => o.setAttribute('aria-pressed', o === b))
-    what.textContent = b.dataset.what
-    what.classList.remove('swap'); void what.offsetWidth; what.classList.add('swap')
-  }
-  buttons.forEach(b => b.addEventListener('click', () => pick(b)))
-  buttons.forEach((b, i) => b.setAttribute('aria-pressed', i === 0)); what.textContent = buttons[0].dataset.what
-})
 
 // the live numbers come from Atlance itself; the text in the page is only the fallback
 fetch('https://atlance.urbanpiper.ai/stats.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(s => {
   const a = s && s.atlance, set = (k, v) => { if (v) document.querySelector(`[data-stat="${k}"]`).textContent = v }
-  if (!a) return
+  if (!a || !a.total_commits) return
   set('modules', a.modules)
-  set('commits', a.total_commits && (Math.round(a.total_commits / 100) * 100).toLocaleString('en-US'))
+  set('commits', 'about ' + (Math.round(a.total_commits / 100) * 100).toLocaleString('en-US'))
+  set('dots', a.total_commits.toLocaleString('en-US'))
+  commits = a.total_commits; if (dotsDrawn) drawChanges(false)
 }).catch(() => {})
 
-// the cat, drawn line by line
-document.querySelectorAll('[data-con="cat"]').forEach(el => {
-  const pad = 30, x0 = -51 - pad, y0 = -38 - pad, w = 102 + pad * 2, h = 76 + pad * 2, s = w / 300
-  const svg = mk('svg', { viewBox: `${x0} ${y0} ${w} ${h}`, class: 'big', 'aria-hidden': 'true' }, el)
-  CAT.edges.forEach(([i, j], n) => mk('line', { x1: CAT.pts[i][0], y1: CAT.pts[i][1], x2: CAT.pts[j][0], y2: CAT.pts[j][1], pathLength: 1, 'stroke-width': (1.3 * s).toFixed(2), style: `--d:${(.25 + n * .12).toFixed(2)}s` }, svg))
-  CAT.pts.forEach(([x, y], n) => {
-    mk('circle', { class: 'halo', cx: x, cy: y, r: 14 * s, style: `--d:${(n * .08).toFixed(2)}s` }, svg)
-    mk('circle', { class: 's', cx: x, cy: y, r: (n ? 2.2 : 3) * s, style: `--d:${(n * .08).toFixed(2)}s` }, svg)
-  })
-})
-
-// the arc: checkpoints along a rising curve; labels alternate above and below
+// the path: checkpoints along a rising curve; labels alternate above and below
 ;(() => {
   const P = [[60,440],[240,400],[420,330],[600,260],[780,170],[945,80]]
   let d = `M ${P[0][0]} ${P[0][1]}`
@@ -517,14 +400,16 @@ document.querySelectorAll('[data-con="cat"]').forEach(el => {
   })
 })()
 
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in') }), { rootMargin: '0px 0px -15% 0px' })
-document.querySelectorAll('.work-top, .faces, .arc, .off').forEach(s => reduce ? s.classList.add('in') : io.observe(s))
+// sections draw in once their top is on screen
+const reveal = s => { s.classList.add('in'); if (s.id === 'how' && !dotsDrawn) drawChanges(!reduce) }
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target) } }), { rootMargin: '0px 0px -15% 0px' })
+document.querySelectorAll('.sec').forEach(s => reduce ? reveal(s) : io.observe(s))
 
-// the overview recedes as you fly in (called by sky.js once per frame)
+// the first screen recedes as you fly into the sky (called by sky.js once per frame)
+const intro = document.querySelector('.intro')
 window.onSkyFrame = (y, H) => {
-  const k = Math.min(1, y / (H * .7))
-  sky.style.opacity = 1 - k; sky.style.transform = `scale(${1 + k * .3})`
-  words.style.opacity = Math.max(0, 1 - k * 1.4)
+  const k = Math.min(1, y / (H * .8))
+  intro.style.opacity = Math.max(0, 1 - k * 1.3); intro.style.transform = `translateY(${(-k * 40).toFixed(1)}px)`
 }
 </script>
 </body>
