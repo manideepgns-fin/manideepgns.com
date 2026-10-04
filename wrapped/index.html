@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wrapped 2026 | Manideep GNS</title>
+<meta name="description" content="My first year of building Atlance, told like Spotify Wrapped.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#fff; --dim:rgba(255,255,255,.7); }
+  * { box-sizing:border-box; margin:0; padding:0 }
+  html,body { height:100%; background:#0b0b10; color:var(--ink); font-family:Inter,system-ui,sans-serif; overflow:hidden }
+  .bars { position:fixed; top:14px; left:16px; right:16px; display:flex; gap:4px; z-index:10 }
+  .bars i { flex:1; height:3px; border-radius:2px; background:rgba(255,255,255,.25); overflow:hidden }
+  .bars i b { display:block; height:100%; width:0; background:#fff }
+  .bars i.done b { width:100% }
+  .bars i.on b { animation:fill 6s linear forwards }
+  @keyframes fill { to { width:100% } }
+  .slide { position:fixed; inset:0; display:none; flex-direction:column; justify-content:center; padding:64px 28px; max-width:720px; margin:0 auto; z-index:1 }
+  .slide.on { display:flex; animation:in .5s ease-out }
+  @keyframes in { from { opacity:0; transform:translateY(16px) } }
+  .bg { position:fixed; inset:0; z-index:0; transition:background .6s }
+  .k { font-size:15px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--dim); margin-bottom:18px }
+  h1 { font-size:clamp(40px,9vw,84px); font-weight:900; line-height:1; letter-spacing:-.03em }
+  h2 { font-size:clamp(28px,6vw,52px); font-weight:800; line-height:1.08; letter-spacing:-.02em }
+  .big { font-size:clamp(72px,20vw,180px); font-weight:900; line-height:1; margin-bottom:22px; letter-spacing:-.05em }
+  p { font-size:clamp(17px,2.6vw,22px); line-height:1.45; color:var(--dim); margin-top:18px }
+  p strong { color:#fff }
+  .quote { margin-top:22px; padding:16px 18px; border-left:4px solid #fff; background:rgba(0,0,0,.18); font-size:clamp(16px,2.4vw,20px); line-height:1.4; border-radius:0 10px 10px 0 }
+  .chart { display:flex; align-items:flex-end; gap:8px; height:220px; margin-top:28px }
+  .chart div { flex:1; background:rgba(255,255,255,.85); border-radius:6px 6px 0 0; position:relative; transform-origin:bottom; animation:grow .9s cubic-bezier(.2,.9,.3,1.2) both }
+  .chart div span { position:absolute; bottom:-24px; left:0; right:0; text-align:center; font-size:12px; color:var(--dim) }
+  .chart div em { position:absolute; top:-22px; left:0; right:0; text-align:center; font-size:12px; font-style:normal; font-weight:700 }
+  @keyframes grow { from { transform:scaleY(0) } }
+  ol { list-style:none; margin-top:26px }
+  ol li { display:flex; align-items:baseline; gap:16px; font-size:clamp(22px,4.5vw,36px); font-weight:800; padding:8px 0; animation:in .5s ease-out both }
+  ol li small { font-size:16px; font-weight:600; color:var(--dim); margin-left:auto }
+  ol li b { width:36px; color:var(--dim) }
+  .vs { display:flex; gap:20px; margin-top:28px }
+  .vs div { flex:1; background:rgba(0,0,0,.2); border-radius:16px; padding:22px }
+  .vs div .big { font-size:clamp(52px,12vw,96px) }
+  .hint { position:fixed; bottom:18px; left:0; right:0; text-align:center; font-size:13px; color:rgba(255,255,255,.5) }
+  .tap { position:fixed; top:0; bottom:0; width:35%; z-index:5; cursor:pointer }
+  .tap.l { left:0 } .tap.r { right:0; width:65% }
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+<div class="bars" id="bars"></div>
+<div class="tap l" id="prev"></div><div class="tap r" id="next"></div>
+
+<section class="slide" data-bg="linear-gradient(135deg,#1DB954,#0b3d20)">
+  <div class="k">Atlance Wrapped · 2026</div>
+  <h1>Manideep, you built a finance platform in English.</h1>
+  <p>Here's your year, straight from the git history.</p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#6a11cb,#2575fc)">
+  <div class="k">It all started on</div>
+  <h1>18 January 2026</h1>
+  <div class="quote">“first commit”</div>
+  <p>And the very next commit, minutes later:</p>
+  <div class="quote">“add password protection”</div>
+  <p>Controls before features. <strong>The most CA move in software history.</strong></p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#ff512f,#dd2476)">
+  <div class="k">This year you shipped</div>
+  <div class="big">4,078</div>
+  <h2>commits</h2>
+  <p>On <strong>215 different days</strong>. Your longest streak was <strong>61 days in a row</strong>, two months without one day off from shipping.</p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#f7971e,#c0392b)">
+  <div class="k">Your month</div>
+  <h1>September</h1>
+  <p><strong>1,116 commits</strong>, 12× your January. You didn't slow down, you compounded.</p>
+  <div class="chart" id="months"></div>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#141e30,#243b55)">
+  <div class="k">Your hour</div>
+  <h1>4 PM</h1>
+  <p>Your peak hour. But <strong>83 changes landed between midnight and 1 AM</strong>, and a few before sunrise.</p>
+  <p>The books close in the day. The building happens at night.</p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#00b09b,#096c5c)">
+  <div class="k">Your favourite day to build</div>
+  <h1>Saturday</h1>
+  <p><strong>650 commits</strong>, more than any weekday. Atlance is your weekend hobby that became the company's back office.</p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#8e2de2,#4a00e0)">
+  <div class="k">Perfectly balanced</div>
+  <div class="vs">
+    <div><div class="big">1,340</div><h2>features</h2></div>
+    <div><div class="big">1,328</div><h2>fixes</h2></div>
+  </div>
+  <p>For every new thing, almost exactly one fix. <strong>Your books balance, even in code.</strong></p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#e52d27,#8a1c1c)">
+  <div class="k">Your top artists</div>
+  <h2>The modules you couldn't stop playing</h2>
+  <ol>
+    <li style="animation-delay:.1s"><b>1</b>Billing<small>543</small></li>
+    <li style="animation-delay:.25s"><b>2</b>AR<small>146</small></li>
+    <li style="animation-delay:.4s"><b>3</b>API<small>144</small></li>
+    <li style="animation-delay:.55s"><b>4</b>Referrals<small>119</small></li>
+    <li style="animation-delay:.7s"><b>5</b>Pulse<small>99</small></li>
+  </ol>
+  <p>Billing outsold everything else. No surprise there.</p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#fc4a1a,#f7b733)">
+  <div class="k">Your biggest day</div>
+  <h1>2 September</h1>
+  <div class="big">87</div>
+  <p>commits in a single day. That's one every <strong>16 minutes</strong>, all day.</p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#373b44,#4286f4)">
+  <div class="k">Most quoted person in the codebase</div>
+  <h1>“owner”</h1>
+  <p>Your rulings are written into <strong>117 commit messages</strong>. When the code needs to know why, it quotes you.</p>
+  <p>Oh, and <strong>21 reverts</strong>. Even auditors change their minds.</p>
+</section>
+
+<section class="slide" data-bg="linear-gradient(135deg,#1DB954,#0b3d20)">
+  <div class="k">That's a wrap</div>
+  <h1>Not bad for someone whose only coding language is English.</h1>
+  <p>See you in Wrapped 2027.</p>
+</section>
+
+<div class="hint">tap or → to continue, ← to go back</div>
+<a href="../" style="position:fixed;top:30px;left:16px;z-index:11;font-size:13px;color:rgba(255,255,255,.75);text-decoration:none">← manideepgns.com</a>
+
+<script>
+  const months = [['Jan',93],['Feb',590],['Mar',201],['Apr',135],['May',193],['Jun',492],['Jul',598],['Aug',660],['Sep',1116]]
+  const max = Math.max(...months.map(m => m[1]))
+  document.getElementById('months').innerHTML = months.map(([m, n], i) =>
+    `<div style="height:${(n / max) * 100}%;animation-delay:${i * 0.07}s"><em>${n}</em><span>${m}</span></div>`).join('')
+
+  const slides = [...document.querySelectorAll('.slide')]
+  const bars = document.getElementById('bars')
+  bars.innerHTML = slides.map(() => '<i><b></b></i>').join('')
+  let at = 0, timer
+  function show(n) {
+    at = Math.max(0, Math.min(slides.length - 1, n))
+    slides.forEach((s, i) => s.classList.toggle('on', i === at))
+    ;[...bars.children].forEach((b, i) => { b.className = i < at ? 'done' : '' })
+    void bars.offsetWidth
+    bars.children[at].className = 'on'
+    document.getElementById('bg').style.background = slides[at].dataset.bg
+    clearTimeout(timer)
+    if (at < slides.length - 1) timer = setTimeout(() => show(at + 1), 6000)
+  }
+  document.getElementById('next').onclick = () => show(at + 1)
+  document.getElementById('prev').onclick = () => show(at - 1)
+  addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') show(at + 1)
+    if (e.key === 'ArrowLeft') show(at - 1)
+  })
+  show(0)
+</script>
+</body>
+</html>

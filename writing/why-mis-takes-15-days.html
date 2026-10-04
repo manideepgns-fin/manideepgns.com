@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Why MIS Takes 15 Days — Manideep GNS</title>
+<title>Why MIS Takes 15 Days | Manideep GNS</title>
 <meta name="description" content="An internal memo from January 2026 — what I sent when my boss asked why month-end MIS takes 15 days. Ten places expense data gets stuck, diagnosed in tech terms." />
-<meta property="og:title" content="Why MIS Takes 15 Days — Manideep GNS" />
+<meta property="og:title" content="Why MIS Takes 15 Days | Manideep GNS" />
 <meta property="og:description" content="An internal memo from January 2026 — ten places expense data gets stuck, diagnosed in tech terms." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://manideepgns.com/writing/why-mis-takes-15-days.html" />
@@ -15,12 +15,12 @@
 <meta property="article:published_time" content="2026-01-23" />
 <meta property="article:author" content="Manideep GNS" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Why MIS Takes 15 Days — Manideep GNS" />
+<meta name="twitter:title" content="Why MIS Takes 15 Days | Manideep GNS" />
 <meta name="twitter:description" content="An internal memo from January 2026 — ten places expense data gets stuck, diagnosed in tech terms." />
 <meta name="twitter:image" content="https://manideepgns.com/og/og-mis-memo.png" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-<meta name="theme-color" content="#0a0a0c" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+<meta name="theme-color" content="#040406" />
 <link rel="canonical" href="https://manideepgns.com/writing/why-mis-takes-15-days.html" />
 
 <script type="application/ld+json">
@@ -50,342 +50,15 @@
 }
 </script>
 
-<style>
-  :root {
-    --bg:           #0a0a0c;
-    --bg-card:      #131316;
-    --bg-elev:      #1a1a1d;
-    --bg-hover:     #1f1f23;
-    --line:         #1f1f23;
-    --line-strong:  #2a2a30;
-    --line-bright:  #3a3a42;
-    --fg:           #ededee;
-    --fg-dim:       #b3b4b6;
-    --fg-mute:      #87898c;
-    --fg-soft:      #555558;
-    --accent:       #5eead4;
-    --accent-2:     #c084fc;
-    --accent-3:     #22d3ee;
-    --green:        #4ade80;
-    --warn:         #f59e0b;
-    --w-narrow:     720px;
-    --w-wide:       1080px;
-    --sans:   -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --mono:   ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    color: var(--fg);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    line-height: 1.6;
-    overflow-x: hidden;
-    font-feature-settings: 'tnum', 'kern', 'liga';
-    font-size: 16px;
-  }
-  ::selection { background: var(--accent); color: var(--bg); }
-  a { color: inherit; text-decoration: none; }
-
-  :focus { outline: none; }
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  /* ── Nav ── */
-  header.nav {
-    position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    background: rgba(10,10,12,0.7);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-row {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
-    max-width: var(--w-narrow); margin: 0 auto;
-    padding: 0 28px;
-  }
-  .nav-back {
-    font-family: var(--mono); font-size: 11.5px;
-    color: var(--fg-mute); letter-spacing: 0.04em;
-    text-transform: uppercase;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: color .15s;
-  }
-  .nav-back:hover { color: var(--fg); }
-  .nav-back .arr { font-family: var(--mono); transition: transform .15s; }
-  .nav-back:hover .arr { transform: translateX(-2px); }
-  .nav-meta {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--fg-mute); letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  /* ── Article ── */
-  .wrap { max-width: var(--w-narrow); margin: 0 auto; padding: 0 28px; }
-
-  .essay { padding: 64px 0 96px; }
-  @media (max-width: 600px) { .essay { padding: 48px 0 64px; } }
-
-  .essay-head { margin-bottom: 48px; }
-  .essay-head .eyebrow {
-    font-family: var(--mono); font-size: 10.5px;
-    color: var(--fg-mute); letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .essay-head .eyebrow::before {
-    content: ''; width: 18px; height: 1px;
-    background: var(--accent);
-    display: inline-block;
-  }
-  .essay-head h1 {
-    font-size: clamp(30px, 4.4vw, 44px);
-    font-weight: 500; letter-spacing: -0.028em;
-    line-height: 1.15;
-    margin: 0 0 24px;
-    color: var(--fg);
-  }
-  .essay-head .frame {
-    font-family: var(--sans);
-    font-size: 14.5px;
-    color: var(--fg-mute);
-    line-height: 1.65;
-    font-style: italic;
-    margin: 0;
-    padding-left: 14px;
-    border-left: 1px solid var(--line-bright);
-    max-width: 60ch;
-  }
-  .essay-head .frame-update {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent-2);
-    line-height: 1.6;
-    margin: 12px 0 0;
-    padding-left: 14px;
-    border-left: 1px solid var(--accent-2);
-    max-width: 60ch;
-  }
-  .essay-head .frame-update em { font-style: normal; }
-
-  /* ── Status (May 2026) postscript ── */
-  .essay-body .status-head {
-    color: var(--accent-2);
-    margin-top: 12px;
-  }
-  .essay-body .status-frame {
-    font-style: italic;
-    color: var(--fg-mute);
-    font-size: 14.5px;
-    margin: 0 0 22px;
-    padding-left: 14px;
-    border-left: 1px solid var(--accent-2);
-    max-width: 60ch;
-  }
-
-  /* ── Essay body typography ── */
-  .essay-body {
-    color: var(--fg-dim);
-    font-size: 16.5px;
-    line-height: 1.78;
-    letter-spacing: -0.005em;
-  }
-  .essay-body p { margin: 0 0 22px; }
-  .essay-body p:last-child { margin-bottom: 0; }
-  .essay-body strong { color: var(--fg); font-weight: 600; }
-  .essay-body em { font-style: italic; }
-
-  .essay-body a {
-    color: var(--fg);
-    text-decoration: underline;
-    text-decoration-color: var(--line-bright);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-    transition: color .15s, text-decoration-color .15s;
-  }
-  .essay-body a:hover { color: var(--accent); text-decoration-color: var(--accent); }
-
-  .essay-body h2 {
-    font-size: clamp(22px, 2.6vw, 28px);
-    font-weight: 500; letter-spacing: -0.022em;
-    line-height: 1.25;
-    color: var(--fg);
-    margin: 56px 0 18px;
-  }
-  .essay-body h2:first-child { margin-top: 0; }
-  .essay-body h3 {
-    font-size: 17px; font-weight: 500;
-    letter-spacing: -0.012em;
-    color: var(--fg);
-    margin: 36px 0 12px;
-  }
-
-  .essay-body hr {
-    border: 0;
-    height: 1px;
-    background: var(--line-strong);
-    margin: 48px 0;
-  }
-
-  /* ── Blockquote / pull-quote ── */
-  .essay-body blockquote {
-    margin: 28px 0;
-    padding: 4px 0 4px 18px;
-    border-left: 2px solid var(--accent);
-    font-style: italic;
-    color: var(--fg);
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  .essay-body blockquote p { margin: 0; }
-
-  /* ── Callout ── */
-  .callout {
-    margin: 28px 0;
-    padding: 18px 22px;
-    border-left: 2px solid var(--accent-3);
-    background: rgba(34,211,238,0.04);
-    border-radius: 0 6px 6px 0;
-    color: var(--fg);
-    font-size: 15.5px;
-    line-height: 1.65;
-  }
-  .callout p { margin: 0; }
-  .callout strong { color: var(--accent-3); font-weight: 600; }
-
-  /* ── Code blocks (ASCII diagrams) ── */
-  .essay-body pre {
-    margin: 28px -8px;
-    padding: 20px 18px;
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .essay-body pre code {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    line-height: 1.5;
-    color: var(--fg-dim);
-    white-space: pre;
-    display: block;
-    letter-spacing: 0;
-  }
-  .essay-body code:not(pre code) {
-    font-family: var(--mono);
-    font-size: 13.5px;
-    color: var(--accent-3);
-    background: var(--bg-card);
-    padding: 1px 6px;
-    border-radius: 3px;
-    border: 1px solid var(--line);
-  }
-  @media (max-width: 600px) {
-    .essay-body pre code { font-size: 10px; }
-  }
-
-  /* ── Tables ── */
-  .essay-body table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 24px 0;
-    font-size: 14px;
-    line-height: 1.55;
-  }
-  .essay-body table th, .essay-body table td {
-    text-align: left;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-  }
-  .essay-body table th {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--fg-mute); letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-bottom: 1px solid var(--line-strong);
-  }
-  .essay-body table td { color: var(--fg-dim); }
-  .essay-body table td strong { color: var(--fg); }
-  .essay-body table td code {
-    font-family: var(--mono); font-size: 12.5px;
-    color: var(--accent-3);
-    background: transparent;
-    padding: 0; border: 0;
-  }
-  @media (max-width: 600px) {
-    .essay-body table { font-size: 13px; }
-    .essay-body table th, .essay-body table td { padding: 8px 10px; }
-  }
-
-  /* ── Numbered / bullet lists ── */
-  .essay-body ol, .essay-body ul {
-    margin: 22px 0;
-    padding-left: 22px;
-  }
-  .essay-body li { margin-bottom: 10px; }
-  .essay-body li::marker { color: var(--fg-mute); }
-
-  /* ── Essay foot ── */
-  .essay-foot {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 16px; flex-wrap: wrap;
-  }
-  .essay-foot .back {
-    font-family: var(--mono); font-size: 12px;
-    color: var(--fg-mute); letter-spacing: 0.04em;
-    text-transform: uppercase;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: color .15s;
-  }
-  .essay-foot .back:hover { color: var(--fg); }
-  .essay-foot .back:hover .arr { transform: translateX(-2px); }
-  .essay-foot .back .arr { transition: transform .15s; }
-  .essay-foot .meta {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--fg-mute); letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  /* ── Footer ── */
-  footer.site-foot {
-    border-top: 1px solid var(--line);
-    padding: 32px 0;
-    color: var(--fg-mute); font-size: 12.5px;
-  }
-  .foot-row {
-    max-width: var(--w-narrow); margin: 0 auto;
-    padding: 0 28px;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 12px;
-    font-family: var(--mono); letter-spacing: 0.04em;
-  }
-  .foot-row a { color: var(--fg-mute); transition: color .15s; }
-  .foot-row a:hover { color: var(--fg); }
-</style>
+<link rel="preload" href="../fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-row">
-    <a class="nav-back" href="/">
-      <span class="arr" aria-hidden="true">←</span>
-      <span>Manideep GNS</span>
-    </a>
-    <span class="nav-meta">Memo · Jan 2026</span>
-  </div>
+<canvas class="stars" data-flight="calm" aria-hidden="true"></canvas>
+<header class="top solid">
+  <a class="me" href="../">Manideep GNS</a>
+  <nav aria-label="Main"><a href="../#atlance">Work</a><a href="./" aria-current="page">Writing</a><a href="../stack.html">Stack</a><a href="../#hi">Say hi</a></nav>
 </header>
 
 <main>
@@ -709,9 +382,9 @@ Ends           coming in       Pazy approvals  numbers        Ready
     </div>
 
     <footer class="essay-foot">
-      <a class="back" href="/">
+      <a class="back" href="./">
         <span class="arr" aria-hidden="true">←</span>
-        <span>Back to Manideep GNS</span>
+        <span>All writing</span>
       </a>
       <span class="meta">Sent: Jan 23, 2026 · Audience: one</span>
     </footer>
@@ -719,12 +392,8 @@ Ends           coming in       Pazy approvals  numbers        Ready
   </article>
 </main>
 
-<footer class="site-foot">
-  <div class="foot-row">
-    <div>© 2026 MANIDEEP GNS · BENGALURU, IST</div>
-    <div>FINANCE × CURIOSITY × CODE</div>
-  </div>
-</footer>
+<footer class="foot"><span>© 2026 Manideep GNS</span><a href="../">Back to the sky</a></footer>
+<script src="../assets/sky.js" defer></script>
 
 </body>
 </html>
