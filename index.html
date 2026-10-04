@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manideep GNS | I build the systems finance runs on</title>
-<meta name="description" content="Chartered Accountant and Head of Finance at UrbanPiper. I build the systems finance runs on: billing engines, AI agents and the platform underneath.">
-<meta property="og:title" content="Manideep GNS | I build the systems finance runs on">
-<meta property="og:description" content="Chartered Accountant and Head of Finance at UrbanPiper. I build the systems finance runs on.">
+<title>Manideep GNS | I design the systems a business runs on</title>
+<meta name="description" content="Chartered Accountant and Head of Finance at UrbanPiper. I design the systems a business runs on: data, agents and interfaces, end to end.">
+<meta property="og:title" content="Manideep GNS | I design the systems a business runs on">
+<meta property="og:description" content="Chartered Accountant by training. I design the systems a business runs on.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manideepgns.com/">
 <meta property="og:image" content="https://manideepgns.com/og/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Manideep GNS | I build the systems finance runs on">
-<meta name="twitter:description" content="Chartered Accountant and Head of Finance at UrbanPiper. I build the systems finance runs on.">
+<meta name="twitter:title" content="Manideep GNS | I design the systems a business runs on">
+<meta name="twitter:description" content="Chartered Accountant by training. I design the systems a business runs on.">
 <meta name="twitter:image" content="https://manideepgns.com/og/og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -38,7 +38,7 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
   "alumniOf": { "@type": "Organization", "name": "The Institute of Chartered Accountants of India (ICAI)" },
   "hasCredential": "Chartered Accountant (CA), ICAI Nov 2023",
-  "description": "Chartered Accountant and Head of Finance at UrbanPiper. I build the systems finance runs on.",
+  "description": "Chartered Accountant by training. I design the systems a business runs on.",
   "sameAs": ["https://github.com/manideepgns-fin", "https://linkedin.com/in/nagasai-manideep-g-71141412b", "https://cal.com/manideepgns/intro-chat"]
 }
 </script>
@@ -59,6 +59,28 @@
   .con .halo:nth-of-type(1) { opacity: .25 }
   .con text { fill: var(--ink); font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 20px; opacity: .46; transition: opacity .5s }
   .con text.sub { fill: var(--dim); font-family: var(--sans); font-style: normal; font-size: 12.5px; font-weight: 300; opacity: 0 }
+  .streams .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: .08 }
+  .streams .packet { fill: #ffe9c9; filter: drop-shadow(0 0 3px rgba(255,233,201,.9)) }
+  .streams .src { fill: var(--ink); opacity: .8 }
+  .streams .srcname { fill: var(--dim); font-family: var(--sans); font-size: 11.5px; font-weight: 300 }
+  .tri .edge { stroke: var(--ink); stroke-width: 1.1; opacity: .7 }
+  .tri .name { fill: var(--ink); font-family: var(--serif); font-weight: 500; font-size: 30px; letter-spacing: .01em }
+  .tri .face { fill: var(--ink); font-family: var(--serif); font-style: italic; font-size: 23px }
+  .tri .base { fill: var(--faint); font-family: var(--sans); font-size: 11.5px; letter-spacing: .06em }
+  .tri .corner { fill: var(--ink); filter: drop-shadow(0 0 5px rgba(255,246,230,.9)) }
+  .tri .halo.on { fill: url(#halo); opacity: .55 }
+  .grp { cursor: pointer; outline: none }
+  .grp .hitzone { fill: transparent; pointer-events: all }
+  .tri { pointer-events: none }
+
+  .grp .tie { stroke: var(--ink); stroke-width: .6; opacity: .1; transition: opacity .5s }
+  .grp circle.s { fill: var(--ink); opacity: .7; animation: twinkle var(--tw, 4s) ease-in-out var(--td, 0s) infinite }
+  .grp .halo { fill: url(#halo); opacity: 0; transition: opacity .5s }
+  .grp .piece { fill: var(--dim); font-family: var(--sans); font-size: 11.5px; font-weight: 300; opacity: .55; transition: opacity .5s, fill .5s }
+  .grp:hover .tie, .grp:focus-visible .tie, .grp.glow .tie { opacity: .38 }
+  .grp:hover .halo, .grp:focus-visible .halo, .grp.glow .halo { opacity: .7 }
+  .grp:hover .piece, .grp:focus-visible .piece, .grp.glow .piece { opacity: 1; fill: var(--ink) }
+  @media (prefers-reduced-motion: reduce) { .grp circle.s { animation: none } }
   #dust { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .9 }
   .threads line { stroke: var(--ink); stroke-width: .6; stroke-dasharray: 2 6; opacity: .07 }
   .con circle.s { animation: twinkle var(--tw, 4s) ease-in-out var(--td, 0s) infinite }
@@ -149,81 +171,73 @@
 </head>
 <body>
 <canvas class="stars" aria-hidden="true"></canvas>
-<header class="top">
+<header class="top solid">
   <a class="me" href="./">Manideep GNS</a>
-  <nav aria-label="Main"><a href="#atlance">Work</a><a href="#arc">Arc</a><a href="writing/">Writing</a><a href="stack.html">Stack</a><a href="#hi">Say hi</a></nav>
+  <nav aria-label="Main"><a href="#foundation">Work</a><a href="#arc">Arc</a><a href="writing/">Writing</a><a href="stack.html">Stack</a><a href="#hi">Say hi</a></nav>
 </header>
 
 <section class="hero" aria-label="Introduction">
   <canvas id="dust" aria-hidden="true"></canvas>
-  <svg id="sky" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-label="Things I've built, drawn as constellations">
+  <svg id="sky" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-label="Things I've built, drawn as constellations">
     <defs>
       <radialGradient id="halo"><stop offset="0" stop-color="#fff6e6" stop-opacity=".55"/><stop offset="1" stop-color="#fff6e6" stop-opacity="0"/></radialGradient>
       <radialGradient id="halo2"><stop offset="0" stop-color="#fff6e6" stop-opacity=".35"/><stop offset="1" stop-color="#fff6e6" stop-opacity="0"/></radialGradient>
     </defs>
   </svg>
   <div class="words">
-    <h1>I build the systems <em>finance runs on.</em></h1>
-    <p>Chartered Accountant. Head of Finance at UrbanPiper. Mostly building after dark.</p>
+    <h1>I design the systems <em>a business runs on.</em></h1>
+    <p>Chartered Accountant by training. I design platforms on top of the systems a business already has.</p>
   </div>
 </section>
 
 <main>
-  <section class="stop split" id="atlance">
+  <section class="stop center" id="foundation">
+    <div class="art" data-con="under"></div>
     <div class="copy">
-      <h2>Atlance</h2>
-      <p>The finance platform UrbanPiper runs on. Billing, collections, cash and reporting for four countries, on one warehouse.</p>
-      <div class="fact">29 modules and about 4,000 changes since January, all directed in plain English.</div>
-      <a class="pill" href="https://atlance.urbanpiper.ai/architecture/">See how it fits together ↗</a>
-    </div>
-    <div class="art" data-con="atlance"></div>
-  </section>
-
-  <section class="stop center" id="billing-engine">
-    <div class="art" data-con="engine"></div>
-    <div class="copy">
-      <h2>One billing engine</h2>
-      <p>Contracts in, invoices out. The same rules in India, the UK, MENA and the US, so month-end is a review instead of a rebuild.</p>
+      <h2>On top of what exists</h2>
+      <p>Atlance doesn't replace Zoho, Salesforce or Stripe. Every source streams into one warehouse, and on top sit one API, the agents and one design system.</p>
+      <div class="fact">29 modules and about 4,000 changes since January, designed and directed in plain English.</div>
+      <a class="pill" href="https://atlance.urbanpiper.ai/architecture/">See the live system map ↗</a>
     </div>
   </section>
 
-  <section class="stop split flip" id="billing-desk">
+  <section class="stop split" id="operate">
     <div class="copy">
-      <h2>The Billing Desk</h2>
-      <p>An agent that reads every billing email, checks the books and drafts the reply. Simple cases close on their own. The rest wait for a person.</p>
+      <h2>Operate</h2>
+      <p>The work that moves money. Contracts become invoices in four countries, an agent answers the billing inbox, and every deal is signed and filed in one place.</p>
+      <div class="fact">Billing, collections, the Billing Desk agent, signing, approvals.</div>
     </div>
-    <div class="art" data-con="desk"></div>
+    <div class="art" data-con="operate"></div>
   </section>
 
-  <section class="stop center" id="mudra">
-    <div class="art" data-con="mudra"></div>
+  <section class="stop center" id="analyse">
+    <div class="art" data-con="analyse"></div>
     <div class="copy">
-      <h2>Mudra</h2>
-      <p>Mudra means seal. Order forms are raised, signed and certified in one place, and every signed agreement is one search away.</p>
+      <h2>Analyse</h2>
+      <p>Where the business stands, every morning. Cash runway, plan against actuals, headcount and infrastructure cost, read live from the source.</p>
     </div>
   </section>
 
-  <section class="stop split" id="mayashilpi">
+  <section class="stop split flip" id="report">
     <div class="copy">
-      <h2>Mayashilpi</h2>
-      <p>Maya is illusion, shilpi a craftsman. The design system behind every Atlance screen: one set of tokens, components and rules.</p>
+      <h2>Report</h2>
+      <p>Reporting that writes itself. Monthly memos drafted from the numbers, statements customers open on their own, and a map of the system drawn from its own code.</p>
     </div>
-    <div class="art" data-con="maya"></div>
+    <div class="art" data-con="report"></div>
   </section>
 
-  <section class="stop center" id="cataholic">
+  <section class="stop split" id="off-hours">
+    <div class="copy">
+      <h2>Off hours</h2>
+      <p>Cataholic, a chunky orange cat that lives on your Mac. And Wrapped, my first year of building told as a story.</p>
+      <a class="pill" href="https://github.com/manideepgns-fin/cataholic">Cataholic on GitHub ↗</a>
+    </div>
     <div class="art" data-con="cat"></div>
-    <div class="copy">
-      <h2>Cataholic</h2>
-      <p>A chunky orange cat that lives on your Mac. Open source, signed, and it updates itself.</p>
-      <a class="pill" href="https://github.com/manideepgns-fin/cataholic">On GitHub ↗</a>
-    </div>
   </section>
-
 
   <section class="arc" id="arc">
     <h2>Ten years, <em>one direction.</em></h2>
-    <p>From a commerce student at 16 to running finance across four countries, and building the systems it runs on.</p>
+    <p>From a commerce student at 16 to running finance across four countries, and designing the systems a business runs on.</p>
     <div class="path">
       <svg viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path id="arcline" pathLength="1" d=""/></svg>
       <ol id="arcpoints">
@@ -256,7 +270,7 @@
   <section class="end" id="hi">
     <div>
       <h2>More stars coming. <em>Say hi.</em></h2>
-      <p>Open to roles building finance systems, and to advising teams who want finance to run on software.</p>
+      <p>Open to roles designing systems, and to advising teams who want their business to run on software.</p>
       <a class="pill solid" href="mailto:manideepgns@gmail.com">manideepgns@gmail.com</a>
       <div class="links">
         <a href="https://linkedin.com/in/nagasai-manideep-g-71141412b">LinkedIn</a>
@@ -275,52 +289,88 @@
 /* Constellations: one shape per thing I've built. Shapes are in local units around (0,0);
    each layout places them in the hero's coordinate space (wide screens vs phones). */
 const CONS = {
-  atlance: { name: 'Atlance', sub: 'The finance platform UrbanPiper runs on',
-    pts: [[-70,-20],[-18,-52],[38,-32],[70,20],[22,56],[-32,44],[10,0]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[6,0],[6,2],[6,4]] },
-  engine: { name: 'One billing engine', sub: 'Contracts in, invoices out, four countries',
-    pts: [[0,-46],[-66,-22],[66,-22],[-84,18],[-48,18],[48,18],[84,18],[0,44]], edges: [[0,7],[1,0],[0,2],[1,3],[1,4],[3,4],[2,5],[2,6],[5,6]] },
-  desk: { name: 'The Billing Desk', sub: 'An agent that answers billing mail',
-    pts: [[-56,-36],[56,-36],[56,36],[-56,36],[0,6]], edges: [[0,1],[1,2],[2,3],[3,0],[0,4],[4,1]] },
-  mudra: { name: 'Mudra', sub: 'Order to signature, in one place',
-    pts: [[0,48],[-28,-2],[28,-2],[-16,-44],[16,-44],[0,8]], edges: [[0,1],[1,3],[3,4],[4,2],[2,0],[0,5]] },
-  maya: { name: 'Mayashilpi', sub: 'The design system behind Atlance',
-    pts: [[0,-48],[-50,-8],[50,-8],[0,50],[-20,-8],[20,-8]], edges: [[0,1],[0,2],[1,3],[2,3],[1,2],[0,4],[0,5],[4,3],[5,3]] },
-  cat: { name: 'Cataholic', sub: 'A chunky cat for your Mac',
-    pts: [[-51,0],[-37,-38],[-17,-12],[17,-12],[37,-38],[51,0],[33,38],[-33,38]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0]] },
+  operate: { pts: [[0,-46],[-66,-22],[66,-22],[-84,18],[-48,18],[48,18],[84,18],[0,44]], edges: [[0,7],[1,0],[0,2],[1,3],[1,4],[3,4],[2,5],[2,6],[5,6]] },
+  analyse: { pts: [[-84,34],[-52,12],[-20,22],[12,-6],[44,2],[80,-40]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5]] },
+  report:  { pts: [[-72,-30],[0,-18],[72,-30],[72,36],[0,46],[-72,36]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[1,4]] },
+  under:   { pts: [[-66,-34],[-22,-34],[22,-34],[66,-34],[-66,0],[-22,0],[22,0],[66,0],[-66,34],[-22,34],[22,34],[66,34]],
+             edges: [[0,1],[1,2],[2,3],[4,5],[5,6],[6,7],[8,9],[9,10],[10,11],[1,5],[6,10]] },
+  cat:     { pts: [[-51,0],[-37,-38],[-17,-12],[17,-12],[37,-38],[51,0],[33,38],[-33,38]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0]] },
 }
+const FACES = [
+  { name: 'Operate', href: '#operate', pieces: ['Billing', 'Collections', 'Billing Desk', 'Signing', 'Approvals'] },
+  { name: 'Analyse', href: '#analyse', pieces: ['Cash flow', 'Variance', 'People', 'Infra cost'] },
+  { name: 'Report',  href: '#report',  pieces: ['Memos', 'Statements', 'System map', 'Assistant'] },
+]
+const SOURCES = ['Zoho Books', 'Salesforce', 'Stripe', 'Ramp', 'Google Sheets', 'Gmail', 'Metabase']
 const LAYOUT = {
-  wide:  { box: '0 0 1000 600', at: { atlance: [600, 245, 1.55], engine: [300, 125, .85], desk: [165, 300, .85], maya: [880, 135, .8], mudra: [880, 400, .8], cat: [690, 470, .75] } },
-  phone: { box: '0 0 600 1000', at: { atlance: [300, 330, 1.5], engine: [140, 140, .8], maya: [460, 150, .75], desk: [130, 560, .8], mudra: [470, 560, .75], cat: [300, 700, .7] } },
+  wide:  { box: '0 0 1000 600', corners: [[650, 150], [535, 350], [765, 350]], arcs: [[210, 330], [75, 150], [-50, 55]], r: [68, 112], labels: true,
+           src: i => [175 + (i % 2) * 34, 112 + i * 46] },
+  phone: { box: '0 0 600 1000', corners: [[300, 300], [175, 520], [425, 520]], arcs: [[215, 325], [100, 170], [10, 80]], r: [55, 92], labels: false,
+           src: i => [60 + i * 80, 110 + (i % 2) * 34] },
 }
 const NS = 'http://www.w3.org/2000/svg', sky = document.getElementById('sky'), words = document.querySelector('.words')
 const mk = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n }
 const bounds = pts => { const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]); return { x0: Math.min(...xs), y0: Math.min(...ys), x1: Math.max(...xs), y1: Math.max(...ys) } }
 
 function drawSky() {
-  sky.querySelectorAll('.con, .threads').forEach(n => n.remove())
+  sky.querySelectorAll('.tri, .grp, .streams').forEach(n => n.remove())
   const L = innerWidth / innerHeight < .9 ? LAYOUT.phone : LAYOUT.wide
   sky.setAttribute('viewBox', L.box)
-  // faint threads: everything orbits Atlance, except the stray cat
-  const threads = mk('g', { class: 'threads' }, sky), [hx, hy] = L.at.atlance
-  for (const key of ['engine', 'desk', 'maya', 'mudra']) {
-    const [x, y] = L.at[key]
-    mk('line', { x1: x, y1: y, x2: hx, y2: hy }, threads)
-  }
-  let seed = 11; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647
-  for (const [key, c] of Object.entries(CONS)) {
-    const [ox, oy, k] = L.at[key]
-    const pts = c.pts.map(([x, y]) => [x * k + ox + (rnd() - .5) * 5 * k, y * k + oy + (rnd() - .5) * 5 * k]), b = bounds(pts)
-    const a = mk('a', { href: '#' + document.querySelector(`[data-con="${key}"]`).closest('section').id, class: 'con' + (key === 'atlance' ? ' main' : ''), 'aria-label': `${c.name}. ${c.sub}` }, sky)
-    mk('rect', { class: 'hit', x: b.x0 - 30, y: b.y0 - 50, width: b.x1 - b.x0 + 60, height: b.y1 - b.y0 + 90 }, a)
-    c.edges.forEach(([i, j]) => mk('line', { x1: pts[i][0], y1: pts[i][1], x2: pts[j][0], y2: pts[j][1] }, a))
-    pts.forEach(([x, y], i) => {
-      const mag = i === 0 ? 3 : 1.1 + rnd() * 1.3                       // one bright star, the rest dimmer
-      mk('circle', { class: 'halo', cx: x, cy: y, r: (i === 0 ? 22 : 12) * Math.max(k, .9) }, a)
-      mk('circle', { class: 's' + (i === 0 ? ' alpha' : ''), cx: x, cy: y, r: mag * (key === 'atlance' ? 1.15 : 1), style: `--tw:${(2.5 + rnd() * 3).toFixed(2)}s;--td:${(rnd() * 3).toFixed(2)}s` }, a)
+  let seed = 5; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647
+  const [A, B, C] = L.corners, cx = (A[0] + B[0] + C[0]) / 3, cy = (A[1] + B[1] + C[1]) / 3
+  const reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  // the systems a business already has, streaming into Atlance
+  const st = mk('g', { class: 'streams' }, sky)
+  SOURCES.forEach((name, i) => {
+    const [x, y] = L.src(i)
+    const d = L.labels
+      ? `M ${x} ${y} C ${x + 170} ${y}, ${cx - 160} ${cy}, ${cx - 24} ${cy}`
+      : `M ${x} ${y} C ${x} ${y + 90}, ${cx} ${cy - 120}, ${cx} ${cy - 18}`
+    mk('path', { class: 'flow', d }, st)
+    if (!reduceM) for (let k = 0; k < 2; k++) {
+      const dot = mk('circle', { class: 'packet', r: 1.6 }, st)
+      mk('animateMotion', { dur: `${(3.4 + rnd() * 2.2).toFixed(2)}s`, begin: `${(k * 1.9 + rnd() * 2).toFixed(2)}s`, repeatCount: 'indefinite', path: d }, dot)
+    }
+    mk('circle', { class: 'src', cx: x, cy: y, r: 2.2 }, st)
+    if (L.labels) mk('text', { class: 'srcname', x: x - 10, y: y + 4, 'text-anchor': 'end' }, st).textContent = name
+  })
+
+  // the pieces, each a small star tied to its corner
+  FACES.forEach((f, fi) => {
+    const g = mk('a', { href: f.href, class: 'grp', 'aria-label': `${f.name}: ${f.pieces.join(', ')}` }, sky)
+    const [x0, y0] = L.corners[fi], [a0, a1] = L.arcs[fi], n = f.pieces.length
+    mk('circle', { class: 'hitzone', cx: x0, cy: y0, r: L.r[1] + 24 }, g)
+    f.pieces.forEach((name, i) => {
+      const ang = (a0 + (a1 - a0) * (n === 1 ? .5 : i / (n - 1))) * Math.PI / 180
+      const rr = i % 2 ? L.r[1] : L.r[0]
+      const x = x0 + Math.cos(ang) * rr, y = y0 + Math.sin(ang) * rr
+      mk('line', { class: 'tie', x1: x0, y1: y0, x2: x, y2: y }, g)
+      mk('circle', { class: 'halo', cx: x, cy: y, r: 10 }, g)
+      mk('circle', { class: 's', cx: x, cy: y, r: 1.3 + rnd() * .9, style: `--tw:${(2.5 + rnd() * 3).toFixed(2)}s;--td:${(rnd() * 3).toFixed(2)}s` }, g)
+      if (L.labels) {
+        const c = Math.cos(ang), sn = Math.sin(ang), vertical = Math.abs(c) < .4
+        mk('text', { class: 'piece', x: vertical ? x : x + (c > 0 ? 9 : -9), y: vertical ? (sn < 0 ? y - 10 : y + 18) : y + 4,
+          'text-anchor': vertical ? 'middle' : c > 0 ? 'start' : 'end' }, g).textContent = name
+      }
     })
-    mk('text', { x: b.x0, y: b.y0 - 18 }, a).textContent = c.name
-    mk('text', { x: b.x0, y: b.y1 + 28, class: 'sub' }, a).textContent = c.sub
-  }
+  })
+
+  // the triangle: Atlance
+  const t = mk('g', { class: 'tri' }, sky)
+  ;[[A, B, 0], [B, C, .35], [C, A, .7]].forEach(([p, q, d]) => {
+    // drawn on load; the resting value is fully drawn, so the triangle shows even where animation doesn't run
+    const e = mk('line', { class: 'edge', x1: p[0], y1: p[1], x2: q[0], y2: q[1], pathLength: 1, 'stroke-dasharray': 1, 'stroke-dashoffset': 0 }, t)
+    if (!reduceM) { const wait = .3 + d, total = wait + 1.4
+      mk('animate', { attributeName: 'stroke-dashoffset', values: '1;1;0', keyTimes: `0;${(wait / total).toFixed(3)};1`, dur: `${total}s`, begin: '0s', fill: 'freeze' }, e) }
+  })
+  mk('text', { class: 'name', x: cx, y: cy + 12, 'text-anchor': 'middle' }, t).textContent = 'Atlance'
+  mk('text', { class: 'base', x: (B[0] + C[0]) / 2, y: B[1] + 26, 'text-anchor': 'middle' }, t).textContent = 'one warehouse underneath'
+  L.corners.forEach(([x, y], i) => {
+    mk('circle', { class: 'halo on', cx: x, cy: y, r: 26 }, t)
+    mk('circle', { class: 'corner', cx: x, cy: y, r: 3.6 }, t)
+    mk('text', { class: 'face', x: i === 0 ? x : i === 1 ? x - 16 : x + 16, y: i === 0 ? y - 22 : y + 6, 'text-anchor': i === 0 ? 'middle' : i === 1 ? 'end' : 'start' }, t).textContent = FACES[i].name
+  })
   drawDust(L)
 }
 const dust = document.getElementById('dust')
@@ -354,11 +404,11 @@ drawSky()
 // guide the eye: one constellation glows at a time until someone hovers
 const reduceHero = matchMedia('(prefers-reduced-motion: reduce)').matches
 let gi = 0, guide = !reduceHero
-sky.addEventListener('pointerenter', () => { guide = false; sky.querySelectorAll('.con.glow').forEach(n => n.classList.remove('glow')) })
+sky.addEventListener('pointerenter', () => { guide = false; sky.querySelectorAll('.grp.glow').forEach(n => n.classList.remove('glow')) })
 sky.addEventListener('pointerleave', () => { guide = !reduceHero })
 setInterval(() => {
   if (!guide || scrollY > innerHeight * .4) return
-  const cons = [...sky.querySelectorAll('.con')]
+  const cons = [...sky.querySelectorAll('.grp')]
   cons.forEach(n => n.classList.remove('glow'))
   cons[gi++ % cons.length].classList.add('glow')
 }, 2800)
