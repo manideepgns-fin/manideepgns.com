@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Why MIS Takes 15 Days | Manideep GNS</title>
-<meta name="description" content="An internal memo from January 2026 — what I sent when my boss asked why month-end MIS takes 15 days. Ten places expense data gets stuck, diagnosed in tech terms." />
+<meta name="description" content="An internal memo from January 2026: what I sent when my boss asked why month-end MIS takes 15 days. Ten places expense data gets stuck, diagnosed in tech terms." />
 <meta property="og:title" content="Why MIS Takes 15 Days | Manideep GNS" />
-<meta property="og:description" content="An internal memo from January 2026 — ten places expense data gets stuck, diagnosed in tech terms." />
+<meta property="og:description" content="An internal memo from January 2026: ten places expense data gets stuck, diagnosed in tech terms." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://manideepgns.com/writing/why-mis-takes-15-days.html" />
 <meta property="og:image" content="https://manideepgns.com/og/og-mis-memo.png" />
@@ -16,7 +16,7 @@
 <meta property="article:author" content="Manideep GNS" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Why MIS Takes 15 Days | Manideep GNS" />
-<meta name="twitter:description" content="An internal memo from January 2026 — ten places expense data gets stuck, diagnosed in tech terms." />
+<meta name="twitter:description" content="An internal memo from January 2026: ten places expense data gets stuck, diagnosed in tech terms." />
 <meta name="twitter:image" content="https://manideepgns.com/og/og-mis-memo.png" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
@@ -28,7 +28,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Why MIS Takes 15 Days (And How We're Fixing It)",
-  "description": "An internal memo from January 2026 — ten places expense data gets stuck, diagnosed in tech terms.",
+  "description": "An internal memo from January 2026: ten places expense data gets stuck, diagnosed in tech terms.",
   "image": "https://manideepgns.com/og/og-mis-memo.png",
   "datePublished": "2026-01-23",
   "dateModified": "2026-05-13",
@@ -58,7 +58,7 @@
 <canvas class="stars" data-flight="calm" aria-hidden="true"></canvas>
 <header class="top solid">
   <a class="me" href="../">Manideep GNS</a>
-  <nav aria-label="Main"><a href="../#atlance">Work</a><a href="./" aria-current="page">Writing</a><a href="../stack.html">Stack</a><a href="../#hi">Say hi</a></nav>
+  <nav aria-label="Main"><a href="../#foundation">Work</a><a class="wide" href="../#arc">Arc</a><a href="./" aria-current="page">Writing</a><a class="wide" href="../stack.html">Stack</a><a href="../#hi">Say hi</a></nav>
 </header>
 
 <main>
@@ -67,7 +67,7 @@
     <header class="essay-head">
       <div class="eyebrow">Jan 23, 2026 · Memo · 7 min read</div>
       <h1>Why MIS Takes 15 Days (And How We're Fixing It)</h1>
-      <p class="frame">An internal memo from January 23, 2026 — what I sent when my boss asked why month-end MIS takes 15 days. Reproduced as sent, with vendor names genericized and the response thread trimmed.</p>
+      <p class="frame">An internal memo from January 23, 2026: what I sent when my boss asked why month-end MIS takes 15 days. Reproduced as sent, with vendor names genericized and the response thread trimmed.</p>
       <p class="frame-update"><em>Updated May 2026: the plan below is from January. Current status at the end →</em></p>
     </header>
 
@@ -83,7 +83,7 @@
 
       <p><strong>The data you think exists in Zoho… doesn't exist in Zoho.</strong></p>
 
-      <p>When I query <em>"give me January expenses"</em> from Zoho, I get maybe <strong>60–70% of reality</strong>. The rest is scattered across 9 other places — vendor systems, Pazy queues, Excel sheets, and people's heads.</p>
+      <p>When I query <em>"give me January expenses"</em> from Zoho, I get maybe <strong>60–70% of reality</strong>. The rest is scattered across 9 other places, vendor systems, Pazy queues, Excel sheets, and people's heads.</p>
 
       <div class="callout">
         <p><strong>You can't automate a report if the underlying data doesn't exist in any single system.</strong></p>
@@ -168,12 +168,12 @@
         <tbody>
           <tr><td>1</td><td>Vendor hasn't sent bill</td><td>External API with no webhook</td><td>Data doesn't exist in any system we control</td></tr>
           <tr><td>2</td><td>Pazy stuck</td><td>Blocking human-in-the-loop</td><td>No timeout, no queue visibility, no SLA</td></tr>
-          <tr><td>3</td><td>Wrong month (cutoff)</td><td>Schema mismatch</td><td><code>bill_date</code> ≠ <code>service_period</code> — Zoho doesn't know the difference</td></tr>
-          <tr><td>4</td><td>Prepaid amortization</td><td>Data in spreadsheet</td><td>No API, no sync — Excel is the "database"</td></tr>
+          <tr><td>3</td><td>Wrong month (cutoff)</td><td>Schema mismatch</td><td><code>bill_date</code> ≠ <code>service_period</code>, Zoho doesn't know the difference</td></tr>
+          <tr><td>4</td><td>Prepaid amortization</td><td>Data in spreadsheet</td><td>No API, no sync, Excel is the "database"</td></tr>
           <tr><td>5</td><td>Advance paid</td><td>Missing state machine</td><td>Payment ↔ Service ↔ Bill lifecycle not tracked</td></tr>
-          <tr><td>6</td><td>Unbilled service</td><td>Data in someone's head</td><td>Zero observability — discovered during incident</td></tr>
-          <tr><td>7</td><td>Bill ≠ Advance</td><td>No foreign key</td><td>Can't join payment to bill — different amounts, no reference</td></tr>
-          <tr><td>8</td><td>Multi-service vendor</td><td>No line-item allocation</td><td>One bill, multiple service periods — can't split</td></tr>
+          <tr><td>6</td><td>Unbilled service</td><td>Data in someone's head</td><td>Zero observability, discovered during incident</td></tr>
+          <tr><td>7</td><td>Bill ≠ Advance</td><td>No foreign key</td><td>Can't join payment to bill, different amounts, no reference</td></tr>
+          <tr><td>8</td><td>Multi-service vendor</td><td>No line-item allocation</td><td>One bill, multiple service periods, can't split</td></tr>
           <tr><td>9</td><td>Credit note later</td><td>No linkage</td><td>Credit note doesn't reference original invoice period</td></tr>
           <tr><td>10</td><td>Normal bills</td><td>✅ Works</td><td>This is the only queryable data</td></tr>
         </tbody>
@@ -205,7 +205,7 @@ What actually happens:
     Zoho Books ─────────────► ✅ Queryable (60–70% of reality)</code></pre>
 
       <blockquote>
-        <p>It's like querying a database replica that's two weeks behind master. The data exists somewhere — just not in Zoho yet.</p>
+        <p>It's like querying a database replica that's two weeks behind master. The data exists somewhere, just not in Zoho yet.</p>
       </blockquote>
 
       <h2>The MIS Timeline Today</h2>
@@ -344,9 +344,9 @@ Ends           coming in       Pazy approvals  numbers        Ready
       <h2>Summary</h2>
 
       <ol>
-        <li><strong>MIS delay isn't a reporting problem — it's a data completeness problem.</strong></li>
+        <li><strong>MIS delay isn't a reporting problem, it's a data completeness problem.</strong></li>
         <li><strong>9 out of 10 expense scenarios can't be automated today</strong> because the data is scattered across vendor systems, Pazy queues, Excel, and people's heads.</li>
-        <li><strong>The Expense Lifecycle Tracker creates a single source of truth</strong> for expense lifecycle — from service registration to Zoho posting.</li>
+        <li><strong>The Expense Lifecycle Tracker creates a single source of truth</strong> for expense lifecycle, from service registration to Zoho posting.</li>
         <li><strong>Expected outcome:</strong> close in 7–10 days instead of 15–20. First MIS version is reliable.</li>
       </ol>
 
@@ -354,30 +354,30 @@ Ends           coming in       Pazy approvals  numbers        Ready
 
       <hr />
 
-      <h2 class="status-head">Status — May 2026</h2>
+      <h2 class="status-head">Status, May 2026</h2>
       <p class="status-frame"><em>The memo above is from January. Four months on, here's the honest state of what shipped and what didn't.</em></p>
 
       <p>This plan didn't ship as a unified "Expense Lifecycle Tracker." We went up a level instead.</p>
 
-      <p>By March 2026, the goal had moved: <strong>variance — forecast vs actual, across 4 regions, in INR-equivalent, sub-200ms.</strong> Variance sits downstream of MIS (you can't compare actual to plan without reliable actuals), so building Variance became the forcing function — and several of the 10 cases got solved as a side effect.</p>
+      <p>By March 2026, the goal had moved: <strong>variance, forecast vs actual, across 4 regions, in INR-equivalent, sub-200ms.</strong> Variance sits downstream of MIS (you can't compare actual to plan without reliable actuals), so building Variance became the forcing function, and several of the 10 cases got solved as a side effect.</p>
 
       <h3>What shipped that addresses cases from this memo:</h3>
 
       <ul>
-        <li><strong>Variance dashboard</strong> (v0.12.x) — Sheets → Supabase ETL, COGS / OpEx split parser, all 4 regions on a single canvas. The data-completeness checks for variance to even render forced cases 3 (cutoff), 5 (advance), and 9 (credit notes) to be resolved upstream.</li>
-        <li><strong>Prepaid Tracker</strong> — case 4 (amortization) automated.</li>
-        <li><strong>SVB Card Expenses</strong> — case 6 (unbilled / undiscovered service) for card spend specifically.</li>
-        <li><strong>Dispute Tracker</strong> — case 9 (credit note linkage).</li>
+        <li><strong>Variance dashboard</strong> (v0.12.x), Sheets → Supabase ETL, COGS / OpEx split parser, all 4 regions on a single canvas. The data-completeness checks for variance to even render forced cases 3 (cutoff), 5 (advance), and 9 (credit notes) to be resolved upstream.</li>
+        <li><strong>Prepaid Tracker</strong>, case 4 (amortization) automated.</li>
+        <li><strong>SVB Card Expenses</strong>, case 6 (unbilled / undiscovered service) for card spend specifically.</li>
+        <li><strong>Dispute Tracker</strong>, case 9 (credit note linkage).</li>
       </ul>
 
       <h3>What's still on the to-do list:</h3>
 
       <ul>
-        <li>Cases 1, 2 (vendor SLA, Pazy queue alerts) — partially addressed via Variance's anomaly surface, but no unified "alert on day 5" yet.</li>
-        <li>A single "Expense Lifecycle Tracker" module as written — the 10 cases got distributed across Variance + the trackers above, instead of one unified system.</li>
+        <li>Cases 1, 2 (vendor SLA, Pazy queue alerts), partially addressed via Variance's anomaly surface, but no unified "alert on day 5" yet.</li>
+        <li>A single "Expense Lifecycle Tracker" module as written, the 10 cases got distributed across Variance + the trackers above, instead of one unified system.</li>
       </ul>
 
-      <p><strong>The headline:</strong> MIS close timeline improved, but that became table stakes the moment we asked the harder question — <em>not</em> "how fast can we produce the actual?" but <em>"how fast can we explain it against the plan?"</em></p>
+      <p><strong>The headline:</strong> MIS close timeline improved, but that became table stakes the moment we asked the harder question, <em>not</em> "how fast can we produce the actual?" but <em>"how fast can we explain it against the plan?"</em></p>
 
     </div>
 

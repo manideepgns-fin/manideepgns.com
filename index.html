@@ -47,49 +47,36 @@
   .hero { position: relative; z-index: 2; height: 100dvh; min-height: 560px }
   .hero svg { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: 60% 40%; will-change: transform, opacity }
   .words { position: absolute; left: 36px; bottom: 44px; max-width: 720px; will-change: opacity }
-  .words h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(42px, 5.2vw, 78px); line-height: 1.04; letter-spacing: -.015em; padding-bottom: 4px }
+  .words h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(42px, 5.2vw, 78px); line-height: 1.04; letter-spacing: -.015em; padding-bottom: 4px; text-wrap: balance }
+  .words h1 em { white-space: nowrap }
   .words h1 em { font-style: italic }
   .words p { margin-top: 14px; color: var(--dim) }
 
-  .con { cursor: pointer; outline: none }
-  .con .hit { fill: transparent }
-  .con line { stroke: var(--ink); stroke-width: .8; opacity: .16; transition: opacity .6s, stroke-width .6s }
-  .con circle.s { fill: var(--ink); opacity: .62; transition: opacity .5s }
-  .con .halo { fill: url(#halo); opacity: 0; transition: opacity .6s }
-  .con .halo:nth-of-type(1) { opacity: .25 }
-  .con text { fill: var(--ink); font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 20px; opacity: .46; transition: opacity .5s }
-  .con text.sub { fill: var(--dim); font-family: var(--sans); font-style: normal; font-size: 12.5px; font-weight: 300; opacity: 0 }
   .streams .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: .08 }
   .streams .packet { fill: #ffe9c9; filter: drop-shadow(0 0 3px rgba(255,233,201,.9)) }
   .streams .src { fill: var(--ink); opacity: .8 }
   .streams .srcname { fill: var(--dim); font-family: var(--sans); font-size: 11.5px; font-weight: 300 }
   .tri .edge { stroke: var(--ink); stroke-width: 1.1; opacity: .7 }
   .tri .name { fill: var(--ink); font-family: var(--serif); font-weight: 500; font-size: 30px; letter-spacing: .01em }
-  .tri .face { fill: var(--ink); font-family: var(--serif); font-style: italic; font-size: 23px }
-  .tri .base { fill: var(--faint); font-family: var(--sans); font-size: 11.5px; letter-spacing: .06em }
+  .tri .face { fill: var(--ink); font-family: var(--serif); font-style: italic; font-size: 23px; opacity: .78; transition: opacity .4s }
+  .tri .face.lit { opacity: 1; text-shadow: 0 0 12px rgba(255,246,230,.55) }
+  .tri .base { fill: var(--dim); font-family: var(--sans); font-size: 12px; letter-spacing: .06em }
   .tri .corner { fill: var(--ink); filter: drop-shadow(0 0 5px rgba(255,246,230,.9)) }
   .tri .halo.on { fill: url(#halo); opacity: .55 }
   .grp { cursor: pointer; outline: none }
   .grp .hitzone { fill: transparent; pointer-events: all }
   .tri { pointer-events: none }
-
   .grp .tie { stroke: var(--ink); stroke-width: .6; opacity: .1; transition: opacity .5s }
   .grp circle.s { fill: var(--ink); opacity: .7; animation: twinkle var(--tw, 4s) ease-in-out var(--td, 0s) infinite }
   .grp .halo { fill: url(#halo); opacity: 0; transition: opacity .5s }
-  .grp .piece { fill: var(--dim); font-family: var(--sans); font-size: 11.5px; font-weight: 300; opacity: .55; transition: opacity .5s, fill .5s }
+  .grp .piece { fill: var(--dim); font-family: var(--sans); font-size: 12px; font-weight: 300; opacity: .9; transition: opacity .5s, fill .5s }
   .grp:hover .tie, .grp:focus-visible .tie, .grp.glow .tie { opacity: .38 }
   .grp:hover .halo, .grp:focus-visible .halo, .grp.glow .halo { opacity: .7 }
   .grp:hover .piece, .grp:focus-visible .piece, .grp.glow .piece { opacity: 1; fill: var(--ink) }
   @media (prefers-reduced-motion: reduce) { .grp circle.s { animation: none } }
   #dust { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .9 }
   .threads line { stroke: var(--ink); stroke-width: .6; stroke-dasharray: 2 6; opacity: .07 }
-  .con circle.s { animation: twinkle var(--tw, 4s) ease-in-out var(--td, 0s) infinite }
-  .con circle.s.alpha { filter: drop-shadow(0 0 4px rgba(255,246,230,.8)) }
-  .con.main text:not(.sub) { font-size: 26px; opacity: .8 }
-  .con.main line { opacity: .24 }
-  .con.glow line { opacity: .5; stroke-width: 1 } .con.glow .halo { opacity: .8 } .con.glow text:not(.sub) { opacity: 1 }
   @keyframes twinkle { 50% { opacity: .35 } }
-  @media (prefers-reduced-motion: reduce) { .con circle.s { animation: none } }
   .con:hover line, .con:focus-visible line { opacity: .6; stroke-width: 1 }
   .con:hover circle.s, .con:focus-visible circle.s, .con:hover .halo, .con:focus-visible .halo, .con:hover text, .con:focus-visible text { opacity: 1 }
 
@@ -107,13 +94,16 @@
   .stop.center p { margin-left: auto; margin-right: auto }
   .stop .fact { margin-top: 18px; font-size: 14px; color: var(--faint) }
   .stop .pill { margin-top: 28px }
+  .stop .pills { display: flex; flex-wrap: wrap; gap: 10px } .stop .pills .pill { margin-top: 28px }
 
   .big line { stroke: var(--line); stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s cubic-bezier(.16,1,.3,1) var(--d, 0s) }
-  .big circle.s { fill: var(--ink); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.2); transition: opacity .6s var(--d, 0s), transform .9s cubic-bezier(.34,1.56,.64,1) var(--d, 0s) }
+  .big circle.s { fill: var(--ink); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.2); transition: opacity .6s var(--d, 0s), transform .9s cubic-bezier(.16,1,.3,1) var(--d, 0s) }
   .big .halo { fill: url(#halo2); opacity: 0; transition: opacity 1.2s var(--d, 0s) }
   .in .big line { stroke-dashoffset: 0 }
   .in .big circle.s { opacity: 1; transform: none }
   .in .big .halo { opacity: 1 }
+  .big .lbl { fill: var(--dim); font-family: var(--sans); font-weight: 300; opacity: 0; transition: opacity 1s ease .9s }
+  .in .big .lbl { opacity: 1 }
   .stop .copy > * { opacity: 0; transform: translateY(22px); transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1) }
   .stop.in .copy > * { opacity: 1; transform: none }
   .stop.in .copy > :nth-child(2) { transition-delay: .1s } .stop.in .copy > :nth-child(3) { transition-delay: .2s } .stop.in .copy > :nth-child(4) { transition-delay: .3s }
@@ -173,7 +163,7 @@
 <canvas class="stars" aria-hidden="true"></canvas>
 <header class="top solid">
   <a class="me" href="./">Manideep GNS</a>
-  <nav aria-label="Main"><a href="#foundation">Work</a><a href="#arc">Arc</a><a href="writing/">Writing</a><a href="stack.html">Stack</a><a href="#hi">Say hi</a></nav>
+  <nav aria-label="Main"><a href="#foundation">Work</a><a class="wide" href="#arc">Arc</a><a href="writing/">Writing</a><a class="wide" href="stack.html">Stack</a><a href="#hi">Say hi</a></nav>
 </header>
 
 <section class="hero" aria-label="Introduction">
@@ -186,7 +176,7 @@
   </svg>
   <div class="words">
     <h1>I design the systems <em>a business runs on.</em></h1>
-    <p>Chartered Accountant by training. I design platforms on top of the systems a business already has.</p>
+    <p>Platforms built on top of the systems a business already has: data, agents and interfaces.</p>
   </div>
 </section>
 
@@ -230,40 +220,33 @@
     <div class="copy">
       <h2>Off hours</h2>
       <p>Cataholic, a chunky orange cat that lives on your Mac. And Wrapped, my first year of building told as a story.</p>
-      <a class="pill" href="https://github.com/manideepgns-fin/cataholic">Cataholic on GitHub ↗</a>
+      <div class="pills"><a class="pill" href="https://github.com/manideepgns-fin/cataholic">Cataholic on GitHub ↗</a><a class="pill" href="wrapped/">Wrapped →</a></div>
     </div>
     <div class="art" data-con="cat"></div>
   </section>
 
   <section class="arc" id="arc">
     <h2>Ten years, <em>one direction.</em></h2>
-    <p>From a commerce student at 16 to running finance across four countries, and designing the systems a business runs on.</p>
+    <p>From commerce at 16, through audit and finance, to designing the systems a business runs on.</p>
     <div class="path">
       <svg viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path id="arcline" pathLength="1" d=""/></svg>
       <ol id="arcpoints">
-        <li><b>2016</b><span>CA Foundation, right out of school</span></li>
-        <li><b>2017</b><span>CA Intermediate, eighteen months later</span></li>
-        <li><b>2018</b><span>Articleship at HNAK: statutory, internal and tax audit</span></li>
-        <li><b>2021</b><span>Brahmi Lekha: financials up to ₹200 Cr, leading teams of ten</span></li>
-        <li><b>2023</b><span>Qualified as a Chartered Accountant</span></li>
+        <li><b>2016</b><span>Chose commerce at 16</span></li>
+        <li><b>2018</b><span>Audit: how money really moves through a business</span></li>
+        <li><b>2021</b><span>Led teams building financial statements end to end</span></li>
         <li><b>2024</b><span>Joined UrbanPiper, finance across four countries</span></li>
-        <li><b>2025</b><span>First Big-4 audit, closed in two months</span></li>
-        <li><b>2026</b><span>Started building Atlance, in plain English</span></li>
-        <li class="now"><b>Today</b><span>Head of Finance, building what's next</span></li>
+        <li><b>2026</b><span>Started designing Atlance, in plain English</span></li>
+        <li class="now"><b>Today</b><span>Designing systems for the whole business</span></li>
       </ol>
     </div>
   </section>
 
   <section class="record" id="finance">
-    <h2>The finance <em>underneath.</em></h2>
-    <p>The systems only work because the finance does. Head of Finance at UrbanPiper: four entities, a team of seven, reporting to the founders.</p>
+    <h2>And yes, <em>a Chartered Accountant.</em></h2>
     <div class="ledger">
-      <div><b>Big-4 audit in two months</b><span>Four countries, KPMG network. The usual is six.</span></div>
-      <div><b>$1M into the US</b><span>Overseas investment into the US subsidiary, valued and cleared.</span></div>
-      <div><b>Five investors, every quarter</b><span>The single point of contact for every diligence cycle.</span></div>
-      <div><b>Tax in four countries</b><span>UK and UAE VAT, US multi-state sales tax, transfer pricing across India, the UK and the US.</span></div>
-      <div><b>Defended in the High Court</b><span>An income-tax writ, argued and defended in Karnataka.</span></div>
-      <div><b>The plan and the close</b><span>The FY27 operating plan, monthly close, treasury and consolidation.</span></div>
+      <div><b>Chartered Accountant</b><span>ICAI, 2023. Head of Finance at UrbanPiper today.</span></div>
+      <div><b>A four-country audit in two months</b><span>The first Big-4 audit under my charge. The usual is six.</span></div>
+      <div><b>The whole function</b><span>Capital, tax, investor diligence, the plan and the close, across four entities.</span></div>
     </div>
   </section>
 
@@ -289,11 +272,12 @@
 /* Constellations: one shape per thing I've built. Shapes are in local units around (0,0);
    each layout places them in the hero's coordinate space (wide screens vs phones). */
 const CONS = {
-  operate: { pts: [[0,-46],[-66,-22],[66,-22],[-84,18],[-48,18],[48,18],[84,18],[0,44]], edges: [[0,7],[1,0],[0,2],[1,3],[1,4],[3,4],[2,5],[2,6],[5,6]] },
-  analyse: { pts: [[-84,34],[-52,12],[-20,22],[12,-6],[44,2],[80,-40]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5]] },
+  operate: { pts: [[0,-46],[44,-18],[44,26],[0,48],[-44,26],[-44,-18],[56,-40]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[1,6]] },
+  analyse: { pts: [[-20,-46],[14,-38],[24,-6],[6,22],[-28,18],[-42,-14],[22,22],[62,58]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[6,7]] },
   report:  { pts: [[-72,-30],[0,-18],[72,-30],[72,36],[0,46],[-72,36]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[1,4]] },
-  under:   { pts: [[-66,-34],[-22,-34],[22,-34],[66,-34],[-66,0],[-22,0],[22,0],[66,0],[-66,34],[-22,34],[22,34],[66,34]],
-             edges: [[0,1],[1,2],[2,3],[4,5],[5,6],[6,7],[8,9],[9,10],[10,11],[1,5],[6,10]] },
+  under:   { pts: [[-75,-42],[-25,-42],[25,-42],[75,-42],[0,0],[-60,42],[0,42],[60,42]],
+             edges: [[0,4],[1,4],[2,4],[3,4],[4,5],[4,6],[4,7]],
+             labels: [['Zoho', 0], ['Salesforce', 1], ['Stripe', 2], ['Sheets', 3], ['one warehouse', 4], ['API', 5], ['agents', 6], ['design system', 7]] },
   cat:     { pts: [[-51,0],[-37,-38],[-17,-12],[17,-12],[37,-38],[51,0],[33,38],[-33,38]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0]] },
 }
 const FACES = [
@@ -305,7 +289,7 @@ const SOURCES = ['Zoho Books', 'Salesforce', 'Stripe', 'Ramp', 'Google Sheets', 
 const LAYOUT = {
   wide:  { box: '0 0 1000 600', corners: [[650, 150], [535, 350], [765, 350]], arcs: [[210, 330], [75, 150], [-50, 55]], r: [68, 112], labels: true,
            src: i => [175 + (i % 2) * 34, 112 + i * 46] },
-  phone: { box: '0 0 600 1000', corners: [[300, 300], [175, 520], [425, 520]], arcs: [[215, 325], [100, 170], [10, 80]], r: [55, 92], labels: false,
+  phone: { box: '0 0 600 800', corners: [[300, 300], [175, 520], [425, 520]], arcs: [[215, 325], [100, 170], [10, 80]], r: [55, 92], labels: false,
            src: i => [60 + i * 80, 110 + (i % 2) * 34] },
 }
 const NS = 'http://www.w3.org/2000/svg', sky = document.getElementById('sky'), words = document.querySelector('.words')
@@ -335,12 +319,16 @@ function drawSky() {
     mk('circle', { class: 'src', cx: x, cy: y, r: 2.2 }, st)
     if (L.labels) mk('text', { class: 'srcname', x: x - 10, y: y + 4, 'text-anchor': 'end' }, st).textContent = name
   })
+  if (!L.labels) mk('text', { class: 'srcname', x: 300, y: 72, 'text-anchor': 'middle' }, st).textContent = 'Zoho, Salesforce, Stripe, Ramp and more, streaming in'
 
   // the pieces, each a small star tied to its corner
   FACES.forEach((f, fi) => {
     const g = mk('a', { href: f.href, class: 'grp', 'aria-label': `${f.name}: ${f.pieces.join(', ')}` }, sky)
     const [x0, y0] = L.corners[fi], [a0, a1] = L.arcs[fi], n = f.pieces.length
-    mk('circle', { class: 'hitzone', cx: x0, cy: y0, r: L.r[1] + 24 }, g)
+    // hover zone sits outward from the triangle's centre, so the three never overlap
+    const gx = (L.corners[0][0] + L.corners[1][0] + L.corners[2][0]) / 3, gy = (L.corners[0][1] + L.corners[1][1] + L.corners[2][1]) / 3
+    const dx = x0 - gx, dy = y0 - gy, dl = Math.hypot(dx, dy) || 1
+    mk('circle', { class: 'hitzone', cx: x0 + dx / dl * L.r[0] * .8, cy: y0 + dy / dl * L.r[0] * .8, r: L.r[1] * .95 }, g)
     f.pieces.forEach((name, i) => {
       const ang = (a0 + (a1 - a0) * (n === 1 ? .5 : i / (n - 1))) * Math.PI / 180
       const rr = i % 2 ? L.r[1] : L.r[0]
@@ -369,7 +357,7 @@ function drawSky() {
   L.corners.forEach(([x, y], i) => {
     mk('circle', { class: 'halo on', cx: x, cy: y, r: 26 }, t)
     mk('circle', { class: 'corner', cx: x, cy: y, r: 3.6 }, t)
-    mk('text', { class: 'face', x: i === 0 ? x : i === 1 ? x - 16 : x + 16, y: i === 0 ? y - 22 : y + 6, 'text-anchor': i === 0 ? 'middle' : i === 1 ? 'end' : 'start' }, t).textContent = FACES[i].name
+    mk('text', { class: 'face', 'data-face': i, x: i === 0 ? x : i === 1 ? x - 16 : x + 16, y: i === 0 ? y - 22 : y + 6, 'text-anchor': i === 0 ? 'middle' : i === 1 ? 'end' : 'start' }, t).textContent = FACES[i].name
   })
   drawDust(L)
 }
@@ -410,9 +398,20 @@ setInterval(() => {
   if (!guide || scrollY > innerHeight * .4) return
   const cons = [...sky.querySelectorAll('.grp')]
   cons.forEach(n => n.classList.remove('glow'))
-  cons[gi++ % cons.length].classList.add('glow')
+  const k = gi++ % cons.length; cons[k].classList.add('glow'); lightFace(k)
 }, 2800)
-let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(drawSky, 150) })
+const lightFace = i => sky.querySelectorAll('.face').forEach(f => f.classList.toggle('lit', String(i) === f.dataset.face))
+sky.addEventListener('pointerover', e => { const g = e.target.closest('.grp'); lightFace(g ? [...sky.querySelectorAll('.grp')].indexOf(g) : -1) })
+sky.addEventListener('pointerleave', () => lightFace(-1))
+sky.addEventListener('focusin', e => { guide = false; const g = e.target.closest('.grp'); lightFace(g ? [...sky.querySelectorAll('.grp')].indexOf(g) : -1) })
+sky.addEventListener('focusout', () => { lightFace(-1); guide = !reduceHero })
+// the sky scales by itself (viewBox); redraw only when the layout itself changes, and refresh the dust
+const layoutNow = () => innerWidth / innerHeight < .9 ? 'phone' : 'wide'
+let lastLayout = layoutNow(), rt
+addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => {
+  const now = layoutNow()
+  if (now !== lastLayout) { lastLayout = now; drawSky() } else drawDust(LAYOUT[now])
+}, 150) })
 
 // each stop draws its constellation large, line by line
 document.querySelectorAll('[data-con]').forEach(el => {
@@ -420,6 +419,7 @@ document.querySelectorAll('[data-con]').forEach(el => {
   const w = b.x1 - b.x0, h = b.y1 - b.y0, s = (w + pad * 2) / 300
   const svg = mk('svg', { viewBox: `${b.x0 - pad} ${b.y0 - pad} ${w + pad * 2} ${h + pad * 2}`, class: 'big', 'aria-hidden': 'true' }, el)
   c.edges.forEach(([i, j], n) => mk('line', { x1: c.pts[i][0], y1: c.pts[i][1], x2: c.pts[j][0], y2: c.pts[j][1], pathLength: 1, 'stroke-width': (1.3 * s).toFixed(2), style: `--d:${(.25 + n * .12).toFixed(2)}s` }, svg))
+  ;(c.labels || []).forEach(([t, i]) => { const [x, y] = c.pts[i]; mk('text', { class: 'lbl', x: i === 4 ? x + 14 * s : x, y: y + (i === 4 ? 4 : y < 0 ? -12 : 22) * s, 'text-anchor': i === 4 ? 'start' : 'middle', 'font-size': (11 * s).toFixed(1) }, svg).textContent = t })
   c.pts.forEach(([x, y], n) => {
     mk('circle', { class: 'halo', cx: x, cy: y, r: 14 * s, style: `--d:${(n * .08).toFixed(2)}s` }, svg)
     mk('circle', { class: 's', cx: x, cy: y, r: (n ? 2.2 : 3) * s, style: `--d:${(n * .08).toFixed(2)}s` }, svg)
@@ -429,7 +429,7 @@ document.querySelectorAll('[data-con]').forEach(el => {
 
 // the arc: checkpoints along a rising curve; labels alternate above and below
 ;(() => {
-  const P = [[40,450],[150,420],[265,395],[380,345],[495,300],[605,250],[715,190],[830,140],[955,70]]
+  const P = [[60,440],[240,400],[420,330],[600,260],[780,170],[945,80]]
   let d = `M ${P[0][0]} ${P[0][1]}`
   for (let i = 1; i < P.length; i++) { const [x0, y0] = P[i - 1], [x1, y1] = P[i], mx = (x0 + x1) / 2; d += ` C ${mx} ${y0}, ${mx} ${y1}, ${x1} ${y1}` }
   document.getElementById('arcline').setAttribute('d', d)
