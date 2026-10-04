@@ -56,8 +56,18 @@
   .con line { stroke: var(--ink); stroke-width: .8; opacity: .16; transition: opacity .6s, stroke-width .6s }
   .con circle.s { fill: var(--ink); opacity: .62; transition: opacity .5s }
   .con .halo { fill: url(#halo); opacity: 0; transition: opacity .6s }
-  .con text { fill: var(--ink); font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 21px; opacity: .58; transition: opacity .5s }
+  .con .halo:nth-of-type(1) { opacity: .25 }
+  .con text { fill: var(--ink); font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 20px; opacity: .46; transition: opacity .5s }
   .con text.sub { fill: var(--dim); font-family: var(--sans); font-style: normal; font-size: 12.5px; font-weight: 300; opacity: 0 }
+  #dust { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .9 }
+  .threads line { stroke: var(--ink); stroke-width: .6; stroke-dasharray: 2 6; opacity: .07 }
+  .con circle.s { animation: twinkle var(--tw, 4s) ease-in-out var(--td, 0s) infinite }
+  .con circle.s.alpha { filter: drop-shadow(0 0 4px rgba(255,246,230,.8)) }
+  .con.main text:not(.sub) { font-size: 26px; opacity: .8 }
+  .con.main line { opacity: .24 }
+  .con.glow line { opacity: .5; stroke-width: 1 } .con.glow .halo { opacity: .8 } .con.glow text:not(.sub) { opacity: 1 }
+  @keyframes twinkle { 50% { opacity: .35 } }
+  @media (prefers-reduced-motion: reduce) { .con circle.s { animation: none } }
   .con:hover line, .con:focus-visible line { opacity: .6; stroke-width: 1 }
   .con:hover circle.s, .con:focus-visible circle.s, .con:hover .halo, .con:focus-visible .halo, .con:hover text, .con:focus-visible text { opacity: 1 }
 
@@ -145,6 +155,7 @@
 </header>
 
 <section class="hero" aria-label="Introduction">
+  <canvas id="dust" aria-hidden="true"></canvas>
   <svg id="sky" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-label="Things I've built, drawn as constellations">
     <defs>
       <radialGradient id="halo"><stop offset="0" stop-color="#fff6e6" stop-opacity=".55"/><stop offset="1" stop-color="#fff6e6" stop-opacity="0"/></radialGradient>
@@ -278,28 +289,79 @@ const CONS = {
     pts: [[-51,0],[-37,-38],[-17,-12],[17,-12],[37,-38],[51,0],[33,38],[-33,38]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0]] },
 }
 const LAYOUT = {
-  wide:  { box: '0 0 1000 600', at: { engine: [320, 150], atlance: [650, 190], desk: [150, 320], mudra: [520, 380], maya: [870, 175], cat: [870, 400] } },
-  phone: { box: '0 0 600 1000', at: { atlance: [180, 170], maya: [440, 190], engine: [300, 350], desk: [150, 530], mudra: [440, 520], cat: [300, 690] } },
+  wide:  { box: '0 0 1000 600', at: { atlance: [600, 245, 1.55], engine: [300, 125, .85], desk: [165, 300, .85], maya: [880, 135, .8], mudra: [880, 400, .8], cat: [690, 470, .75] } },
+  phone: { box: '0 0 600 1000', at: { atlance: [300, 330, 1.5], engine: [140, 140, .8], maya: [460, 150, .75], desk: [130, 560, .8], mudra: [470, 560, .75], cat: [300, 700, .7] } },
 }
 const NS = 'http://www.w3.org/2000/svg', sky = document.getElementById('sky'), words = document.querySelector('.words')
 const mk = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n }
 const bounds = pts => { const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]); return { x0: Math.min(...xs), y0: Math.min(...ys), x1: Math.max(...xs), y1: Math.max(...ys) } }
 
 function drawSky() {
-  sky.querySelectorAll('.con').forEach(n => n.remove())
+  sky.querySelectorAll('.con, .threads').forEach(n => n.remove())
   const L = innerWidth / innerHeight < .9 ? LAYOUT.phone : LAYOUT.wide
   sky.setAttribute('viewBox', L.box)
+  // faint threads: everything orbits Atlance, except the stray cat
+  const threads = mk('g', { class: 'threads' }, sky), [hx, hy] = L.at.atlance
+  for (const key of ['engine', 'desk', 'maya', 'mudra']) {
+    const [x, y] = L.at[key]
+    mk('line', { x1: x, y1: y, x2: hx, y2: hy }, threads)
+  }
+  let seed = 11; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647
   for (const [key, c] of Object.entries(CONS)) {
-    const [ox, oy] = L.at[key], pts = c.pts.map(([x, y]) => [x + ox, y + oy]), b = bounds(pts)
-    const a = mk('a', { href: '#' + document.querySelector(`[data-con="${key}"]`).closest('section').id, class: 'con', 'aria-label': `${c.name}. ${c.sub}` }, sky)
+    const [ox, oy, k] = L.at[key]
+    const pts = c.pts.map(([x, y]) => [x * k + ox + (rnd() - .5) * 5 * k, y * k + oy + (rnd() - .5) * 5 * k]), b = bounds(pts)
+    const a = mk('a', { href: '#' + document.querySelector(`[data-con="${key}"]`).closest('section').id, class: 'con' + (key === 'atlance' ? ' main' : ''), 'aria-label': `${c.name}. ${c.sub}` }, sky)
     mk('rect', { class: 'hit', x: b.x0 - 30, y: b.y0 - 50, width: b.x1 - b.x0 + 60, height: b.y1 - b.y0 + 90 }, a)
     c.edges.forEach(([i, j]) => mk('line', { x1: pts[i][0], y1: pts[i][1], x2: pts[j][0], y2: pts[j][1] }, a))
-    pts.forEach(([x, y], i) => { mk('circle', { class: 'halo', cx: x, cy: y, r: 14 }, a); mk('circle', { class: 's', cx: x, cy: y, r: i ? 1.9 : 2.6 }, a) })
+    pts.forEach(([x, y], i) => {
+      const mag = i === 0 ? 3 : 1.1 + rnd() * 1.3                       // one bright star, the rest dimmer
+      mk('circle', { class: 'halo', cx: x, cy: y, r: (i === 0 ? 22 : 12) * Math.max(k, .9) }, a)
+      mk('circle', { class: 's' + (i === 0 ? ' alpha' : ''), cx: x, cy: y, r: mag * (key === 'atlance' ? 1.15 : 1), style: `--tw:${(2.5 + rnd() * 3).toFixed(2)}s;--td:${(rnd() * 3).toFixed(2)}s` }, a)
+    })
     mk('text', { x: b.x0, y: b.y0 - 18 }, a).textContent = c.name
     mk('text', { x: b.x0, y: b.y1 + 28, class: 'sub' }, a).textContent = c.sub
   }
+  drawDust(L)
+}
+const dust = document.getElementById('dust')
+function drawDust(L) {
+  const r = dust.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2)
+  dust.width = r.width * dpr; dust.height = r.height * dpr
+  const g = dust.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0)
+  const w = r.width, h = r.height, phone = L === LAYOUT.phone
+  // the band runs from lower left to upper right
+  const x0 = 0, y0 = h * (phone ? .9 : .95), x1 = w, y1 = h * (phone ? .05 : .02), len = Math.hypot(x1 - x0, y1 - y0)
+  const ux = (x1 - x0) / len, uy = (y1 - y0) / len, nx = -uy, ny = ux
+  let seed = 3; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647
+  const gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5
+  for (let i = 0; i < 2600; i++) {
+    const t = rnd() * len, off = gauss() * (phone ? 90 : 120)
+    const x = x0 + ux * t + nx * off, y = y0 + uy * t + ny * off
+    g.globalAlpha = (.12 + rnd() * .45) * (1 - Math.min(1, Math.abs(off) / 160))
+    g.fillStyle = rnd() < .2 ? '#ffe7c7' : '#dfe6ff'
+    g.fillRect(x, y, rnd() < .9 ? .8 : 1.4, rnd() < .9 ? .8 : 1.4)
+  }
+  // a breath of glow along the band
+  g.globalAlpha = 1
+  for (let i = 0; i < 7; i++) {
+    const t = len * (.1 + i * .13), cxp = x0 + ux * t + nx * gauss() * 30, cyp = y0 + uy * t + ny * gauss() * 30
+    const grd = g.createRadialGradient(cxp, cyp, 0, cxp, cyp, 170)
+    grd.addColorStop(0, 'rgba(210,214,240,.05)'); grd.addColorStop(1, 'rgba(210,214,240,0)')
+    g.fillStyle = grd; g.fillRect(cxp - 170, cyp - 170, 340, 340)
+  }
 }
 drawSky()
+// guide the eye: one constellation glows at a time until someone hovers
+const reduceHero = matchMedia('(prefers-reduced-motion: reduce)').matches
+let gi = 0, guide = !reduceHero
+sky.addEventListener('pointerenter', () => { guide = false; sky.querySelectorAll('.con.glow').forEach(n => n.classList.remove('glow')) })
+sky.addEventListener('pointerleave', () => { guide = !reduceHero })
+setInterval(() => {
+  if (!guide || scrollY > innerHeight * .4) return
+  const cons = [...sky.querySelectorAll('.con')]
+  cons.forEach(n => n.classList.remove('glow'))
+  cons[gi++ % cons.length].classList.add('glow')
+}, 2800)
 let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(drawSky, 150) })
 
 // each stop draws its constellation large, line by line
