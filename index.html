@@ -9,13 +9,13 @@
 <meta property="og:description" content="Head of Finance at UrbanPiper and a Chartered Accountant. I built the software our finance runs on by directing Claude Code in plain English.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manideepgns.com/">
-<meta property="og:image" content="https://manideepgns.com/og/og-me.png">
+<meta property="og:image" content="https://manideepgns.com/og/og-manideep.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Manideep GNS | Chartered Accountant who builds software">
 <meta name="twitter:description" content="Head of Finance at UrbanPiper and a Chartered Accountant. I built the software our finance runs on by directing Claude Code in plain English.">
-<meta name="twitter:image" content="https://manideepgns.com/og/og-me.png">
+<meta name="twitter:image" content="https://manideepgns.com/og/og-manideep.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -42,15 +42,10 @@
   "sameAs": ["https://github.com/manideepgns-fin", "https://linkedin.com/in/nagasai-manideep-g-71141412b", "https://cal.com/manideepgns/intro-chat"]
 }
 </script>
-<script>
-  // Two looks while the owner chooses: ?look=playful (default) or ?look=quiet. Remove once one is picked.
-  document.documentElement.dataset.look = new URLSearchParams(location.search).get('look') === 'quiet' ? 'quiet' : 'playful'
-</script>
 <style>
   /* ── first screen: who I am, in plain words ── */
   .hero { position: relative; z-index: 2; min-height: 100dvh; overflow: hidden; display: grid; align-items: center }
   #dust { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .9 }
-  [data-look=quiet] #dust { opacity: .4 }
   .intro { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 80px; align-items: center; width: 100%; max-width: 1240px; margin: 0 auto; padding: 120px 36px 80px; will-change: opacity, transform }
   .intro .who { color: var(--dim); font-size: 15px; letter-spacing: .02em }
   .intro h1 { margin-top: 18px; font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8.4vw, 128px); line-height: .98; letter-spacing: -.025em }
@@ -59,17 +54,14 @@
   .intro .lede b { font-weight: 400; color: var(--ink) }
   .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px }
   .me-photo { position: relative }
-  .portrait { width: clamp(240px, 25vw, 340px); aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; background: #111 }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block;
-    filter: grayscale(1) contrast(1.08) brightness(.9); transition: filter 1.2s ease }
-  .portrait:hover img { filter: none }
-  /* playful: the photo framed by four stars, with where it was taken */
+  .portrait { width: clamp(240px, 25vw, 340px); aspect-ratio: 4 / 5 }
+  .portrait img { width: 100%; height: 100%; display: block; border-radius: 3px }
+  /* the pencil sketch, framed by four stars, with where I am */
   .frame { position: absolute; inset: -18px; border: 1px solid rgba(242,239,232,.12); border-radius: 10px; pointer-events: none }
   .frame i { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 12px 3px rgba(255,246,230,.5) }
   .frame i:nth-child(1) { left: -3px; top: -3px } .frame i:nth-child(2) { right: -3px; top: -3px }
   .frame i:nth-child(3) { right: -3px; bottom: -3px } .frame i:nth-child(4) { left: -3px; bottom: -3px }
   .frame span { position: absolute; right: 0; bottom: -30px; color: var(--faint); font-size: 12px; letter-spacing: .06em }
-  [data-look=quiet] .frame { display: none }
 
   main { position: relative; z-index: 2 }
 
@@ -77,11 +69,8 @@
   .sec { max-width: 1240px; margin: 0 auto; padding: 120px 36px; scroll-margin-top: 40px }
   .sec.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center }
   .sec.split.flip > .art { order: -1 }
-  [data-look=quiet] .sec.split.decor { grid-template-columns: minmax(0, 1fr) }
-  [data-look=quiet] .art.deco { display: none }
   .label { display: flex; align-items: center; gap: 10px; color: var(--dim); font-size: 14px; letter-spacing: .03em }
   .label::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 10px 2px rgba(255,246,230,.45) }
-  [data-look=quiet] .label::before { box-shadow: none; opacity: .6 }
   .sec h2 { margin-top: 16px; font-family: var(--serif); font-size: clamp(40px, 4.6vw, 68px); font-weight: 400; letter-spacing: -.02em; line-height: 1.06; text-wrap: balance }
   .sec h2 em { font-style: italic }
   .sec .body { margin-top: 18px; font-size: 18px; color: var(--dim); max-width: 46ch; text-wrap: pretty }
@@ -101,7 +90,6 @@
   .habits { list-style: none; margin-top: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 64px }
   .habits li { position: relative; padding: 26px 0 30px 34px; border-top: 1px solid var(--rule) }
   .habits li::before { content: ''; position: absolute; left: 2px; top: 37px; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 14px 3px rgba(255,246,230,.4) }
-  [data-look=quiet] .habits li { padding-left: 0 } [data-look=quiet] .habits li::before { display: none }
   .habits b { display: block; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 30px; line-height: 1.15 }
   .habits p { margin-top: 10px; color: var(--dim); max-width: 46ch; text-wrap: pretty }
   .habits .link { margin-top: 12px }
@@ -117,7 +105,6 @@
   .art .st.lit { filter: drop-shadow(0 0 5px rgba(255,246,230,.9)) }
   .art .ha { fill: url(#halo); opacity: 0; transition: opacity 1.2s ease var(--d, 0s) }
   .in .art .ha { opacity: .6 }
-  [data-look=quiet] .art .ha { display: none }
   .art .tx { fill: var(--dim); font-family: var(--sans); font-weight: 300; opacity: 0; transition: opacity 1s ease .8s }
   .in .art .tx { opacity: 1 }
   .art .tx.big { fill: var(--ink); font-family: var(--serif); font-weight: 500 }
@@ -125,12 +112,10 @@
   .art .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: 0; transition: opacity 1.2s ease .4s }
   .in .art .flow { opacity: .12 }
   .art .packet { fill: #ffe9c9; filter: drop-shadow(0 0 3px rgba(255,233,201,.9)) }
-  [data-look=quiet] .art .packet { display: none }
   #changes { aspect-ratio: 520 / 300 }
 
   /* the cat: sits still until you pet it */
   .cat { display: block; margin: 0 auto; width: min(100%, 300px); padding: 0; background: none; border: 0; cursor: pointer; position: relative; color: inherit; font: inherit }
-  [data-look=quiet] .cat { width: min(100%, 200px) }
   .cat svg { width: 100%; height: auto; display: block; overflow: visible }
   .cat .shut { display: none }
   .cat.purr .open { display: none } .cat.purr .shut { display: inline }
@@ -167,13 +152,9 @@
   .end .links { display: flex; flex-wrap: wrap; gap: 14px 26px; justify-content: center; margin-top: 26px; color: var(--dim); font-size: 14px; font-weight: 400 }
   .end .links a:hover { color: var(--ink) }
 
-  /* review only: switch between the two looks */
-  .look { position: fixed; left: 16px; bottom: 16px; z-index: 20; display: flex; gap: 4px; padding: 4px; border: 1px solid var(--rule); border-radius: 999px; background: rgba(10,10,14,.85); font-size: 13px }
-  .look a { padding: 6px 12px; border-radius: 999px; color: var(--dim) }
-  .look a[aria-current] { background: var(--ink); color: #0b0b0d }
 
   @media (prefers-reduced-motion: reduce) {
-    .art .ln, .art .st, .art .ha, .art .tx, .art .flow, .path svg path, .path li, .portrait img { transition: none }
+    .art .ln, .art .st, .art .ha, .art .tx, .art .flow, .path svg path, .path li { transition: none }
     .cat.purr svg { animation: none }
   }
   @media (max-width: 820px) {
@@ -222,7 +203,7 @@
       </div>
     </div>
     <div class="me-photo">
-      <div class="portrait"><img src="manideep.jpg" width="400" height="400" alt="Manideep GNS"></div>
+      <div class="portrait"><img src="assets/me-sketch.webp" width="520" height="650" alt="A pencil sketch of Manideep GNS"></div>
       <div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i><span>12.97° N, 77.59° E</span></div>
     </div>
   </div>
@@ -240,7 +221,7 @@
     </ol>
   </section>
 
-  <section class="sec split decor" id="job">
+  <section class="sec split" id="job">
     <div>
       <p class="label">The day job</p>
       <h2>Finance across <em>four countries.</em></h2>
@@ -250,7 +231,7 @@
         <li><b>Chartered Accountant,</b> qualified in 2023, after audit and financial reporting work since 2018.</li>
       </ul>
     </div>
-    <figure class="art deco" data-art="countries"><svg aria-hidden="true"></svg><figcaption>Four countries, one finance function.</figcaption></figure>
+    <figure class="art" data-art="countries"><svg aria-hidden="true"></svg><figcaption>Four countries, one finance function.</figcaption></figure>
   </section>
 
   <section class="sec split flip" id="work">
@@ -305,21 +286,21 @@
     <figure class="art">
       <button class="cat" type="button" aria-label="Pet the cat">
         <svg viewBox="0 0 220 190" aria-hidden="true">
-          <path d="M160 160 C205 160 214 108 186 96" fill="none" stroke="#e8913a" stroke-width="15" stroke-linecap="round"/>
-          <ellipse cx="108" cy="140" rx="66" ry="44" fill="#f0a04b"/>
-          <ellipse cx="108" cy="150" rx="34" ry="26" fill="#f7c58a"/>
-          <path d="M72 58 L76 18 L102 42 Z M144 58 L140 18 L114 42 Z" fill="#f0a04b"/>
-          <path d="M79 48 L81 30 L95 42 Z M137 48 L135 30 L121 42 Z" fill="#f2b5a6"/>
-          <circle cx="108" cy="78" r="44" fill="#f0a04b"/>
-          <path d="M100 40 L102 52 M108 38 L108 52 M116 40 L114 52" stroke="#d27a2c" stroke-width="4" stroke-linecap="round"/>
-          <g class="open" fill="#1a1410"><ellipse cx="91" cy="78" rx="5" ry="6"/><ellipse cx="125" cy="78" rx="5" ry="6"/></g>
-          <g class="shut" fill="none" stroke="#1a1410" stroke-width="3" stroke-linecap="round"><path d="M85 79 Q91 73 97 79"/><path d="M119 79 Q125 73 131 79"/></g>
-          <path d="M104 90 L112 90 L108 95 Z" fill="#c9605a"/>
-          <path d="M108 95 Q104 101 99 99 M108 95 Q112 101 117 99" fill="none" stroke="#1a1410" stroke-width="2" stroke-linecap="round"/>
-          <path d="M70 88 L50 85 M70 94 L50 97 M146 88 L166 85 M146 94 L166 97" stroke="#f7e3c8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-          <path d="M78 116 Q108 126 138 116" fill="none" stroke="#3b5bdb" stroke-width="5" stroke-linecap="round"/>
-          <path d="M108 122 C102 116 96 124 108 132 C120 124 114 116 108 122 Z" fill="#ffd166"/>
-          <ellipse cx="86" cy="178" rx="16" ry="9" fill="#f7c58a"/><ellipse cx="130" cy="178" rx="16" ry="9" fill="#f7c58a"/>
+          <path d="M160 160 C205 160 214 108 186 96" fill="none" stroke="#9a8f7f" stroke-width="15" stroke-linecap="round"/>
+          <ellipse cx="108" cy="140" rx="66" ry="44" fill="#c4b9a8"/>
+          <ellipse cx="108" cy="150" rx="34" ry="26" fill="#f2efe8"/>
+          <path d="M72 58 L76 18 L102 42 Z M144 58 L140 18 L114 42 Z" fill="#c4b9a8"/>
+          <path d="M79 48 L81 30 L95 42 Z M137 48 L135 30 L121 42 Z" fill="#7d7264"/>
+          <circle cx="108" cy="78" r="44" fill="#c4b9a8"/>
+          <path d="M100 40 L102 52 M108 38 L108 52 M116 40 L114 52" stroke="#7d7264" stroke-width="4" stroke-linecap="round"/>
+          <g class="open" fill="#17161a"><ellipse cx="91" cy="78" rx="5" ry="6"/><ellipse cx="125" cy="78" rx="5" ry="6"/></g>
+          <g class="shut" fill="none" stroke="#17161a" stroke-width="3" stroke-linecap="round"><path d="M85 79 Q91 73 97 79"/><path d="M119 79 Q125 73 131 79"/></g>
+          <path d="M104 90 L112 90 L108 95 Z" fill="#3e3934"/>
+          <path d="M108 95 Q104 101 99 99 M108 95 Q112 101 117 99" fill="none" stroke="#17161a" stroke-width="2" stroke-linecap="round"/>
+          <path d="M70 88 L50 85 M70 94 L50 97 M146 88 L166 85 M146 94 L166 97" stroke="#f2efe8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+          <path d="M78 116 Q108 126 138 116" fill="none" stroke="#3e3934" stroke-width="5" stroke-linecap="round"/>
+          <path d="M108 122 C102 116 96 124 108 132 C120 124 114 116 108 122 Z" fill="#ffe9c9" style="filter:drop-shadow(0 0 4px rgba(255,233,201,.9))"/>
+          <ellipse cx="86" cy="178" rx="16" ry="9" fill="#f2efe8"/><ellipse cx="130" cy="178" rx="16" ry="9" fill="#f2efe8"/>
         </svg>
         <span class="say" aria-hidden="true">prrr</span>
       </button>
@@ -348,17 +329,12 @@
   </section>
 </main>
 <footer class="foot"><span>© 2026 Manideep GNS</span><span>Bengaluru</span></footer>
-<nav class="look" aria-label="Preview look"><a href="?look=playful">Playful</a><a href="?look=quiet">Quiet</a></nav>
 
 <script src="assets/sky.js" defer></script>
 <script>
 const NS = 'http://www.w3.org/2000/svg', mk = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n }
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
-const quiet = document.documentElement.dataset.look === 'quiet'
 const rng = s => () => (s = s * 16807 % 2147483647) / 2147483647
-document.querySelectorAll('.look a').forEach(a => { if (a.textContent.toLowerCase() === document.documentElement.dataset.look) a.setAttribute('aria-current', 'page') })
-// the quiet look keeps the stars, but calm: no streaks as you scroll
-if (quiet) document.querySelector('canvas.stars').dataset.flight = 'calm'
 
 // the Milky Way band behind the first screen
 const dust = document.getElementById('dust')
@@ -404,7 +380,7 @@ const ART = {
       const [x, y] = wide ? [110 + (i % 2) * 22, 50 + i * 50] : [30 + i * 60, 40 + (i % 2) * 30]
       const d = wide ? `M ${x} ${y} C ${x + 120} ${y}, ${cx - 110} ${cy}, ${cx - 20} ${cy}` : `M ${x} ${y} C ${x} ${y + 70}, ${cx} ${cy - 100}, ${cx} ${cy - 16}`
       mk('path', { class: 'flow', d }, svg)
-      if (!reduce && !quiet) for (let k = 0; k < 2; k++) {
+      if (!reduce) for (let k = 0; k < 2; k++) {
         const dot = mk('circle', { class: 'packet', r: 1.8 }, svg)
         mk('animateMotion', { dur: `${(3.4 + rnd() * 2.2).toFixed(2)}s`, begin: `${(k * 1.9 + rnd() * 2).toFixed(2)}s`, repeatCount: 'indefinite', path: d }, dot)
       }
@@ -434,7 +410,7 @@ function drawChanges(animate) {
   let i = 0
   const step = () => {
     const end = animate ? Math.min(pts.length, i + Math.ceil(pts.length / 70)) : pts.length
-    for (; i < end; i++) { const [x, y, a, warm] = pts[i]; g.globalAlpha = a; g.fillStyle = warm && !quiet ? '#ffe7c7' : '#f2efe8'; g.fillRect(x, y, 1.3, 1.3) }
+    for (; i < end; i++) { const [x, y, a, warm] = pts[i]; g.globalAlpha = a; g.fillStyle = warm ? '#ffe7c7' : '#f2efe8'; g.fillRect(x, y, 1.3, 1.3) }
     if (i < pts.length) requestAnimationFrame(step)
   }
   step(); dotsDrawn = true
@@ -442,7 +418,6 @@ function drawChanges(animate) {
 
 // the cat: still until petted; a pet closes his eyes and he purrs
 const cat = document.querySelector('.cat')
-if (quiet) document.querySelector('.cat-cap').textContent = 'Click to pet.'
 cat.addEventListener('click', () => { cat.classList.remove('purr'); void cat.offsetWidth; cat.classList.add('purr') })
 cat.addEventListener('animationend', e => { if (e.animationName === 'say') cat.classList.remove('purr') })
 
