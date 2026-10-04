@@ -380,11 +380,11 @@ function drawChanges(animate) {
   step(); dotsDrawn = true
 }
 
-// email buttons copy the address and say so; a mailto: link does nothing on machines without a mail app
+// email buttons open a new email where there's a mail app, and always copy the address and say so,
+// since a mailto: link alone does nothing on machines without one
 document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
   const email = a.getAttribute('href').slice(7), label = a.textContent
-  a.addEventListener('click', e => {
-    e.preventDefault()
+  a.addEventListener('click', () => {
     const done = () => { a.textContent = 'Copied: ' + email; clearTimeout(a.t); a.t = setTimeout(() => { a.textContent = label }, 2400) }
     const legacy = () => { const t = Object.assign(document.createElement('textarea'), { value: email }); document.body.append(t); t.select(); document.execCommand('copy'); t.remove() }
     navigator.clipboard ? navigator.clipboard.writeText(email).then(done, () => { legacy(); done() }) : (legacy(), done())
