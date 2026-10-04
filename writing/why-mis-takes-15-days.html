@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Why MIS Takes 15 Days | Manideep GNS</title>
-<meta name="description" content="An internal memo from January 2026: what I sent when my boss asked why month-end MIS takes 15 days. Ten places expense data gets stuck, diagnosed in tech terms." />
+<meta name="description" content="An internal memo from January 2026: what I sent when I was asked why month-end MIS takes 15 days. Ten places expense data gets stuck, diagnosed in tech terms." />
 <meta property="og:title" content="Why MIS Takes 15 Days | Manideep GNS" />
 <meta property="og:description" content="An internal memo from January 2026: ten places expense data gets stuck, diagnosed in tech terms." />
 <meta property="og:type" content="article" />
@@ -67,7 +67,7 @@
     <header class="essay-head">
       <div class="eyebrow">Jan 23, 2026 · Memo · 7 min read</div>
       <h1>Why MIS Takes 15 Days (And How We're Fixing It)</h1>
-      <p class="frame">An internal memo from January 23, 2026: what I sent when my boss asked why month-end MIS takes 15 days. Reproduced as sent, with vendor names genericized and the response thread trimmed.</p>
+      <p class="frame">An internal memo from January 23, 2026: what I sent when I was asked why month-end MIS takes 15 days. Reproduced as sent, with vendor names and amounts genericized and the response thread trimmed.</p>
       <p class="frame-update"><em>Updated May 2026: the plan below is from January. Current status at the end →</em></p>
     </header>
 
@@ -109,7 +109,7 @@
 │  │ queue       │   (no timeout, no alert, no SLA)       Zoho    │
 │  └─────────────┘                                                │
 │                                                                 │
-│  3. BILL DATED WRONG MONTH — CUTOFF (AWS)                       │
+│  3. BILL DATED WRONG MONTH — CUTOFF (cloud)                     │
 │  ┌─────────────┐                                                │
 │  │ Zoho        │── Bill date: Feb 3 ──────────────► ✅ In Zoho  │
 │  │ Books       │   Service: January                  BUT WRONG  │
@@ -117,13 +117,13 @@
 │                                                                 │
 │  4. PREPAID AMORTIZATION (SaaS subs, office rent)               │
 │  ┌─────────────┐                                                │
-│  │ Excel       │── ₹12L paid Apr-24 ──────────────► ❌ Not in   │
-│  │ tracker     │   Jan portion = ₹1L                  Zoho      │
+│  │ Excel       │── A year paid upfront ───────────► ❌ Not in   │
+│  │ tracker     │   Jan portion = 1/12                 Zoho      │
 │  └─────────────┘   (manual JV needed)                           │
 │                                                                 │
 │  5. PAID ADVANCE, SERVICE NOT STARTED                           │
 │  ┌─────────────┐                                                │
-│  │ Bank        │── Paid ₹6L in Jan ───────────────► ❓ Where    │
+│  │ Bank        │── Paid in Jan ───────────────────► ❓ Where    │
 │  │ account     │   Service starts April               is it?    │
 │  └─────────────┘   (no state machine)                           │
 │                                                                 │
@@ -135,8 +135,8 @@
 │                                                                 │
 │  7. BILL ≠ ADVANCE PAID (offsite events — 50% advance)          │
 │  ┌─────────────┐                                                │
-│  │ Variance    │── Paid ₹1L advance ──────────────► ❓ Untracked│
-│  │             │   Bill came ₹1.05L                  (no join)  │
+│  │ Variance    │── Paid 50% advance ──────────────► ❓ Untracked│
+│  │             │   Bill came in 5% higher            (no join)  │
 │  └─────────────┘                                                │
 │                                                                 │
 │  8. SAME VENDOR, MULTIPLE SERVICES                              │
@@ -145,10 +145,10 @@
 │  │             │   Service B: Mar-Mar                (no line   │
 │  └─────────────┘   One bill, two periods             allocation)│
 │                                                                 │
-│  9. CREDIT NOTE LATER (Salesforce contract amendment)           │
+│  9. CREDIT NOTE LATER (software contract amendment)             │
 │  ┌─────────────┐                                                │
-│  │ Vendor      │── Jan invoice: ₹10L ─────────────► ❓ Jan      │
-│  │             │   Mar credit note: ₹2L              overstated │
+│  │ Vendor      │── Jan invoice: full ─────────────► ❓ Jan      │
+│  │             │   Mar credit note: 20%              overstated │
 │  └─────────────┘   (contract amendment)              (no link)  │
 │                                                                 │
 │  10. NORMAL POSTED BILLS ✅                                     │
@@ -263,7 +263,7 @@ Ends           coming in       Pazy approvals  numbers        Ready
 │                                                                 │
 │  OUTPUT:                                                        │
 │  ├─ Dashboard: "What's missing for January close?"              │
-│  ├─ Alerts: "AWS Jan service — Day 5, no bill"                  │
+│  ├─ Alerts: "Cloud Jan service — Day 5, no bill"                │
 │  ├─ Alerts: "7 bills in Pazy > 5 days"                          │
 │  └─ One-click JV generation → Zoho Books                        │
 │                                                                 │
@@ -366,7 +366,7 @@ Ends           coming in       Pazy approvals  numbers        Ready
       <ul>
         <li><strong>Variance dashboard</strong> (v0.12.x), Sheets → Supabase ETL, COGS / OpEx split parser, all 4 regions on a single canvas. The data-completeness checks for variance to even render forced cases 3 (cutoff), 5 (advance), and 9 (credit notes) to be resolved upstream.</li>
         <li><strong>Prepaid Tracker</strong>, case 4 (amortization) automated.</li>
-        <li><strong>SVB Card Expenses</strong>, case 6 (unbilled / undiscovered service) for card spend specifically.</li>
+        <li><strong>Corporate card expenses</strong>, case 6 (unbilled / undiscovered service) for card spend specifically.</li>
         <li><strong>Dispute Tracker</strong>, case 9 (credit note linkage).</li>
       </ul>
 
