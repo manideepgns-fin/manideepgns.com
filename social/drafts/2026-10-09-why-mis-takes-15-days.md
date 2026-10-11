@@ -23,16 +23,25 @@ https://manideepgns.com/writing/why-mis-takes-15-days.html?p=20261009
 
 ## LinkedIn
 
-In January I was asked why month-end MIS takes 15 days. The question was: "You have all the expense data. Just automate it."
+Every finance controller gets this question.
 
-So I wrote down where January's expenses actually were.
+"You have all the expense data. Why is the close taking so long? Just automate it."
 
-Zoho had about 60 to 70 percent of them. The rest was somewhere else. A vendor who hadn't sent the bill. A bill waiting at the third approval level. A prepaid spreadsheet. A service someone was already using with no bill at all. A credit note that arrived in March for a January invoice.
+It sounds fair. It is also wrong, and the reason is easy to show.
 
-I counted ten places. Only one of them could be queried.
+Pull up last month's expenses from the ledger. Now ask what is not in it:
 
-That changed the question. Reporting was fast. The data wasn't complete, and no report fixes that.
+The vendor who said the invoice is coming next week.
+The bill waiting at the third approval level.
+The annual subscription paid upfront, sitting in a spreadsheet.
+The service the team has been using, with no bill yet.
+The credit note that will arrive two months from now.
 
-I proposed one tracker for all ten cases. It never shipped in that form. Four months later the pieces got solved inside other tools, mostly because the variance dashboard wouldn't render until the cutoff and credit note cases were fixed upstream. The memo has both the plan and the honest status.
+When I wrote this list for my own close, I found ten places. The ledger held about 60 to 70 percent of the month. Only one of the ten could be queried.
 
+That is why the close ran 15 to 20 days. Not slow reporting. Missing data.
+
+You cannot automate a report on data that does not exist yet. You can only find out what is missing on day one instead of day fifteen.
+
+I wrote the full list, the plan, and what actually shipped:
 https://manideepgns.com/writing/why-mis-takes-15-days.html
