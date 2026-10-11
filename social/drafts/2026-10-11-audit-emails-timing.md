@@ -29,7 +29,7 @@ My first Big-4 audit nearly slipped.
 
 When it was over, I did not ask who should have worked harder. I read the emails. All 1,967 of them.
 
-It was not effort. Everyone was working. It was timing. The hard decisions were arriving late in the cycle, when there was little room left to make them well.
+It was not effort. It was timing. The hard calls were landing late in the cycle, when there was little room left to make them well.
 
 So the fix was not more hours. The hard calls moved from December to July.
 
