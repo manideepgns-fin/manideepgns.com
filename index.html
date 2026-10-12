@@ -124,6 +124,13 @@
   .art .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: .12 }
   .art .packet { fill: rgb(var(--star-warm)); filter: drop-shadow(0 0 3px rgba(var(--star-warm),.9)) }
 
+  /* how I build: the loop, drawn across the column */
+  .art.loop { margin-top: 64px } .art.loop svg { max-width: none; margin: 0 } .art.loop figcaption { text-align: left }
+  .art .ln.back { fill: none; stroke-dasharray: 3 5; opacity: .7 }
+  /* off hours, mirrored so the page doesn't repeat one split: the cats lead */
+  .two.flip { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) } .two.flip > .art { order: -1; margin-top: 34px }
+  .two.flip .naps { margin: 0 } .two.flip .art figcaption { text-align: left }
+
   /* off hours: Cataholic's eight coats, napping */
   .naps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 10px; max-width: 480px; margin: 0 0 0 auto }
   .naps img { width: 100%; height: auto; aspect-ratio: 368 / 200; object-fit: cover; object-position: 50% 71%; filter: brightness(.88) }
@@ -173,7 +180,9 @@
     .path li b, .path li span { text-align: left }
     .art svg { margin: 0 auto; max-width: 420px }
     .art figcaption { text-align: center }
-    .naps { margin: 0 auto }
+    .naps, .two.flip .naps { margin: 0 auto }
+    .two.flip > .art { order: 0 } .two.flip .art figcaption { text-align: center }
+    .art.loop { margin-top: 44px } .art.loop svg { max-width: 360px }
     #hi { padding-bottom: 88px }
   }
 </style>
@@ -192,9 +201,9 @@
   <canvas id="dust" aria-hidden="true"></canvas>
   <div class="intro">
     <div>
-      <p class="who">Finance Engineer · Chartered Accountant · Bengaluru</p>
+      <p class="who">Finance Engineer and Chartered Accountant</p>
       <h1>Hi, I'm <em>Manideep.</em></h1>
-      <p class="lede">I run finance across India, the UK, the Middle East and the US at UrbanPiper. I also built <b>the software that finance runs on</b>, by directing Claude Code in plain English.</p>
+      <p class="lede">I run finance across four countries at UrbanPiper, and I built <b>the software it runs on</b> by directing Claude Code.</p>
       <div class="pills">
         <a class="pill solid" href="mailto:manideepgns@gmail.com">Email me</a>
         <a class="pill" href="https://linkedin.com/in/nagasai-manideep-g-71141412b">LinkedIn ↗</a>
@@ -262,6 +271,7 @@
       <h2>I review every change Claude Code makes.</h2>
       <p class="body">Solo, while running the finance function. <b><span data-stat="modules">30</span> modules and <span data-stat="commits">about 4,100</span> changes</b> since January 18, 2026, the day I opened a GitHub account.</p>
       <a class="link" href="stack.html">The tools I use →</a>
+      <figure class="art loop" data-art="loop"><svg aria-hidden="true"></svg><figcaption>The loop behind every change.</figcaption></figure>
     </div>
   </section>
 
@@ -288,7 +298,7 @@
     <p class="lab">Off hours</p>
     <div>
       <h2>A cat that lives on your Mac.</h2>
-      <div class="two">
+      <div class="two flip">
         <div>
           <p class="body">Cataholic is a chunky cat (or a hundred) for your Mac. Eight coats, it sits still while you work, and holds up a sign when something needs you. Notarized by Apple, and it updates itself. Wrapped is my first year of building, told as a story.</p>
           <p class="row"><a href="https://github.com/manideepgns-fin/cataholic">Cataholic on GitHub ↗</a><a href="wrapped/">Read Wrapped →</a></p>
@@ -365,6 +375,24 @@ const ART = {
     const P = [['The US', 70, 150], ['The UK', 210, 82], ['The Middle East', 330, 178], ['India', 450, 128]]
     P.slice(1).forEach((p, i) => line(svg, [P[i][1], P[i][2]], [p[1], p[2]]))
     P.forEach(([n, x, y]) => { star(svg, x, y); text(svg, x, y + 30, n, 15, 'it') })
+  },
+  loop(svg) {
+    const wide = svg.parentNode.clientWidth >= 700
+    const L = ['I describe it', 'Claude Code builds it', 'I review every change', 'It ships']
+    if (wide) {
+      svg.setAttribute('viewBox', '0 0 1000 190')
+      const X = [90, 360, 630, 900], y = 70
+      for (let i = 1; i < 4; i++) line(svg, [X[i - 1], y], [X[i], y])
+      mk('path', { class: 'ln back', d: `M ${X[3]} ${y + 12} C ${X[3]} 175, ${X[0]} 175, ${X[0]} ${y + 12}` }, svg)
+      X.forEach((x, i) => { star(svg, x, y, i === 2); text(svg, x, y - 30, L[i], 19, 'it') })
+      text(svg, 495, 182, 'and back to the next problem', 13)
+    } else {
+      svg.setAttribute('viewBox', '0 0 340 330')
+      const Y = [30, 110, 190, 270], x = 40
+      for (let i = 1; i < 4; i++) line(svg, [x, Y[i - 1]], [x, Y[i]])
+      Y.forEach((y, i) => { star(svg, x, y, i === 2); text(svg, x + 28, y + 6, L[i], 18, 'it', 'start') })
+      text(svg, x + 28, 318, 'and back to the next problem', 13, '', 'start')
+    }
   },
   flow(svg) {
     const wide = svg.parentNode.clientWidth >= 380, rnd = rng(11)
