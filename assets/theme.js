@@ -23,9 +23,11 @@
       if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) return flip(t)
       const r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2
       const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
-      document.startViewTransition(() => flip(t)).ready.then(() => root.animate(
+      const vt = document.startViewTransition(() => flip(t))
+      vt.finished.catch(() => {}) // a background tab aborts the wipe; the theme has already flipped
+      vt.ready.then(() => root.animate(
         { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
-        { duration: 900, easing: 'cubic-bezier(.65,0,.25,1)', pseudoElement: '::view-transition-new(root)' }))
+        { duration: 900, easing: 'cubic-bezier(.65,0,.25,1)', pseudoElement: '::view-transition-new(root)' })).catch(() => {})
     }
     label(); nav.append(btn)
   })
