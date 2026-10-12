@@ -34,6 +34,10 @@
   .essay .art svg { margin: 0 auto; max-width: 600px }
   .essay .art figcaption { text-align: center }
   .essay .art.loop svg { max-width: none }
+  /* screenshots of the product: framed like the cards, captioned like the drawings */
+  .shot { margin: 32px 0 30px }
+  .shot img { display: block; width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--rule) }
+  .shot figcaption { margin-top: 12px; color: var(--faint); font-size: 13.5px; text-align: center }
   .jobs3 { display: grid; gap: 22px; margin: 6px 0 22px }
   .jobs3 b { display: block; font-family: var(--serif); font-weight: 500; font-size: 24px; color: var(--ink) }
   .jobs3 p { margin: 4px 0 0 }
@@ -978,8 +982,10 @@ if (still.matches) { SOURCES.forEach((_, i) => placed.add(i)); dial = placed.siz
 draw();
 </script>
 <!-- collator:end -->
+      <figure class="shot"><img src="../assets/shots/atlance-lineage.webp" width="1400" height="859" alt="Atlance's lineage screen: 39 sources on the left, one warehouse database in the middle, and the screens that read from it on the right" loading="lazy"><figcaption>The real thing. Sources on the left, one database in the middle, the screens that read from it on the right. Row counts blurred.</figcaption></figure>
 
       <h2>What it does</h2>
+      <figure class="shot"><img src="../assets/shots/atlance-hub.webp" width="1300" height="700" alt="Atlance's home screen: a greeting, system status, and live modules for cash flow, people, variance, billing in four regions, approvals and receivables" loading="lazy"><figcaption>The front door. Every module is live, grouped by the job it does.</figcaption></figure>
       <div class="jobs3">
         <div><b>Operate</b><p>Billing, collections and approvals run the same way in India, the UK, the Middle East and the US. One rule beats four exceptions: fewer special cases means fewer things that fail quietly.</p></div>
         <div><b>Analyse</b><p>Plan against actuals for all four regions on one screen. Cash, people and cloud cost, read live every morning. Prepaid expenses spread across the right months on their own.</p></div>
