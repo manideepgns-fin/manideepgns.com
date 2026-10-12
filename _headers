@@ -1,0 +1,7 @@
+# The site's own code (styles and scripts) changes with every release, and a page must never run
+# against yesterday's copy: a stale site.css once left every drawing unstyled for up to four hours.
+# Always revalidate; unchanged files answer 304 at once. Fonts and images keep Cloudflare's default.
+/assets/*.css
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/*.js
+  Cache-Control: public, max-age=0, must-revalidate
