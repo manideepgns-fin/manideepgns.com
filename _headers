@@ -3,3 +3,6 @@
 # Always revalidate; unchanged files answer 304 at once. The images under assets/ revalidate too: small, and the 304 is cheap.
 /assets/*
   Cache-Control: public, max-age=0, must-revalidate
+# Fonts never change in place (a new font gets a new file name): let browsers keep them for a year.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
