@@ -80,6 +80,27 @@ canvas.stars { position: fixed; inset: 0; width: 100%; height: 100%; display: bl
 footer.foot { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 16px; max-width: 1240px; margin: 0 auto; padding: 28px 36px 40px; color: var(--faint); font-size: 13px; border-top: 1px solid var(--rule) }
 footer.foot a:hover { color: var(--ink) }
 
+/* ── drawings (assets/art.js) ── */
+/* the drawings: small constellations that carry a caption, never a riddle. Drawn whole on load */
+.art { margin: 0 }
+.art svg { width: 100%; max-width: 520px; height: auto; display: block; margin: 0 0 0 auto; overflow: visible }
+.art figcaption { margin-top: 18px; text-align: right; color: var(--faint); font-size: 13.5px }
+.art .ln { stroke: var(--line); stroke-width: 1 }
+.art .st { fill: var(--ink); opacity: .9 }
+.art .st.lit { filter: drop-shadow(0 0 5px rgba(var(--glow),.9)); fill: var(--accent) }
+.art .ha { fill: url(#halo); opacity: .6 }
+.art .tx { fill: var(--dim); font-family: var(--sans); font-weight: 300 }
+.art .tx.big { fill: var(--ink); font-family: var(--serif); font-weight: 500 }
+.art .tx.it { fill: var(--ink); font-family: var(--serif); font-style: italic }
+.art .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: .12 }
+.art .packet { fill: rgb(var(--star-warm)); filter: drop-shadow(0 0 3px rgba(var(--star-warm),.9)) }
+.art .ln.back { fill: none; stroke-dasharray: 3 5; opacity: .7 }
+[data-theme="light"] .art .st { fill: var(--accent); opacity: 1 }
+[data-theme="light"] .art .st.lit, [data-theme="light"] .art .packet { filter: none }
+[data-theme="light"] .art .ha { display: none }
+[data-theme="light"] .art .ha.lit { display: inline; fill: none; stroke: var(--accent); stroke-width: 1; r: 10px; opacity: .45 }
+[data-theme="light"] .art .flow { stroke: var(--accent); opacity: .22 }
+
 /* ── reading pages (writing, memo, stack) ── */
 .page { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 150px 28px 96px }
 .page .kicker { color: var(--faint); font-size: 14px }

@@ -14,7 +14,7 @@
   const flip = t => { set(t); label(); dispatchEvent(new Event('themechange')) }
   light.addEventListener('change', () => { if (!saved) flip(light.matches ? 'light' : 'dark') })
   addEventListener('DOMContentLoaded', () => {
-    const nav = document.querySelector('.top nav')
+    const nav = document.querySelector('.top nav, .theme-slot')
     if (!nav) return
     btn = Object.assign(document.createElement('button'), { type: 'button', className: 'theme' })
     btn.onclick = () => {

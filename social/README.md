@@ -7,6 +7,11 @@ One post a week about the work, on X (@Manideep_GNS) and LinkedIn. A cloud routi
 - `log.md`: what has been drafted and posted, newest first. A topic in the log is done; don't draft it again.
 - `drafts/YYYY-MM-DD-slug.md`: the drafts the routine wrote, one file per week. The PR that adds the file is the review.
 
+## Every post also lives on the site
+- The same PR that adds a draft also adds `writing/<slug>.html`: the LinkedIn version as a short page (copy `writing/audit-emails-timing.html` for the shape: eyebrow `Note, <Month YYYY>. N min read.`, the post's title as the h1, the body as paragraphs, the one line worth quoting as a blockquote), plus a card at the top of `writing/index.html` and a `<url>` in `sitemap.xml`.
+- Skip the page when the post only points at a page that already exists (for example the MIS memo).
+- The page goes live when the PR is merged, so Manideep reviews the post and its page together.
+
 ## Voice
 - Plain words, short sentences, one idea per post. Casual, a little playful, never loud.
 - Evidence, not claims. Show the thing (a number from the site, a decision, a line of code, a mistake) and let the reader conclude. Never write "finance guy who builds" or "finance engineer" as a label for himself; the work says it.

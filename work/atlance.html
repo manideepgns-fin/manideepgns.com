@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlance, a case study | Manideep GNS</title>
+<meta name="description" content="How a Chartered Accountant built the software UrbanPiper's finance runs on, by directing Claude Code: the problem, the decision, what it does, how it was built, and what went wrong.">
+<meta property="og:title" content="Atlance, a case study | Manideep GNS">
+<meta property="og:description" content="The software UrbanPiper's finance runs on: the problem, the decision, how it was built, and what went wrong.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://manideepgns.com/work/atlance.html">
+<meta property="og:image" content="https://manideepgns.com/og/og-atlance.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Atlance, a case study | Manideep GNS">
+<meta name="twitter:description" content="The software UrbanPiper's finance runs on: the problem, the decision, how it was built, and what went wrong.">
+<meta name="twitter:image" content="https://manideepgns.com/og/og-atlance.png">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#040406">
+<link rel="canonical" href="https://manideepgns.com/work/atlance.html">
+<link rel="preload" href="../fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
+<script src="../assets/theme.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  /* the four facts, read at a glance before the story */
+  .figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 28px; margin-top: 48px }
+  .figures div { padding-top: 14px; border-top: 1px solid var(--rule) }
+  .figures dt { font-family: var(--serif); font-size: 46px; line-height: 1; letter-spacing: -.02em; font-variant-numeric: lining-nums }
+  .figures dd { margin-top: 8px; color: var(--dim); font-size: 14.5px; line-height: 1.45 }
+  [data-theme="light"] .figures dt { color: var(--accent) }
+  .essay .art { margin: 36px 0 8px }
+  .essay .art svg { margin: 0 auto; max-width: 600px }
+  .essay .art figcaption { text-align: center }
+  .essay .art.loop svg { max-width: none }
+  .jobs3 { display: grid; gap: 22px; margin: 6px 0 22px }
+  .jobs3 b { display: block; font-family: var(--serif); font-weight: 500; font-size: 24px; color: var(--ink) }
+  .jobs3 p { margin: 4px 0 0 }
+  .next { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px }
+  @media (max-width: 760px) {
+    .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 20px }
+    .figures dt { font-size: 38px }
+  }
+</style>
+</head>
+<body>
+<canvas class="stars" data-flight="calm" aria-hidden="true"></canvas>
+<header class="top solid">
+  <a class="me" href="../">Manideep GNS</a>
+  <nav aria-label="Main"><a href="../#work" aria-current="page">Work</a><a class="wide" href="../stack.html">How I build</a><a href="../writing/">Writing</a><a href="../#hi">Say hi</a></nav>
+</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><radialGradient id="halo"><stop offset="0" style="stop-color:rgb(var(--glow))" stop-opacity=".55"/><stop offset="1" style="stop-color:rgb(var(--glow))" stop-opacity="0"/></radialGradient></defs>
+</svg>
+
+<main>
+  <article class="essay">
+    <header class="essay-head">
+      <p class="eyebrow">Case study, January to October 2026</p>
+      <h1>Atlance. <em>The software our finance runs on.</em></h1>
+      <p class="frame">I run finance at UrbanPiper across four countries. In January 2026 I started building the software it runs on, by directing Claude Code in plain English. This is what it does, how it was built, and what I got wrong.</p>
+      <dl class="figures">
+        <div><dt>7</dt><dd>tools retired, and a twenty-one-sheet workbook</dd></div>
+        <div><dt>30+</dt><dd>teammates use it</dd></div>
+        <div><dt>4</dt><dd>countries, one set of billing rules</dd></div>
+        <div><dt data-stat="commits">4,300</dt><dd>changes since 18 January 2026</dd></div>
+      </dl>
+    </header>
+
+    <div class="essay-body">
+      <h2>The problem</h2>
+      <p>Month-end numbers took fifteen days. I was asked to just automate the report. But the report was never the slow part. The month's expenses were not in one place: the ledger held about 60 to 70 percent of the month, and the rest sat in ten other kinds of places.</p>
+      <p>You can't automate a report on data that doesn't exist yet. So the real job was to get every source into one place first.</p>
+      <p><a href="../writing/why-mis-takes-15-days.html">Read the memo I wrote in January</a></p>
+
+      <h2>The decision: connect the tools, don't replace them</h2>
+      <p>Finance already runs on good tools. Zoho Books holds the ledger in every country. Salesforce holds the contracts. Stripe takes card payments. Ramp and Pazy handle spend and payables. Replacing them would have meant years of migration and a new set of risks.</p>
+      <p>So Atlance doesn't replace them. Every source syncs into one database, and the screens, AI agents and reports sit on top. When Atlance changes something, it writes back to the tool that owns it.</p>
+      <figure class="art" data-art="flow"><svg aria-hidden="true"></svg><figcaption>Seven sources, one database, three jobs on top.</figcaption></figure>
+
+      <h2>What it does</h2>
+      <div class="jobs3">
+        <div><b>Operate</b><p>Billing, collections and approvals run the same way in India, the UK, the Middle East and the US. One rule beats four exceptions: fewer special cases means fewer things that fail quietly.</p></div>
+        <div><b>Analyse</b><p>Plan against actuals for all four regions on one screen. Cash, people and cloud cost, read live every morning. Prepaid expenses spread across the right months on their own.</p></div>
+        <div><b>Report</b><p>Monthly memos drafted from the numbers, and answers to finance questions in Slack.</p></div>
+      </div>
+
+      <h2>How it was built</h2>
+      <p>I don't write code. I describe what I need in plain English. Claude Code builds it, and I review every change before it ships. Every change also goes through tests and checks. Routine work runs on smaller models in parallel, and small typed judgements, such as "is this email a dispute?", come from TypeSafe.</p>
+      <p>The second change I ever made, minutes after the first, was "add password protection". Controls before features. That is the auditor in me, and it set the tone for everything after.</p>
+      <figure class="art loop" data-art="loop"><svg aria-hidden="true"></svg><figcaption>The loop behind every change.</figcaption></figure>
+      <p>In numbers: 215 days of building, a longest streak of 61 days, and 1,340 features against 1,328 fixes. For every new thing, almost exactly one fix.</p>
+
+      <h2>What I got wrong</h2>
+      <p>The January memo planned one tracker for all ten places the data gets stuck. It never shipped that way.</p>
+      <p>By March the question had moved. It was no longer "how fast can we produce the actuals?" It was "how fast can we explain them against the plan?" Building plan against actuals forced several of the ten cases to be fixed upstream, as a side effect. Others were solved inside other tools. Two still have no early warning.</p>
+      <blockquote><p>A faster close stops mattering once the question becomes how fast you can explain the numbers.</p></blockquote>
+
+      <div class="next">
+        <a class="pill solid" href="https://atlance.urbanpiper.ai/architecture/">See the live system map ↗</a>
+        <a class="pill" href="../stack.html">The tools I use</a>
+      </div>
+    </div>
+
+    <footer class="essay-foot"><a class="back" href="../">← Back home</a></footer>
+  </article>
+</main>
+
+<footer class="foot"><span>© 2026 Manideep GNS</span><span>Bengaluru</span></footer>
+<script src="../assets/sky.js" defer></script>
+<script src="../assets/art.js"></script>
+<script>
+drawArt()
+let lastW = innerWidth
+addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; drawArt() } })
+fetch('https://atlance.urbanpiper.ai/stats.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(s => {
+  const n = s && s.atlance && s.atlance.total_commits
+  if (n) document.querySelector('[data-stat="commits"]').textContent = (Math.round(n / 100) * 100).toLocaleString('en-US')
+}).catch(() => {})
+</script>
+</body>
+</html>

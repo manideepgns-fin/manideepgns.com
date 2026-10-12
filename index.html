@@ -110,23 +110,8 @@
   .path li span { display: block; color: var(--dim); font-size: 13.5px; line-height: 1.45; text-align: center; margin-top: 2px }
   @media (prefers-reduced-motion: reduce) { .path svg path, .path li { transition: none } }
 
-  /* the drawings: small constellations that carry a caption, never a riddle. Drawn whole on load */
-  .art { margin: 0 }
-  .art svg { width: 100%; max-width: 520px; height: auto; display: block; margin: 0 0 0 auto; overflow: visible }
-  .art figcaption { margin-top: 18px; text-align: right; color: var(--faint); font-size: 13.5px }
-  .art .ln { stroke: var(--line); stroke-width: 1 }
-  .art .st { fill: var(--ink); opacity: .9 }
-  .art .st.lit { filter: drop-shadow(0 0 5px rgba(var(--glow),.9)); fill: var(--accent) }
-  .art .ha { fill: url(#halo); opacity: .6 }
-  .art .tx { fill: var(--dim); font-family: var(--sans); font-weight: 300 }
-  .art .tx.big { fill: var(--ink); font-family: var(--serif); font-weight: 500 }
-  .art .tx.it { fill: var(--ink); font-family: var(--serif); font-style: italic }
-  .art .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: .12 }
-  .art .packet { fill: rgb(var(--star-warm)); filter: drop-shadow(0 0 3px rgba(var(--star-warm),.9)) }
-
   /* how I build: the loop, drawn across the column */
   .art.loop { margin-top: 64px } .art.loop svg { max-width: none; margin: 0 } .art.loop figcaption { text-align: left }
-  .art .ln.back { fill: none; stroke-dasharray: 3 5; opacity: .7 }
   /* off hours, mirrored so the page doesn't repeat one split: the cats lead */
   .two.flip { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) } .two.flip > .art { order: -1; margin-top: 34px }
   .two.flip .naps { margin: 0 } .two.flip .art figcaption { text-align: left }
@@ -139,6 +124,10 @@
   .row a:hover { border-color: var(--ink) }
 
   /* ── the end ── */
+  /* a face next to the invitation; dimmed a touch at night so it sits in the sky, true colour by day */
+  .hi { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 0 44px; align-items: start }
+  .me-photo { width: 176px; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 16px; border: 1px solid var(--rule); filter: brightness(.88) saturate(.9); margin-top: 8px }
+  [data-theme="light"] .me-photo { filter: none }
   #hi { padding-bottom: 120px }
   .sec .pills { margin-top: 28px }
   .links { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 22px; color: var(--dim); font-size: 14.5px }
@@ -150,11 +139,6 @@
   [data-theme="light"] .pq p { color: var(--accent) }
   [data-theme="light"] .link, [data-theme="light"] .row a, [data-theme="light"] .when figcaption a, [data-theme="light"] .pq figcaption a { border-color: rgba(var(--accent-rgb),.35) }
   [data-theme="light"] .link:hover, [data-theme="light"] .row a:hover, [data-theme="light"] .when figcaption a:hover, [data-theme="light"] .pq figcaption a:hover { border-color: var(--accent); color: var(--accent) }
-  [data-theme="light"] .art .st { fill: var(--accent); opacity: 1 }
-  [data-theme="light"] .art .st.lit, [data-theme="light"] .art .packet { filter: none }
-  [data-theme="light"] .art .ha { display: none }
-  [data-theme="light"] .art .ha.lit { display: inline; fill: none; stroke: var(--accent); stroke-width: 1; r: 10px; opacity: .45 }
-  [data-theme="light"] .art .flow { stroke: var(--accent); opacity: .22 }
   [data-theme="light"] .path li::before { background: var(--accent); box-shadow: none }
   [data-theme="light"] .path li.now::before { box-shadow: 0 0 0 5px var(--on-ink), 0 0 0 6px rgba(var(--accent-rgb),.5) }
   [data-theme="light"] .naps img { filter: none }
@@ -184,6 +168,7 @@
     .two.flip > .art { order: 0 } .two.flip .art figcaption { text-align: center }
     .art.loop { margin-top: 44px } .art.loop svg { max-width: 360px }
     #hi { padding-bottom: 88px }
+    .hi { grid-template-columns: minmax(0, 1fr) } .me-photo { width: 120px; margin: 0 0 22px }
   }
 </style>
 </head>
@@ -253,7 +238,7 @@
       <div class="two">
         <div>
           <p class="body">The software UrbanPiper's finance runs on. It doesn't replace Zoho, Salesforce or Stripe. Every source syncs into one database, and the screens, AI agents and reports sit on top. It retired <b>seven tools and a twenty-one-sheet workbook</b>, and <b>more than thirty teammates</b> use it.</p>
-          <a class="link" href="https://atlance.urbanpiper.ai/architecture/">See the live system map ↗</a>
+          <p class="row"><a href="work/atlance.html">Read the case study →</a><a href="https://atlance.urbanpiper.ai/architecture/">See the live system map ↗</a></p>
         </div>
         <figure class="art" data-art="flow"><svg aria-hidden="true"></svg><figcaption>Seven sources, one database, three jobs on top.</figcaption></figure>
       </div>
@@ -313,7 +298,9 @@
 
   <section class="sec" id="hi">
     <p class="lab">Say hi</p>
-    <div>
+    <div class="hi">
+      <img class="me-photo" src="manideep.jpg" width="400" height="400" alt="Manideep GNS" loading="lazy">
+      <div>
       <h2>Compare notes.</h2>
       <p class="body">Always up for finance × ops × automation chats.</p>
       <div class="pills">
@@ -327,16 +314,15 @@
         <a href="stack.html">How I build</a>
         <a href="wrapped/">My year, Wrapped</a>
       </div>
+      </div>
     </div>
   </section>
 </main>
 <footer class="foot"><span>© 2026 Manideep GNS</span><span>Bengaluru</span></footer>
 
 <script src="assets/sky.js" defer></script>
+<script src="assets/art.js"></script>
 <script>
-const NS = 'http://www.w3.org/2000/svg', mk = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n }
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
-const rng = s => () => (s = s * 16807 % 2147483647) / 2147483647
 // colours for the canvases come from the theme in site.css (r,g,b triples)
 const tok = () => { const c = getComputedStyle(document.documentElement), v = n => c.getPropertyValue(n).trim()
   return { ink: v('--ink-rgb'), warm: v('--star-warm'), cool: v('--star-cool'), glow: v('--glow'), a: parseFloat(v('--star-a')) || 1, day: document.documentElement.dataset.theme === 'light' } }
@@ -365,61 +351,6 @@ function drawDust() {
   }
 }
 
-/* Each section's drawing: stars and lines in local units, every name printed, nothing behind a hover */
-const star = (svg, x, y, lit) => { mk('circle', { class: 'ha' + (lit ? ' lit' : ''), cx: x, cy: y, r: lit ? 26 : 14 }, svg); mk('circle', { class: 'st' + (lit ? ' lit' : ''), cx: x, cy: y, r: lit ? 4 : 2.6 }, svg) }
-const line = (svg, [x1, y1], [x2, y2]) => mk('line', { class: 'ln', x1, y1, x2, y2 }, svg)
-const text = (svg, x, y, s, size, cls = '', anchor = 'middle') => { mk('text', { class: 'tx ' + cls, x, y, 'text-anchor': anchor, 'font-size': size }, svg).textContent = s }
-const ART = {
-  countries(svg) {
-    svg.setAttribute('viewBox', '0 0 520 300')
-    const P = [['The US', 70, 150], ['The UK', 210, 82], ['The Middle East', 330, 178], ['India', 450, 128]]
-    P.slice(1).forEach((p, i) => line(svg, [P[i][1], P[i][2]], [p[1], p[2]]))
-    P.forEach(([n, x, y]) => { star(svg, x, y); text(svg, x, y + 30, n, 15, 'it') })
-  },
-  loop(svg) {
-    const wide = svg.parentNode.clientWidth >= 700
-    const L = ['I describe it', 'Claude Code builds it', 'I review every change', 'It ships']
-    if (wide) {
-      svg.setAttribute('viewBox', '0 0 1000 190')
-      const X = [90, 360, 630, 900], y = 70
-      for (let i = 1; i < 4; i++) line(svg, [X[i - 1], y], [X[i], y])
-      mk('path', { class: 'ln back', d: `M ${X[3]} ${y + 12} C ${X[3]} 175, ${X[0]} 175, ${X[0]} ${y + 12}` }, svg)
-      X.forEach((x, i) => { star(svg, x, y, i === 2); text(svg, x, y - 30, L[i], 19, 'it') })
-      text(svg, 495, 182, 'and back to the next problem', 13)
-    } else {
-      svg.setAttribute('viewBox', '0 0 340 330')
-      const Y = [30, 110, 190, 270], x = 40
-      for (let i = 1; i < 4; i++) line(svg, [x, Y[i - 1]], [x, Y[i]])
-      Y.forEach((y, i) => { star(svg, x, y, i === 2); text(svg, x + 28, y + 6, L[i], 18, 'it', 'start') })
-      text(svg, x + 28, 318, 'and back to the next problem', 13, '', 'start')
-    }
-  },
-  flow(svg) {
-    const wide = svg.parentNode.clientWidth >= 380, rnd = rng(11)
-    svg.setAttribute('viewBox', wide ? '0 0 560 400' : '0 0 420 460')
-    const T = wide ? [[420, 95], [330, 252], [510, 252]] : [[210, 205], [110, 380], [310, 380]]
-    const cx = (T[0][0] + T[1][0] + T[2][0]) / 3, cy = (T[0][1] + T[1][1] + T[2][1]) / 3
-    const SRC = ['Zoho Books', 'Salesforce', 'Stripe', 'Ramp', 'Google Sheets', 'Gmail', 'Metabase']
-    SRC.forEach((name, i) => {
-      const [x, y] = wide ? [110 + (i % 2) * 22, 50 + i * 50] : [30 + i * 60, 40 + (i % 2) * 30]
-      const d = wide ? `M ${x} ${y} C ${x + 120} ${y}, ${cx - 110} ${cy}, ${cx - 20} ${cy}` : `M ${x} ${y} C ${x} ${y + 70}, ${cx} ${cy - 100}, ${cx} ${cy - 16}`
-      mk('path', { class: 'flow', d }, svg)
-      if (!reduce) for (let k = 0; k < 2; k++) {
-        const dot = mk('circle', { class: 'packet', r: 1.8 }, svg)
-        mk('animateMotion', { dur: `${(3.4 + rnd() * 2.2).toFixed(2)}s`, begin: `${(k * 1.9 + rnd() * 2).toFixed(2)}s`, repeatCount: 'indefinite', path: d }, dot)
-      }
-      mk('circle', { class: 'st', cx: x, cy: y, r: 2.2 }, svg)
-      if (wide) text(svg, x - 10, y + 4.5, name, 13, '', 'end')
-    })
-    if (!wide) text(svg, 210, 18, 'Zoho, Salesforce, Stripe and more', 14)
-    ;[[T[0], T[1]], [T[1], T[2]], [T[2], T[0]]].forEach(([p, q]) => line(svg, p, q))
-    T.forEach(([x, y], i) => { star(svg, x, y, true)
-      text(svg, i === 0 ? x : i === 1 ? x - 14 : x + 14, i === 0 ? y - 20 : y + 6, ['Operate', 'Analyse', 'Report'][i], 19, 'it', i === 0 ? 'middle' : i === 1 ? 'end' : 'start') })
-    text(svg, cx, cy + 9, 'Atlance', 26, 'big')
-    text(svg, cx, T[1][1] + 28, 'one database underneath', 13)
-  },
-}
-const drawArt = () => document.querySelectorAll('[data-art]').forEach(f => { const svg = f.querySelector('svg'); svg.replaceChildren(); ART[f.dataset.art](svg) })
 
 // the first screen's figure: every change to the software, placed by the day it was made (across) and the
 // hour of that day in Bengaluru (down). Live from Atlance; the copy in assets/ is the fallback.
