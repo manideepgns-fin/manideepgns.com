@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stack | Manideep GNS</title>
-<meta name="description" content="How I build the systems finance runs on: the tools I direct, the platform underneath, and the systems it ties together.">
-<meta property="og:title" content="Stack | Manideep GNS">
-<meta property="og:description" content="How I build the systems finance runs on.">
+<title>How I build with AI | Manideep GNS</title>
+<meta name="description" content="The rules I work by when I direct AI to build software, one real change from request to release, and the tools underneath. Written for anyone working with any model.">
+<meta property="og:title" content="How I build with AI | Manideep GNS">
+<meta property="og:description" content="Eight rules for directing AI to build software, and one real change from request to release.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manideepgns.com/stack.html">
 <meta property="og:image" content="https://manideepgns.com/og/og-manideep.png">
@@ -22,6 +22,30 @@
 <link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
 <script src="assets/theme.js"></script>
 <link rel="stylesheet" href="assets/site.css">
+<style>
+  /* the rules: a rule in the serif, why it matters, and the moment that made it a rule */
+  .rules { list-style: none; margin-top: 40px; display: grid; gap: 34px }
+  .rules li { padding-top: 18px; border-top: 1px solid var(--rule) }
+  .rules b { display: block; font-family: var(--serif); font-weight: 500; font-size: 27px; line-height: 1.15 }
+  .rules p { margin-top: 8px; color: var(--dim); max-width: 60ch }
+  .rules .why { margin-top: 10px; font-size: 14.5px; color: var(--faint) }
+  .rules .why i { font-family: var(--serif); font-size: 16.5px; color: var(--dim) }
+  [data-theme="light"] .rules .why i { color: var(--accent) }
+  /* one change, end to end: a vertical run of stars */
+  .run { list-style: none; margin-top: 36px; border-left: 1px solid var(--line); margin-left: 6px }
+  .run li { position: relative; padding: 0 0 28px 26px }
+  .run li::before { content: ''; position: absolute; left: -4px; top: 10px; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 12px 3px rgba(var(--glow), .3) }
+  [data-theme="light"] .run li::before { background: var(--accent); box-shadow: none }
+  .run li:last-child { padding-bottom: 0 }
+  .run q { display: block; font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.3; quotes: "\201C" "\201D" }
+  .run p { margin-top: 6px; color: var(--dim); max-width: 60ch }
+  .takeaway { margin-top: 40px; font-family: var(--serif); font-size: 30px; line-height: 1.25; max-width: 24em }
+  [data-theme="light"] .takeaway { color: var(--accent) }
+  .page > section { margin-top: 96px }
+  .page h2.big { font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -.015em }
+  .page h2.big + p { margin-top: 14px; color: var(--dim); font-size: 18px; max-width: 56ch }
+  @media (max-width: 760px) { .rules b { font-size: 24px } .takeaway { font-size: 25px } }
+</style>
 </head>
 <body>
 <canvas class="stars" data-flight="calm" aria-hidden="true"></canvas>
@@ -31,20 +55,54 @@
 </header>
 
 <main class="page">
-  <h1>Stack</h1>
-  <p class="lede">I design systems by describing them in plain English and directing the tools that build them. This is the kit.</p>
+  <p class="kicker">How I build</p>
+  <h1>I don't write code. <em>I direct it.</em></h1>
+  <p class="lede">Since January 2026 I have built the software my finance team runs on by describing it in plain English and reviewing every change an AI makes. These are the rules that held up, one real change from start to finish, and the tools underneath. None of it depends on one model.</p>
 
-  <section class="group">
-    <h2>How I build</h2>
+  <section>
+    <h2 class="big">Eight rules</h2>
+    <p>Plain rules for directing any AI model on real work. Each comes with the reason it exists.</p>
+    <ol class="rules">
+      <li><b>English is the only language I need.</b><p>I describe what I want and why, in plain words. The AI explains its choices back the same way: short sentences, no jargon, the trade-off in terms a finance person would use. If I can't follow the explanation, the work isn't done.</p><p class="why"><i>Why:</i> I can't review code line by line. I can review a clear argument.</p></li>
+      <li><b>Propose, don't ask.</b><p>"Here's what I'd do, and why" beats "what would you like?" One strong recommendation is better than a menu of five. Questions come once, before the work starts, all together.</p><p class="why"><i>Why:</i> I bring the problem and the judgement. A menu of technical options hands the hard part back to the one person least able to choose.</p></li>
+      <li><b>The task is the whole job.</b><p>Something odd spotted on the way gets one line in the summary, not a detour. The test before any extra work: would the task ship wrong, or not at all, without it?</p><p class="why"><i>Why:</i> a useful side discovery can still eat the afternoon. It gets noted, and the task ships first.</p></li>
+      <li><b>Check the source, not the memory.</b><p>Before saying something is missing or broken, open the real thing: the live data, the actual document, the current docs. A model's memory of how a system works is a guess.</p><p class="why"><i>Why:</i> some errors disguise their cause. A failure on the server can show up in the browser as an unrelated access error, and a guess fixes the wrong thing.</p></li>
+      <li><b>Fix the cause, then guard the whole class.</b><p>Every bug gets traced to where it starts, and fixed there. Then it gets an automatic check that would catch every bug like it, not just this one.</p><p class="why"><i>Why:</i> one stray character in a prompt template silently broke a feature for three months. Now a test checks every template.</p></li>
+      <li><b>Trust the check, not the claim.</b><p>"Tests pass" is a claim until someone runs them. Every check an AI says it ran gets run again before anything ships, by one named reviewer.</p><p class="why"><i>Why:</i> agents have described test runs that never happened.</p></li>
+      <li><b>Ask before anything that can't be undone.</b><p>Building, committing and shipping run without asking. Sending email to customers, spending money, deleting data or changing live records always waits for a yes.</p><p class="why"><i>Why:</i> an automation once sent reminder emails that should never have gone out. That kind of send is now blocked unless I approve it.</p></li>
+      <li><b>Write it down for the next model.</b><p>Anything worth knowing about the business or its systems goes into the project's own files when it is learned, not into a model's memory. Any model that opens the project tomorrow inherits the same context.</p><p class="why"><i>Why:</i> a model forgets between sessions, and a different model never knew. Files don't forget.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2 class="big">One change, end to end</h2>
+    <p>This website's redesign, in October 2026. A few hours, about a dozen decisions from me, no code typed by me.</p>
+    <ol class="run">
+      <li><q>My portfolio is only dark. Can we have a light version?</q><p>The first finding: colours were typed out by hand in dozens of places. Before any new theme, every colour moved into one named list, so a theme becomes one set of values.</p></li>
+      <li><q>We need better colour usage.</q><p>The first light version was a cream page with an orange-red accent. Correct, but forgettable. The second tried four colours, one per idea.</p></li>
+      <li><q>Design it as if I hired a senior designer.</q><p>A design checklist came back with the opposite of the second attempt: one colour, used with confidence. Day became navy ink and one ultramarine. Switching themes spreads the new sky out from the button you clicked.</p></li>
+      <li><q>Is this actually senior grade?</q><p>The honest answer was no: about seven out of ten, with six named gaps, the biggest being a case study with no real product in it.</p></li>
+      <li><q>Try this open-source drawing skill.</q><p>Its code was read before it was installed. It built the interactive machine on the Atlance case study, and its checks caught two real faults: a sheet drawn in front of a post that should hide it, and a script that printed its own code onto the page.</p></li>
+      <li><q>Use real screenshots.</q><p>Taken from the live product, and every row count blurred before anything was published.</p></li>
+      <li><q>Ship it.</q><p>Released, then checked on the live site. The first check failed because the host strips page comments the check was looking for. It was rerun on visible text, and passed.</p></li>
+    </ol>
+    <p class="takeaway">The work was mine: the brief, the pushback, the taste and the yes. The typing wasn't.</p>
+  </section>
+
+  <section>
+    <h2 class="big">The kit</h2>
+    <p>The tools underneath. The rules above matter more than any of them.</p>
+    <div class="group">
+    <h2>Directing the work</h2>
     <div class="tools">
       <div class="tool"><b>Claude Code</b><span>The engineering team. I describe, it builds, I review every change in plain English.</span></div>
       <div class="tool"><b>A fleet of smaller models</b><span>Routine work runs on cheaper models in parallel. Claude plans and reviews.</span></div>
       <div class="tool"><b>TypeSafe</b><span>Small, typed AI judgements: is this email a dispute, does this payment match that invoice.</span></div>
       <div class="tool"><b>GitHub</b><span>Every change goes through tests and checks before it ships.</span></div>
     </div>
-  </section>
+    </div>
 
-  <section class="group">
+    <div class="group">
     <h2>The platform underneath</h2>
     <div class="tools">
       <div class="tool"><b>React and Vite</b><span>Every Atlance screen, built from one design system.</span></div>
@@ -52,9 +110,9 @@
       <div class="tool"><b>Supabase</b><span>The warehouse. Every source syncs into one Postgres database.</span></div>
       <div class="tool"><b>Cloudflare and Railway</b><span>Where the screens and the API live.</span></div>
     </div>
-  </section>
+    </div>
 
-  <section class="group">
+    <div class="group">
     <h2>What it ties together</h2>
     <p>The systems finance already runs on. Atlance doesn't replace them; it reads from them, reasons across them and writes back.</p>
     <div class="tools">
@@ -65,13 +123,14 @@
       <div class="tool"><b>Ramp and Pazy</b><span>Spend and payables.</span></div>
       <div class="tool"><b>Google Workspace and Slack</b><span>Where the team works, and where the agents report.</span></div>
     </div>
-  </section>
+    </div>
 
-  <section class="group">
+    <div class="group">
     <h2>On my Mac</h2>
     <div class="tools">
       <div class="tool"><b>Swift</b><span>Small native apps: Cataholic (a cat for your Mac), a menu-bar companion for Atlance, and a gesture launcher.</span></div>
       <div class="tool"><b>Claude, the desktop app</b><span>Where most of this gets built, often in the evenings and on weekends.</span></div>
+    </div>
     </div>
   </section>
 </main>
