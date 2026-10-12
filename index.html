@@ -50,7 +50,7 @@
   .intro { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; width: 100%; max-width: 1240px; margin: 0 auto; padding: 120px 36px 80px; will-change: opacity, transform }
   .intro .who { color: var(--dim); font-size: 15px; letter-spacing: .02em }
   .intro h1 { margin-top: 18px; font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8.4vw, 128px); line-height: .98; letter-spacing: -.025em }
-  .intro h1 em { font-style: italic; color: var(--em) }
+  .intro h1 em { font-style: italic; color: var(--accent) }
   .intro .lede { margin-top: 28px; font-size: clamp(18px, 1.55vw, 21px); line-height: 1.55; color: rgba(var(--ink-rgb),.82); max-width: 40ch; text-wrap: pretty }
   .intro .lede b { font-weight: 400; color: var(--ink) }
   .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px }
@@ -137,6 +137,20 @@
   .links { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 22px; color: var(--dim); font-size: 14.5px }
   .links a { transition: color .3s }
   .links a:hover { color: var(--ink) }
+
+  /* by day, the atlas in one ink: stars and lines in ultramarine, bright stars ringed rather than glowing */
+  [data-theme="light"] .lab { color: var(--accent) }
+  [data-theme="light"] .pq p { color: var(--accent) }
+  [data-theme="light"] .link, [data-theme="light"] .row a, [data-theme="light"] .when figcaption a, [data-theme="light"] .pq figcaption a { border-color: rgba(var(--accent-rgb),.35) }
+  [data-theme="light"] .link:hover, [data-theme="light"] .row a:hover, [data-theme="light"] .when figcaption a:hover, [data-theme="light"] .pq figcaption a:hover { border-color: var(--accent); color: var(--accent) }
+  [data-theme="light"] .art .st { fill: var(--accent); opacity: 1 }
+  [data-theme="light"] .art .st.lit, [data-theme="light"] .art .packet { filter: none }
+  [data-theme="light"] .art .ha { display: none }
+  [data-theme="light"] .art .ha.lit { display: inline; fill: none; stroke: var(--accent); stroke-width: 1; r: 10px; opacity: .45 }
+  [data-theme="light"] .art .flow { stroke: var(--accent); opacity: .22 }
+  [data-theme="light"] .path li::before { background: var(--accent); box-shadow: none }
+  [data-theme="light"] .path li.now::before { box-shadow: 0 0 0 5px var(--on-ink), 0 0 0 6px rgba(var(--accent-rgb),.5) }
+  [data-theme="light"] .naps img { filter: none }
 
   @media (max-width: 820px) {
     .intro { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 88px 20px 56px }
@@ -315,7 +329,7 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
 const rng = s => () => (s = s * 16807 % 2147483647) / 2147483647
 // colours for the canvases come from the theme in site.css (r,g,b triples)
 const tok = () => { const c = getComputedStyle(document.documentElement), v = n => c.getPropertyValue(n).trim()
-  return { ink: v('--ink-rgb'), warm: v('--star-warm'), cool: v('--star-cool'), glow: v('--glow'), a: parseFloat(v('--star-a')) || 1 } }
+  return { ink: v('--ink-rgb'), warm: v('--star-warm'), cool: v('--star-cool'), glow: v('--glow'), a: parseFloat(v('--star-a')) || 1, day: document.documentElement.dataset.theme === 'light' } }
 
 // the Milky Way band behind the first screen
 const dust = document.getElementById('dust')
@@ -332,6 +346,7 @@ function drawDust() {
     g.fillRect(x0 + ux * t + nx * off, y0 + uy * t + ny * off, rnd() < .9 ? .8 : 1.4, rnd() < .9 ? .8 : 1.4)
   }
   g.globalAlpha = 1
+  if (C.day) return // by day the band is ink specks only; a glow would read as a smudge on paper
   for (let i = 0; i < 7; i++) {
     const t = len * (.1 + i * .13), cx = x0 + ux * t + nx * gauss() * 30, cy = y0 + uy * t + ny * gauss() * 30
     const grd = g.createRadialGradient(cx, cy, 0, cx, cy, 170)
@@ -341,7 +356,7 @@ function drawDust() {
 }
 
 /* Each section's drawing: stars and lines in local units, every name printed, nothing behind a hover */
-const star = (svg, x, y, lit) => { mk('circle', { class: 'ha', cx: x, cy: y, r: lit ? 26 : 14 }, svg); mk('circle', { class: 'st' + (lit ? ' lit' : ''), cx: x, cy: y, r: lit ? 4 : 2.6 }, svg) }
+const star = (svg, x, y, lit) => { mk('circle', { class: 'ha' + (lit ? ' lit' : ''), cx: x, cy: y, r: lit ? 26 : 14 }, svg); mk('circle', { class: 'st' + (lit ? ' lit' : ''), cx: x, cy: y, r: lit ? 4 : 2.6 }, svg) }
 const line = (svg, [x1, y1], [x2, y2]) => mk('line', { class: 'ln', x1, y1, x2, y2 }, svg)
 const text = (svg, x, y, s, size, cls = '', anchor = 'middle') => { mk('text', { class: 'tx ' + cls, x, y, 'text-anchor': anchor, 'font-size': size }, svg).textContent = s }
 const ART = {
@@ -399,7 +414,7 @@ function drawWhen() {
   g.textAlign = 'left'; g.fillText('18 January', L, T + h + 10); g.textAlign = 'right'; g.fillText('today', L + w, T + h + 10)
   for (const [d, hr] of pts) {
     const warm = rnd() < .16, big = rnd() < .06, x = X(d + rnd() * .9), y = Y(hr) + (rnd() - .5) * 2
-    g.globalAlpha = .28 + rnd() * .55; g.fillStyle = `rgb(${warm ? C.warm : C.ink})`
+    g.globalAlpha = .28 + rnd() * .55; g.fillStyle = `rgb(${warm ? C.warm : C.day ? C.cool : C.ink})`
     if (big) { g.shadowColor = `rgba(${C.glow},.8)`; g.shadowBlur = 4; g.fillRect(x, y, 1.6, 1.6); g.shadowBlur = 0 } else g.fillRect(x, y, 1.1, 1.1)
   }
   g.globalAlpha = 1
