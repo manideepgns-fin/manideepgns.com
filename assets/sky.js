@@ -8,6 +8,11 @@
   const flight = cv.dataset.flight !== 'calm'
   let W, H, DPR, lastY = scrollY, speed = 0
   const pointer = { x: 0, y: 0, tx: 0, ty: 0 }
+  // star colours come from the theme (site.css), refreshed when day/night flips
+  let WARM, COOL, ALPHA
+  const tint = () => { const c = getComputedStyle(document.documentElement), v = n => c.getPropertyValue(n).trim()
+    WARM = v('--star-warm'); COOL = v('--star-cool'); ALPHA = parseFloat(v('--star-a')) || 1 }
+  tint(); addEventListener('themechange', tint)
   const spawn = (s, far) => {
     s.x = (Math.random() - .5) * 2.4; s.y = (Math.random() - .5) * 2.4
     s.z = far ? 1 : .05 + Math.random() * .95; s.pz = s.z
@@ -32,7 +37,7 @@
       const sx = ox + s.x / s.z * f, sy = oy + s.y / s.z * f
       if (sx < -50 || sx > W + 50 || sy < -50 || sy > H + 50) { if (s.z < .5) { spawn(s, true); s.pz = s.z } continue }
       const near = 1 - s.z, tw = reduce ? .85 : .6 + .4 * Math.sin(t / 900 + s.p)
-      const a = Math.min(1, (.15 + near * .95) * tw), col = s.warm ? '255,226,189' : '238,242,255'
+      const a = Math.min(1, (.15 + near * .95) * tw) * ALPHA, col = s.warm ? WARM : COOL
       if (speed > .002) {
         const px = ox + s.x / s.pz * f, py = oy + s.y / s.pz * f
         cx.strokeStyle = `rgba(${col},${a})`; cx.lineWidth = s.r * (.4 + near * 1.6)

@@ -7,16 +7,44 @@
 @font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(../fonts/geist.woff2) format('woff2') }
 
 :root {
-  --night: #040406; --ink: #f2efe8; --dim: rgba(242,239,232,.66); --faint: rgba(242,239,232,.56);
-  --rule: rgba(242,239,232,.14); --line: rgba(242,239,232,.5); --glass: rgba(10,10,14,.55);
+  --night: #040406; --bg-rgb: 4,4,6; --ink: #f2efe8; --ink-rgb: 242,239,232;
+  --dim: rgba(var(--ink-rgb),.66); --faint: rgba(var(--ink-rgb),.56);
+  --rule: rgba(var(--ink-rgb),.14); --line: rgba(var(--ink-rgb),.5); --glass: rgba(10,10,14,.55);
+  --on-ink: #0b0b0d; --ink-hi: #fff; --code-bg: rgba(8,8,12,.8);
+  --accent: var(--ink); --em: var(--ink);
+  /* stars and their glow, as r,g,b so canvas and CSS share them */
+  --star-warm: 255,226,189; --star-cool: 238,242,255; --glow: 255,246,230; --star-a: 1;
   --serif: 'Cormorant Garamond', Georgia, serif; --sans: Geist, system-ui, sans-serif;
+  color-scheme: dark;
+}
+/* daytime: the same sky as an old printed star atlas. Cream paper, indigo ink, vermilion for the bright stars */
+:root[data-theme="light"] {
+  --night: #f5efe3; --bg-rgb: 245,239,227; --ink: #1c2140; --ink-rgb: 28,33,64;
+  --dim: rgba(var(--ink-rgb),.78); --faint: rgba(var(--ink-rgb),.68);
+  --rule: rgba(var(--ink-rgb),.16); --line: rgba(var(--ink-rgb),.42); --glass: rgba(245,239,227,.7);
+  --on-ink: #f5efe3; --ink-hi: #c2410c; --code-bg: rgba(255,255,255,.55);
+  --accent: #c2410c; --em: #c2410c;
+  --star-warm: 194,65,12; --star-cool: 37,84,196; --glow: 194,65,12; --star-a: .7;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --night: #f5efe3; --bg-rgb: 245,239,227; --ink: #1c2140; --ink-rgb: 28,33,64;
+    --dim: rgba(var(--ink-rgb),.78); --faint: rgba(var(--ink-rgb),.68);
+    --rule: rgba(var(--ink-rgb),.16); --line: rgba(var(--ink-rgb),.42); --glass: rgba(245,239,227,.7);
+    --on-ink: #f5efe3; --ink-hi: #c2410c; --code-bg: rgba(255,255,255,.55);
+    --accent: #c2410c; --em: #c2410c;
+    --star-warm: 194,65,12; --star-cool: 37,84,196; --glow: 194,65,12; --star-a: .7;
+    color-scheme: light;
+  }
 }
 * { box-sizing: border-box; margin: 0; padding: 0 }
-html { background: var(--night); scroll-behavior: smooth }
+html { background: var(--night); scroll-behavior: smooth; transition: background-color .4s }
+body { background: var(--night) }
 body { color: var(--ink); font: 16px/1.6 var(--sans); font-weight: 300; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility }
 a { color: inherit; text-decoration: none }
 :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 4px; border-radius: 4px }
-::selection { background: rgba(242,239,232,.85); color: #0b0b0d }
+::selection { background: rgba(var(--ink-rgb),.85); color: var(--on-ink) }
 
 /* the sky behind everything */
 canvas.stars { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none }
@@ -24,16 +52,21 @@ canvas.stars { position: fixed; inset: 0; width: 100%; height: 100%; display: bl
 /* top bar */
 .top { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 24px 36px; z-index: 10; font-size: 14px; font-weight: 400 }
 .top .me { font-family: var(--serif); font-size: 21px; font-weight: 500; letter-spacing: .01em }
-.top nav { display: flex; gap: 28px; color: var(--dim) }
+.top nav { display: flex; align-items: center; gap: 28px; color: var(--dim) }
 .top nav a { transition: color .3s; padding: 12px 2px; margin: -12px -2px }
 .top nav a:hover, .top nav a[aria-current] { color: var(--ink) }
-.top.solid { background: linear-gradient(var(--night) 58%, rgba(4,4,6,0)) }
+.top.solid { background: linear-gradient(var(--night) 58%, rgba(var(--bg-rgb),0)) }
+
+/* sun / moon switch, added to the top bar by theme.js */
+.theme { background: none; border: 0; color: var(--dim); cursor: pointer; padding: 10px; margin: -10px -4px -10px 0; display: inline-grid; place-items: center; transition: color .3s }
+.theme:hover { color: var(--accent) }
+.theme svg { width: 17px; height: 17px; display: block }
 
 /* pills */
-.pill { display: inline-flex; gap: 8px; align-items: center; padding: 11px 20px; border: 1px solid rgba(242,239,232,.28); border-radius: 999px; font-size: 14px; font-weight: 400; transition: background .3s, border-color .3s }
-.pill:hover { background: rgba(242,239,232,.08); border-color: var(--ink) }
-.pill.solid { background: var(--ink); color: #0b0b0d; border-color: var(--ink); font-weight: 500 }
-.pill.solid:hover { background: #fff }
+.pill { display: inline-flex; gap: 8px; align-items: center; padding: 11px 20px; border: 1px solid rgba(var(--ink-rgb),.28); border-radius: 999px; font-size: 14px; font-weight: 400; transition: background .3s, border-color .3s }
+.pill:hover { background: rgba(var(--ink-rgb),.08); border-color: var(--ink) }
+.pill.solid { background: var(--ink); color: var(--on-ink); border-color: var(--ink); font-weight: 500 }
+.pill.solid:hover { background: var(--ink-hi); border-color: var(--ink-hi) }
 
 footer.foot { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 16px; max-width: 1240px; margin: 0 auto; padding: 28px 36px 40px; color: var(--faint); font-size: 13px; border-top: 1px solid var(--rule) }
 footer.foot a:hover { color: var(--ink) }
@@ -48,7 +81,7 @@ footer.foot a:hover { color: var(--ink) }
 /* writing index */
 .posts { margin-top: 64px; display: grid; gap: 18px }
 .post { display: block; padding: 28px 30px; border: 1px solid var(--rule); border-radius: 18px; transition: border-color .3s, transform .3s cubic-bezier(.16,1,.3,1) }
-a.post:hover { border-color: rgba(242,239,232,.4); transform: translateY(-2px) }
+a.post:hover { border-color: rgba(var(--ink-rgb),.4); transform: translateY(-2px) }
 .post .meta { color: var(--faint); font-size: 13.5px }
 .post h2 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 34px; line-height: 1.1; margin-top: 8px }
 .post p { color: var(--dim); margin-top: 10px }
@@ -72,16 +105,16 @@ a.post:hover { border-color: rgba(242,239,232,.4); transform: translateY(-2px) }
 .essay-body { margin-top: 56px; font-size: 18px; line-height: 1.75 }
 .essay-body h2 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 34px; line-height: 1.15; margin: 56px 0 14px }
 .essay-body h3 { font-weight: 500; font-size: 19px; margin: 32px 0 8px }
-.essay-body p { margin: 0 0 18px; color: rgba(242,239,232,.86) }
+.essay-body p { margin: 0 0 18px; color: rgba(var(--ink-rgb),.86) }
 .essay-body strong { font-weight: 500; color: var(--ink) }
-.essay-body ul, .essay-body ol { margin: 0 0 18px 22px; color: rgba(242,239,232,.86) }
+.essay-body ul, .essay-body ol { margin: 0 0 18px 22px; color: rgba(var(--ink-rgb),.86) }
 .essay-body li { margin-bottom: 6px }
-.essay-body a { text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px }
+.essay-body a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px }
 .essay-body blockquote { margin: 0 0 22px; padding: 0; font-family: var(--serif); font-style: italic; font-size: 26px; line-height: 1.35; color: var(--ink) }
 .essay-body blockquote p { color: inherit; margin: 0 }
 .essay-body .callout { margin: 26px 0; padding: 20px 24px; border: 1px solid var(--rule); border-radius: 16px }
 .essay-body .callout p { margin: 0 }
-.essay-body pre { margin: 22px 0 26px; padding: 20px; overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; background: rgba(8,8,12,.8); font: 12.5px/1.5 ui-monospace, 'SF Mono', Menlo, monospace; color: rgba(242,239,232,.82) }
+.essay-body pre { margin: 22px 0 26px; padding: 20px; overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; background: var(--code-bg); font: 12.5px/1.5 ui-monospace, 'SF Mono', Menlo, monospace; color: rgba(var(--ink-rgb),.82) }
 .essay-body table { width: 100%; border-collapse: collapse; margin: 18px 0 26px; font-size: 15px }
 .essay-body th, .essay-body td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top }
 .essay-body th { font-weight: 500; color: var(--dim) }

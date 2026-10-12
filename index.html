@@ -24,6 +24,7 @@
 <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<script src="assets/theme.js"></script>
 <link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">
 {
@@ -49,15 +50,15 @@
   .intro { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; width: 100%; max-width: 1240px; margin: 0 auto; padding: 120px 36px 80px; will-change: opacity, transform }
   .intro .who { color: var(--dim); font-size: 15px; letter-spacing: .02em }
   .intro h1 { margin-top: 18px; font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8.4vw, 128px); line-height: .98; letter-spacing: -.025em }
-  .intro h1 em { font-style: italic }
-  .intro .lede { margin-top: 28px; font-size: clamp(18px, 1.55vw, 21px); line-height: 1.55; color: rgba(242,239,232,.82); max-width: 40ch; text-wrap: pretty }
+  .intro h1 em { font-style: italic; color: var(--em) }
+  .intro .lede { margin-top: 28px; font-size: clamp(18px, 1.55vw, 21px); line-height: 1.55; color: rgba(var(--ink-rgb),.82); max-width: 40ch; text-wrap: pretty }
   .intro .lede b { font-weight: 400; color: var(--ink) }
   .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px }
   /* the first screen's figure: every change to the software, by day (across) and hour (down). A record, not an instrument */
   .when { margin: 0; width: clamp(300px, 34vw, 500px) }
   .when canvas { width: 100%; aspect-ratio: 5 / 4; display: block }
   .when figcaption { margin-top: 14px; color: var(--faint); font-size: 13.5px }
-  .when figcaption a { color: var(--dim); border-bottom: 1px solid rgba(242,239,232,.25); transition: color .3s, border-color .3s }
+  .when figcaption a { color: var(--dim); border-bottom: 1px solid rgba(var(--ink-rgb),.25); transition: color .3s, border-color .3s }
   .when figcaption a:hover, .when a:hover + figcaption a { color: var(--ink); border-color: var(--ink) }
 
   main { position: relative; z-index: 2; padding-top: 64px }
@@ -71,14 +72,14 @@
   .body { margin-top: 22px; font-size: 18px; color: var(--dim); max-width: 46ch; text-wrap: pretty }
   .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 56px; align-items: start }
   .two .art { margin-top: 12px }
-  .link { display: inline-block; margin-top: 22px; font-size: 15px; font-weight: 400; border-bottom: 1px solid rgba(242,239,232,.3); transition: border-color .3s }
+  .link { display: inline-block; margin-top: 22px; font-size: 15px; font-weight: 400; border-bottom: 1px solid rgba(var(--ink-rgb),.3); transition: border-color .3s }
   .link:hover { border-color: var(--ink) }
 
   /* the memo, in its own words */
   .pq { margin: 48px 0 0 }
-  .pq p { max-width: 21em; font-family: var(--serif); font-size: 36px; line-height: 1.18; letter-spacing: -.01em; color: rgba(242,239,232,.9); text-indent: -.42em }
+  .pq p { max-width: 21em; font-family: var(--serif); font-size: 36px; line-height: 1.18; letter-spacing: -.01em; color: rgba(var(--ink-rgb),.9); text-indent: -.42em }
   .pq figcaption { margin-top: 14px; font-size: 14px; color: var(--faint) }
-  .pq figcaption a { color: var(--dim); border-bottom: 1px solid rgba(242,239,232,.25); transition: color .3s, border-color .3s }
+  .pq figcaption a { color: var(--dim); border-bottom: 1px solid rgba(var(--ink-rgb),.25); transition: color .3s, border-color .3s }
   .pq figcaption a:hover { color: var(--ink); border-color: var(--ink) }
 
   /* how I work: four habits, each proven by one real moment */
@@ -100,10 +101,10 @@
   .arc.in .path svg path { stroke-dashoffset: 0 }
   .path ol { list-style: none }
   .path li { position: absolute; width: 150px; transform: translate(-50%, 0); opacity: 0; transition: opacity .8s ease var(--d) }
-  .path li::before { content: ''; position: absolute; left: 50%; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 14px 3px rgba(255,246,230,.35) }
+  .path li::before { content: ''; position: absolute; left: 50%; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 14px 3px rgba(var(--glow),.35) }
   .path li.up { padding-bottom: 20px; transform: translate(-50%, -100%) } .path li.up::before { bottom: -3.5px }
   .path li.down { padding-top: 20px } .path li.down::before { top: -3.5px }
-  .path li.now::before { width: 11px; height: 11px; margin-left: -5.5px; box-shadow: 0 0 22px 6px rgba(255,246,230,.5) }
+  .path li.now::before { width: 11px; height: 11px; margin-left: -5.5px; box-shadow: 0 0 22px 6px rgba(var(--glow),.5); background: var(--accent) }
   .arc.in .path li { opacity: 1 }
   .path li b { display: block; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 22px; text-align: center }
   .path li span { display: block; color: var(--dim); font-size: 13.5px; line-height: 1.45; text-align: center; margin-top: 2px }
@@ -115,19 +116,19 @@
   .art figcaption { margin-top: 18px; text-align: right; color: var(--faint); font-size: 13.5px }
   .art .ln { stroke: var(--line); stroke-width: 1 }
   .art .st { fill: var(--ink); opacity: .9 }
-  .art .st.lit { filter: drop-shadow(0 0 5px rgba(255,246,230,.9)) }
+  .art .st.lit { filter: drop-shadow(0 0 5px rgba(var(--glow),.9)); fill: var(--accent) }
   .art .ha { fill: url(#halo); opacity: .6 }
   .art .tx { fill: var(--dim); font-family: var(--sans); font-weight: 300 }
   .art .tx.big { fill: var(--ink); font-family: var(--serif); font-weight: 500 }
   .art .tx.it { fill: var(--ink); font-family: var(--serif); font-style: italic }
   .art .flow { fill: none; stroke: var(--ink); stroke-width: .6; opacity: .12 }
-  .art .packet { fill: #ffe9c9; filter: drop-shadow(0 0 3px rgba(255,233,201,.9)) }
+  .art .packet { fill: rgb(var(--star-warm)); filter: drop-shadow(0 0 3px rgba(var(--star-warm),.9)) }
 
   /* off hours: Cataholic's eight coats, napping */
   .naps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 10px; max-width: 480px; margin: 0 0 0 auto }
   .naps img { width: 100%; height: auto; aspect-ratio: 368 / 200; object-fit: cover; object-position: 50% 71%; filter: brightness(.88) }
   .row { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 26px; font-size: 16px; color: var(--ink) }
-  .row a { border-bottom: 1px solid rgba(242,239,232,.3); transition: border-color .3s }
+  .row a { border-bottom: 1px solid rgba(var(--ink-rgb),.3); transition: border-color .3s }
   .row a:hover { border-color: var(--ink) }
 
   /* ── the end ── */
@@ -170,7 +171,7 @@
   <nav aria-label="Main"><a href="#work">Work</a><a class="wide" href="stack.html">How I build</a><a href="writing/">Writing</a><a href="#hi">Say hi</a></nav>
 </header>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs><radialGradient id="halo"><stop offset="0" stop-color="#fff6e6" stop-opacity=".55"/><stop offset="1" stop-color="#fff6e6" stop-opacity="0"/></radialGradient></defs>
+  <defs><radialGradient id="halo"><stop offset="0" style="stop-color:rgb(var(--glow))" stop-opacity=".55"/><stop offset="1" style="stop-color:rgb(var(--glow))" stop-opacity="0"/></radialGradient></defs>
 </svg>
 
 <section class="hero" aria-label="Introduction">
@@ -312,26 +313,29 @@
 const NS = 'http://www.w3.org/2000/svg', mk = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n }
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
 const rng = s => () => (s = s * 16807 % 2147483647) / 2147483647
+// colours for the canvases come from the theme in site.css (r,g,b triples)
+const tok = () => { const c = getComputedStyle(document.documentElement), v = n => c.getPropertyValue(n).trim()
+  return { ink: v('--ink-rgb'), warm: v('--star-warm'), cool: v('--star-cool'), glow: v('--glow'), a: parseFloat(v('--star-a')) || 1 } }
 
 // the Milky Way band behind the first screen
 const dust = document.getElementById('dust')
 function drawDust() {
   const r = dust.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2), phone = r.width / r.height < .9
   dust.width = r.width * dpr; dust.height = r.height * dpr
-  const g = dust.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0)
+  const g = dust.getContext('2d'), C = tok(); g.setTransform(dpr, 0, 0, dpr, 0, 0)
   const w = r.width, h = r.height, x0 = 0, y0 = h * (phone ? .9 : .95), x1 = w, y1 = h * (phone ? .05 : .02), len = Math.hypot(x1 - x0, y1 - y0)
   const ux = (x1 - x0) / len, uy = (y1 - y0) / len, nx = -uy, ny = ux, rnd = rng(3), gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5
   for (let i = 0; i < 2600; i++) {
     const t = rnd() * len, off = gauss() * (phone ? 90 : 120)
-    g.globalAlpha = (.12 + rnd() * .45) * (1 - Math.min(1, Math.abs(off) / 160))
-    g.fillStyle = rnd() < .2 ? '#ffe7c7' : '#dfe6ff'
+    g.globalAlpha = (.12 + rnd() * .45) * (1 - Math.min(1, Math.abs(off) / 160)) * C.a
+    g.fillStyle = `rgb(${rnd() < .2 ? C.warm : C.cool})`
     g.fillRect(x0 + ux * t + nx * off, y0 + uy * t + ny * off, rnd() < .9 ? .8 : 1.4, rnd() < .9 ? .8 : 1.4)
   }
   g.globalAlpha = 1
   for (let i = 0; i < 7; i++) {
     const t = len * (.1 + i * .13), cx = x0 + ux * t + nx * gauss() * 30, cy = y0 + uy * t + ny * gauss() * 30
     const grd = g.createRadialGradient(cx, cy, 0, cx, cy, 170)
-    grd.addColorStop(0, 'rgba(210,214,240,.05)'); grd.addColorStop(1, 'rgba(210,214,240,0)')
+    grd.addColorStop(0, `rgba(${C.cool},.05)`); grd.addColorStop(1, `rgba(${C.cool},0)`)
     g.fillStyle = grd; g.fillRect(cx - 170, cy - 170, 340, 340)
   }
 }
@@ -382,21 +386,21 @@ function drawWhen() {
   const r = when.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2)
   if (!changes || !r.width) return
   when.width = r.width * dpr; when.height = r.height * dpr
-  const g = when.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0)
+  const g = when.getContext('2d'), C = tok(); g.setTransform(dpr, 0, 0, dpr, 0, 0)
   const pts = changes.pts, days = Math.max(pts[pts.length - 1][0] + 1, Math.round((Date.now() - new Date(changes.first)) / 864e5))
   const L = 44, R = 8, T = 28, B = 30, w = r.width - L - R, h = r.height - T - B, rnd = rng(5)
   const X = d => L + d / days * w, Y = hr => T + ((hr < 5 ? hr + 24 : hr) - 5) / 22 * h
   g.font = 'italic 12px ' + getComputedStyle(document.body).getPropertyValue('--serif'); g.textBaseline = 'middle'
   for (const [hr, s] of [[9, '9 am'], [15, '3 pm'], [21, '9 pm']]) {
-    g.fillStyle = 'rgba(242,239,232,.5)'; g.textAlign = 'right'; g.fillText(s, L - 10, Y(hr))
-    g.fillStyle = 'rgba(242,239,232,.08)'; g.fillRect(L, Y(hr), w, 1)
+    g.fillStyle = `rgba(${C.ink},.5)`; g.textAlign = 'right'; g.fillText(s, L - 10, Y(hr))
+    g.fillStyle = `rgba(${C.ink},.08)`; g.fillRect(L, Y(hr), w, 1)
   }
-  g.fillStyle = 'rgba(242,239,232,.5)'; g.textBaseline = 'top'
+  g.fillStyle = `rgba(${C.ink},.5)`; g.textBaseline = 'top'
   g.textAlign = 'left'; g.fillText('18 January', L, T + h + 10); g.textAlign = 'right'; g.fillText('today', L + w, T + h + 10)
   for (const [d, hr] of pts) {
     const warm = rnd() < .16, big = rnd() < .06, x = X(d + rnd() * .9), y = Y(hr) + (rnd() - .5) * 2
-    g.globalAlpha = .28 + rnd() * .55; g.fillStyle = warm ? '#ffe7c7' : '#f2efe8'
-    if (big) { g.shadowColor = 'rgba(255,246,230,.8)'; g.shadowBlur = 4; g.fillRect(x, y, 1.6, 1.6); g.shadowBlur = 0 } else g.fillRect(x, y, 1.1, 1.1)
+    g.globalAlpha = .28 + rnd() * .55; g.fillStyle = `rgb(${warm ? C.warm : C.ink})`
+    if (big) { g.shadowColor = `rgba(${C.glow},.8)`; g.shadowBlur = 4; g.fillRect(x, y, 1.6, 1.6); g.shadowBlur = 0 } else g.fillRect(x, y, 1.1, 1.1)
   }
   g.globalAlpha = 1
 }
@@ -432,6 +436,7 @@ drawDust(); drawArt()
   if (reduce) arc.classList.add('in')
   else new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { arc.classList.add('in'); o.disconnect() } }, { rootMargin: '0px 0px -15% 0px' }).observe(arc)
 })()
+addEventListener('themechange', () => { drawDust(); drawWhen() })
 let lastW = innerWidth, rt
 addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => {
   drawDust()
