@@ -14,6 +14,9 @@
   --accent: var(--ink); --accent-rgb: var(--ink-rgb);
   /* stars and their glow, as r,g,b so canvas and CSS share them */
   --star-warm: 255,226,189; --star-cool: 238,242,255; --glow: 255,246,230; --star-a: 1;
+  --tint-warm: 255,236,206; --tint-cool: 206,214,255;
+  /* thin type glows on black, so night reads lighter; paper needs the regular weight */
+  --body-w: 300;
   --serif: 'Cormorant Garamond', Georgia, serif; --sans: Geist, system-ui, sans-serif;
   color-scheme: dark;
 }
@@ -27,6 +30,7 @@
   --on-ink: #f7f8fc; --ink-hi: #1a35b8; --code-bg: rgba(255,255,255,.7);
   --accent: #2343d6; --accent-rgb: 35,67,214;
   --star-warm: 16,26,56; --star-cool: 35,67,214; --glow: 35,67,214; --star-a: .55;
+  --tint-warm: 35,67,214; --tint-cool: 35,67,214; --body-w: 400;
   color-scheme: light;
 }
 * { box-sizing: border-box; margin: 0; padding: 0 }
@@ -35,7 +39,7 @@ body { background: var(--sky) fixed; min-height: 100vh }
 
 /* day/night switch: the new sky spreads out in a circle from the button (theme.js drives it) */
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal }
-body { color: var(--ink); font: 16px/1.6 var(--sans); font-weight: 300; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility }
+body { color: var(--ink); font: 16px/1.6 var(--sans); font-weight: var(--body-w); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility }
 a { color: inherit; text-decoration: none }
 :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 4px; border-radius: 4px }
 ::selection { background: rgba(var(--ink-rgb),.85); color: var(--on-ink) }
@@ -85,7 +89,7 @@ footer.foot a:hover { color: var(--ink) }
 
 /* writing index */
 .posts { margin-top: 64px; display: grid; gap: 18px }
-.post { display: block; padding: 28px 30px; border: 1px solid var(--rule); border-radius: 18px; transition: border-color .3s, transform .3s cubic-bezier(.16,1,.3,1) }
+.post { display: block; padding: 28px 30px; border: 1px solid var(--rule); border-radius: 16px; transition: border-color .3s, transform .3s cubic-bezier(.16,1,.3,1) }
 a.post:hover { border-color: rgba(var(--ink-rgb),.4); transform: translateY(-2px) }
 .post .meta { color: var(--faint); font-size: 13.5px }
 .post h2 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 34px; line-height: 1.1; margin-top: 8px }
@@ -119,12 +123,12 @@ a.post:hover { border-color: rgba(var(--ink-rgb),.4); transform: translateY(-2px
 .essay-body blockquote p { color: inherit; margin: 0 }
 .essay-body .callout { margin: 26px 0; padding: 20px 24px; border: 1px solid var(--rule); border-radius: 16px }
 .essay-body .callout p { margin: 0 }
-.essay-body pre { margin: 22px 0 26px; padding: 20px; overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; background: var(--code-bg); font: 12.5px/1.5 ui-monospace, 'SF Mono', Menlo, monospace; color: rgba(var(--ink-rgb),.82) }
+.essay-body pre { margin: 22px 0 26px; padding: 20px; overflow-x: auto; border: 1px solid var(--rule); border-radius: 16px; background: var(--code-bg); font: 12.5px/1.5 ui-monospace, 'SF Mono', Menlo, monospace; color: rgba(var(--ink-rgb),.82) }
 .essay-body table { width: 100%; border-collapse: collapse; margin: 18px 0 26px; font-size: 15px }
 .essay-body th, .essay-body td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top }
 .essay-body th { font-weight: 500; color: var(--dim) }
 .essay-body code { font: .88em ui-monospace, 'SF Mono', Menlo, monospace }
-.status-frame { margin-top: 48px; padding: 24px 26px; border: 1px solid var(--rule); border-radius: 18px }
+.status-frame { margin-top: 48px; padding: 24px 26px; border: 1px solid var(--rule); border-radius: 16px }
 .status-head { font-family: var(--serif); font-style: italic; font-size: 26px; margin-bottom: 8px }
 .essay-foot { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule); color: var(--faint); font-size: 14px }
 .essay-foot .back { color: var(--ink) }
