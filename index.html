@@ -114,11 +114,16 @@
   .art.loop { margin-top: 64px } .art.loop svg { max-width: none; margin: 0 } .art.loop figcaption { text-align: left }
   /* off hours, mirrored so the page doesn't repeat one split: the cats lead */
   .two.flip { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) } .two.flip > .art { order: -1; margin-top: 34px }
-  .two.flip .naps { margin: 0 } .two.flip .art figcaption { text-align: left }
+  .two.flip .clip { margin: 0 } .two.flip .art figcaption { text-align: left }
 
-  /* off hours: Cataholic's eight coats, napping */
-  .naps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 10px; max-width: 480px; margin: 0 0 0 auto }
-  .naps img { width: 100%; height: auto; aspect-ratio: 368 / 200; object-fit: cover; object-position: 50% 71%; filter: brightness(.88) }
+  /* off hours: Cataholic's window grid, one clip per sky; a still when motion is off */
+  .clip { max-width: 480px; margin: 0 0 0 auto }
+  .clip > * { display: none; width: 100%; height: auto; aspect-ratio: 16 / 9 }
+  [data-theme="dark"] .clip video.night, [data-theme="light"] .clip video.day { display: block }
+  @media (prefers-reduced-motion: reduce) {
+    .clip video { display: none !important }
+    [data-theme="dark"] .clip img.night, [data-theme="light"] .clip img.day { display: block }
+  }
   .row { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 26px; font-size: 16px; color: var(--ink) }
   .row a { border-bottom: 1px solid rgba(var(--ink-rgb),.3); transition: border-color .3s }
   .row a:hover { border-color: var(--ink) }
@@ -141,7 +146,6 @@
   [data-theme="light"] .link:hover, [data-theme="light"] .row a:hover, [data-theme="light"] .when figcaption a:hover, [data-theme="light"] .pq figcaption a:hover { border-color: var(--accent); color: var(--accent) }
   [data-theme="light"] .path li::before { background: var(--accent); box-shadow: none }
   [data-theme="light"] .path li.now::before { box-shadow: 0 0 0 5px var(--on-ink), 0 0 0 6px rgba(var(--accent-rgb),.5) }
-  [data-theme="light"] .naps img { filter: none }
 
   @media (max-width: 820px) {
     .intro { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 88px 20px 56px }
@@ -164,7 +168,7 @@
     .path li b, .path li span { text-align: left }
     .art svg { margin: 0 auto; max-width: 420px }
     .art figcaption { text-align: center }
-    .naps, .two.flip .naps { margin: 0 auto }
+    .clip, .two.flip .clip { margin: 0 auto }
     .two.flip > .art { order: 0 } .two.flip .art figcaption { text-align: center }
     .art.loop { margin-top: 44px } .art.loop svg { max-width: 360px }
     #hi { padding-bottom: 88px }
@@ -289,8 +293,8 @@
           <p class="row"><a href="https://github.com/manideepgns-fin/cataholic">Cataholic on GitHub ↗</a><a href="wrapped/">Read Wrapped →</a></p>
         </div>
         <figure class="art">
-          <div class="naps" aria-hidden="true"><img src="assets/cats/snow-nap.webp" width="368" height="496" alt="" loading="lazy"><img src="assets/cats/smokey-nap.webp" width="368" height="496" alt="" loading="lazy"><img src="assets/cats/tux-nap.webp" width="368" height="496" alt="" loading="lazy"><img src="assets/cats/patches-nap.webp" width="368" height="496" alt="" loading="lazy"><img src="assets/cats/butter-nap.webp" width="368" height="496" alt="" loading="lazy"><img src="assets/cats/ginger-nap.webp" width="368" height="496" alt="" loading="lazy"><img src="assets/cats/cocoa-nap.webp" width="368" height="496" alt="" loading="lazy"><img src="assets/cats/lilac-nap.webp" width="368" height="496" alt="" loading="lazy"></div>
-          <figcaption>All eight coats, napping.</figcaption>
+          <div class="clip" aria-hidden="true"><video class="day" autoplay muted loop playsinline width="960" height="540" poster="assets/grid/grid-light-poster.png"><source src="assets/grid/grid-light.mov" type='video/quicktime; codecs="hvc1"'><source src="assets/grid/grid-light.webm" type="video/webm"></video><video class="night" autoplay muted loop playsinline width="960" height="540" poster="assets/grid/grid-dark-poster.png"><source src="assets/grid/grid-dark.mov" type='video/quicktime; codecs="hvc1"'><source src="assets/grid/grid-dark.webm" type="video/webm"></video><img class="day" src="assets/grid/grid-light-still.png" width="960" height="540" alt="" loading="lazy"><img class="night" src="assets/grid/grid-dark-still.png" width="960" height="540" alt="" loading="lazy"></div>
+          <figcaption>The cat rides along as a window snaps to the grid.</figcaption>
         </figure>
       </div>
     </div>
